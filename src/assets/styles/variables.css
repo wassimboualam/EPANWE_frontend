@@ -1,0 +1,24 @@
+:root {
+  --gold: #d4af37;
+  --slate: #1f2937;
+  --gray: #374151;
+  --blue: #97b0ff;
+
+  --white: #ffffff;
+
+  --bg: #f9fafb;
+
+  --gold-soft: #fbf4dd;
+
+  --blue-soft: #eef2ff;
+
+  --slate-soft: #d2d4d7;
+
+  --gold-dim: #b59630;
+
+  --radius: 20px;
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  --transition: 0.3s ease;
+}
