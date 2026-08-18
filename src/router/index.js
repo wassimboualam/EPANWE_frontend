@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import WebLayout from '@/components/layout/web/WebLayout.vue'
+import WebLayout from '@/layout/web/WebLayout.vue'
 import TestView from '@/views/TestView.vue'
 
 const router = createRouter({
@@ -65,7 +65,7 @@ const router = createRouter({
     },
     {
       path: '/account',
-      component: () => import('@/components/layout/registration/Base.vue'),
+      component: () => import('@/layout/registration/Base.vue'),
       children: [
         {
           path: '/login',
@@ -79,7 +79,7 @@ const router = createRouter({
     },
     {
       path: '/dashboard',
-      component: () => import('../components/layout/dashboard/Base.vue'),
+      component: () => import('../layout/dashboard/Base.vue'),
       children: [
         // participant/user routes
         {

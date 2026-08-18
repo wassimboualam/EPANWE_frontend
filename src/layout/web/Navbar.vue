@@ -1,8 +1,8 @@
 <script setup>
 import { useUserStore } from '@/stores/user.js'
-import Button from '../../ui/Button.vue'
+import Button from '@/components/ui/Button.vue'
 import { RouterLink } from 'vue-router'
-import DropdownAvatar from './DropdownAvatar.vue'
+import DropdownAvatar from '@/layout/web/DropdownAvatar.vue'
 
 const userStore = useUserStore()
 </script>
@@ -20,18 +20,18 @@ const userStore = useUserStore()
       </ul>
 
       <div v-if="userStore.userInfo != null && userStore.userInfo.id == true" class="actions">
-        <DropdownAvatar />
+        <DropdownAvatar/>
       </div>
       <div v-else class="actions">
         <RouterLink to="/login">
-          <Button text="Log In" color="secondary" variant="outline" />
+          <Button text="Log In" color="secondary" variant="outline"/>
         </RouterLink>
         <RouterLink to="/register">
-          <Button text="Join Us" />
+          <Button text="Join Us"/>
         </RouterLink>
       </div>
-    </div>
-  </nav>
+     </div>
+   </nav>
 </template>
 
 <style scoped>

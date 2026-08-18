@@ -1,10 +1,10 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router'
-import Avatar from '../../ui/Avatar.vue'
-import Button from '../../ui/Button.vue'
-import DropdownMenu from '../../ui/DropdownMenu.vue'
+import Avatar from '@/components/ui/Avatar.vue'
+import Button from '@/components/ui/Button.vue'
+import DropdownMenu from '@/components/ui/DropdownMenu.vue'
 import { useUserStore } from '@/stores/user.js'
-import LogoutButton from '../../ui/LogoutButton.vue'
+import LogoutButton from '@/components/ui/LogoutButton.vue'
 import { useDashboardStore } from '@/stores/dashboard.js'
 
 const userStore = useUserStore()
@@ -19,17 +19,17 @@ async function logOut() {
 
 <template>
   <DropdownMenu :is-round="true">
-    <template #button>
+    <template #button>.
       <Avatar />
     </template>
     <div class="user-menu">
       <RouterLink v-for="page in dashboardStore.pages" :to="page.link">
         <Button variant="outline" color="primary" size="sm" :full-width="true">
-          <span class="material-symbols-outlined">{{ page.icon }}</span>
+          <span class="material-symbols-outlined"> {{ page.icon }} </span>
           {{ page.name }}
         </Button>
       </RouterLink>
-      <hr />
+      <hr/>
       <!-- <Button
         @click="logOut()"
         variant="outline"
