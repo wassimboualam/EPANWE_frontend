@@ -17,6 +17,9 @@ let csrf
 
 async function editInfo(form) {
   const { type, message } = await userStore.editInfo(form, csrf)
+
+  userStore.refreshUser()
+
   toastStore.show({
     title: capitalise(type),
     message,

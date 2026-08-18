@@ -78,10 +78,10 @@ onMounted(async () => {
     <Modal v-if="showModal" title="Make joining request" @close="showModal = false">
       <p>Are you sure you want to make that request?</p>
       <div class="modal-lower">
-        <template id="footer">
-          <Button text="Confirm" color="primary" :disabled="disabled" @click="confirmRequest" />
-        </template>
       </div>
+      <template #footer>
+        <Button text="Confirm" color="primary" :disabled="disabled" @click="confirmRequest" />
+      </template>
     </Modal>
   </section>
 </template>

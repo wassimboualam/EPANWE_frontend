@@ -19,7 +19,7 @@ const userStore = useUserStore()
         <li><a href="/howtojoin">How to join</a></li>
       </ul>
 
-      <div v-if="userStore.userInfo != null && userStore.userInfo.id == true" class="actions">
+      <div v-if="userStore.userInfo?.id" class="actions">
         <DropdownAvatar/>
       </div>
       <div v-else class="actions">

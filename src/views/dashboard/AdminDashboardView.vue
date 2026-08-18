@@ -1,18 +1,16 @@
 <script setup>
 import WelcomeBanner from '@/components/dashboard/admin/WelcomeBanner.vue'
 import StatCard from '@/components/dashboard/admin/StatCard.vue'
-import FilterBar from '@/components/dashboard/admin/FilterBar.vue'
 import RequestsTable from '@/components/dashboard/admin/RequestsTable.vue'
-import Navbar from '@/components/layout/dashboard/Navbar.vue'
 import { useRequestStore } from '@/stores/request'
-import { onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useToastStore } from '@/stores/toast'
 import { getCsrf } from '@/utilities'
 
 const requestStore = useRequestStore()
 const toastStore = useToastStore()
 
-const stats = [
+const stats = computed( () => [
   {
     title: 'Pending',
     value: requestStore.requests.filter((r) => r.status === 'pending').length,
@@ -41,7 +39,7 @@ const stats = [
     icon: 'groups',
     color: 'var(--gold)',
   },
-]
+]);
 
 let csrf
 
@@ -65,6 +63,7 @@ async function setApproval(type, user_id) {
 onMounted(async () => {
   csrf = await getCsrf()
 
+  await requestStore.refreshAllRequests()
   requestStore.sortRequests()
 })
 </script>

@@ -30,8 +30,8 @@ onMounted(async () => {
 <template>
   <WaitPage
     v-if="
-      !userExists || // checks if user doesn't exist
-      (userStore.userInfo.role === 'admin' && requestStore.requests.length === 0)
+      !userExists // checks if user doesn't exist
+      // (userStore.userInfo.role === 'admin' && requestStore.requests.length === 0)
     "
   />
   <div v-else>

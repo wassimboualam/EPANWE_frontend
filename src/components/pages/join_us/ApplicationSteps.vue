@@ -58,8 +58,8 @@ const steps = [
 .steps {
   background: white;
   border-radius: 2%;
-  box-shadow: 0px 2px 5px rgb(216, 216, 216);
-  margin-bottom: 10px;
+  /* box-shadow: 0px 2px 5px rgb(216, 216, 216); */
+  /* margin-bottom: 10px; */
 }
 
 .heading {

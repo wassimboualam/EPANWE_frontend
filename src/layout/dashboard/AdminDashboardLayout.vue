@@ -1,5 +1,5 @@
 <script setup>
-import Navbar from '@/components/layout/dashboard/Navbar.vue'
+import Navbar from '@/layout/dashboard/Navbar.vue'
 import { useRequestStore } from '@/stores/request'
 import { useToastStore } from '@/stores/toast'
 import { useUserStore } from '@/stores/user'

@@ -19,7 +19,7 @@ async function logOut() {
 
 <template>
   <DropdownMenu :is-round="true">
-    <template #button>.
+    <template #button>
       <Avatar />
     </template>
     <div class="user-menu">
