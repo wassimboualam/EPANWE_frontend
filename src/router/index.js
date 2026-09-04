@@ -51,6 +51,11 @@ const router = createRouter({
           name: 'how to join as a participant',
           component: () => import('../views/HowJoinUsView.vue'),
         },
+        {
+          path: 'terms',
+          name: 'terms of service',
+          component: () => import('@/views/TermsOfServiceView.vue')
+        },
         // {
         //   path: '/partner',
         //   name: 'partner form',

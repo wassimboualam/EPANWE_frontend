@@ -17,8 +17,11 @@ const explore = [
 const resources = [
   // "Blog",
   // "FAQ",
-  'Privacy Policy',
-  'Terms of Service',
+  // 'Privacy Policy',
+  {
+    name: 'Terms of Service',
+    path: '/terms',
+  },
 ]
 </script>
 
@@ -86,9 +89,9 @@ const resources = [
           <h3>Resources</h3>
 
           <ul>
-            <li v-for="item in resources" :key="item">
-              <a href="#">
-                {{ item }}
+            <li v-for="item in resources" :key="item.path">
+              <a :href="item.path">
+                {{ item.name }}
               </a>
             </li>
           </ul>
@@ -118,11 +121,11 @@ const resources = [
         </p>
 
         <div class="legal">
-          <a href="#"> Privacy </a>
+          <!-- <a href="#"> Privacy </a> -->
 
-          <a href="#"> Terms </a>
+          <a href="/terms"> Terms of Service </a>
 
-          <a href="#"> Cookies </a>
+          <!-- <a href="#"> Cookies </a> -->
         </div>
       </div>
     </div>

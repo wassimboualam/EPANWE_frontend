@@ -1,3 +1,16 @@
+@layer base {
+  
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Poppins', sans-serif;
+
+  color: var(--slate);
+}
+  
+}
+
 .container {
   width: min(1280px, 92%);
 
@@ -8,14 +21,6 @@ section {
   padding: 110px 0;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: 'Poppins', sans-serif;
-
-  color: var(--slate);
-}
 
 h1 {
   font-size: 4rem;
