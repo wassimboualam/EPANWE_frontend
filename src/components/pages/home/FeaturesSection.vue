@@ -22,7 +22,7 @@ const features = [
 
 <template>
 
-<section>
+<section id="whyus">
 
 <div class="container">
 

@@ -68,11 +68,11 @@ v-for="service in services"
 
 </p>
 
-<a href="#">
+<!-- <a href="#">
 
 Learn More →
 
-</a>
+</a> -->
 
 </div>
 

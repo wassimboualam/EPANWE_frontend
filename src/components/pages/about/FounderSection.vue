@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import links from '@/links';
+
+</script>
 
 <template>
   <section>
@@ -31,9 +34,10 @@
         </p>
 
         <div class="socials">
-          <a href="#">LinkedIn</a>
+          <a :href="links.founder.facebook" target="_blank">Facebook</a>
+          <a :href="links.founder.instagram" target="_blank">Instagram</a>
+          <a :href="links.founder.linkedin" target="_blank">LinkedIn</a>
 
-          <a href="#">Email</a>
         </div>
       </div>
     </div>

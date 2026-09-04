@@ -20,7 +20,9 @@ import Button from '../../ui/Button.vue'
           every young person deserves the opportunity to grow, learn and thrive.
         </p>
 
-        <Button text="Learn More" />
+        <a href="about">
+          <Button text="Learn More" />
+        </a>
       </div>
     </div>
   </section>

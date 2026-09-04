@@ -1,10 +1,23 @@
 <script setup>
+import links from "@/links.js";
+
 const explore = [
-  'Home',
-  'About',
-  // "Programs",
-  'Join Us',
-  'Contact',
+  {
+    name: 'Home',
+    path: '/',
+  },
+  {
+    name: 'About',
+    path: '/about',
+  },
+  {
+    name: 'Join Us',
+    path: '/howtojoin',
+  },
+  {
+    name: 'Contact',
+    path: '/contact',
+  },
 ]
 
 // const programs = [
@@ -40,17 +53,14 @@ const resources = [
           </p>
 
           <div class="socials">
-            <a href="#">
+            <a :href="links.founder.facebook" target="_blank">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#">
+            <a :href="links.founder.instagram" target="_blank">
               <i class="fab fa-instagram"></i>
             </a>
-            <a href="#">
+            <a :href="links.founder.linkedin" target="_blank">
               <i class="fab fa-linkedin-in"></i>
-            </a>
-            <a href="#">
-              <i class="fab fa-youtube"></i>
             </a>
           </div>
         </div>
@@ -61,9 +71,9 @@ const resources = [
           <h3>Explore</h3>
 
           <ul>
-            <li v-for="item in explore" :key="item">
-              <a href="#">
-                {{ item }}
+            <li v-for="item in explore" :key="item.path">
+              <a :href="item.path">
+                {{ item.name }}
               </a>
             </li>
           </ul>
@@ -103,7 +113,7 @@ const resources = [
           <h3>Contact</h3>
 
           <ul>
-            <li>📞 +212 5 XX XX XX XX</li>
+            <li>📞 ++212 669 951 116</li>
 
             <li>✉ contact@epanwe.ma</li>
 
@@ -146,7 +156,6 @@ footer {
 
   grid-template-columns:
     2fr
-    1fr
     1fr
     1fr
     1.2fr;

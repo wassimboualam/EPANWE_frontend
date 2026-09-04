@@ -27,7 +27,7 @@ const steps = [
 </script>
 
 <template>
-  <section class="steps">
+  <section id="steps" class="steps">
     <div class="container">
       <div class="heading">
         <p>APPLICATION PROCESS</p>

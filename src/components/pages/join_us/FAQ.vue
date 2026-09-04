@@ -7,13 +7,13 @@ const faqs = [
   {
     question: 'Who can apply?',
     answer:
-      'Anyone interested in participating in our programs, volunteering or partnering with EPANWE.',
+      'Anyone interested in participating in our programs or partnering with EPANWE.',
   },
 
   {
     question: 'Is there a registration fee?',
     answer:
-      'Some activities are free while others may require a participation fee depending on the program.',
+      'While there is a registration fee, participants who are affiliated with one of our partners may take part some of the group activities free of charge.',
   },
 
   {

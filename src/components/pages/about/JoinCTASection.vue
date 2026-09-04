@@ -16,9 +16,13 @@ import Button from '../../ui/Button.vue'
         </p>
 
         <div class="buttons">
-          <Button text="Join Us" />
+          <a href="/howtojoin">
+            <Button text="Join Us" />
+          </a>
 
-          <Button text="Contact Us" color="secondary" />
+          <a href="/contact">
+            <Button text="Contact Us" color="secondary" />
+          </a>
         </div>
       </div>
     </div>

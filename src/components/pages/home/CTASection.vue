@@ -17,7 +17,9 @@ import Button from '../../ui/Button.vue'
           </p>
 
           <div class="buttons">
-            <Button text="Join EPANWE" color="white" />
+            <a href="/howtojoin">
+              <Button text="Join EPANWE" color="white" />
+            </a>
 
             <!-- <Button text="Explore Programs" color="secondary" /> -->
           </div>
