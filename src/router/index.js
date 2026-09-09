@@ -56,11 +56,11 @@ const router = createRouter({
           name: 'terms of service',
           component: () => import('@/views/TermsOfServiceView.vue')
         },
-        // {
-        //   path: '/partner',
-        //   name: 'partner form',
-        //   component: () => import('../views/PartnerJoinView.vue'),
-        // },
+          {
+            path: '/partner',
+            name: 'partner form',
+            component: () => import('../views/PartnerJoinView.vue'),
+          },
         {
           path: '/:pathMatch(.*)*',
           name: 'not found',
