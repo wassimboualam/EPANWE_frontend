@@ -17,15 +17,20 @@ let disabled = ref(false)
 const login = async (form) => {
   disabled.value = true
 
-  const { type, message } = await userStore.login(form, csrf)
-  disabled.value = false
-
-  if (type === 'error') {
-    toastStore.error(message)
-    return
+  try {
+    const { type, message } = await userStore.login(form, csrf)
+    if (type === 'error') {
+      toastStore.error(message)
+      return
+    }
+    toastStore.success(message)
+    router.push('/dashboard')
+  } catch (error) {
+    toastStore.error(error.message, error.name);
+    console.error(error);
+  } finally {
+    disabled.value = false;
   }
-  toastStore.success(message)
-  router.push('/dashboard')
 }
 
 onMounted(async () => {

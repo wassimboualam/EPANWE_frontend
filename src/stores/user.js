@@ -57,14 +57,15 @@ export const useUserStore = defineStore('user', {
 
       return await response.json()
     },
+    /*
     async isLoggedIn() {
       await this.refreshUser()
-      if (this.userInfo.id === undefined) {
+      if (this.userExists && this.userInfo.id === undefined) {
         return false
       } else {
         return true
       }
-    },
+    },*/
     getInitials() {
       return computed(() => {
         if (this.userInfo === null) return ''

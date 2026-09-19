@@ -107,7 +107,6 @@ onMounted(async () => {
         <input
           v-model="form.firstName"
           type="text"
-          value="John"
         >
         <small
           v-if="errors.firstName"
@@ -123,7 +122,6 @@ onMounted(async () => {
         <input
           v-model="form.lastName"
           type="text"
-          value="Doe"
         >
         <small
           v-if="errors.lastName"
@@ -141,7 +139,6 @@ onMounted(async () => {
         <input
           v-model="form.age"
           type="number"
-          value="67"
         >
         <small
           v-if="errors.age"
@@ -163,10 +160,10 @@ onMounted(async () => {
           </option>
         </select>
         <small
-          v-if="errors.email"
+          v-if="errors.gender"
           class="error"
         >
-          {{ errors.email }}
+          {{ errors.gender }}
         </small>
       </div>
     </div>
@@ -177,7 +174,6 @@ onMounted(async () => {
       <input
         v-model="form.email"
         type="email"
-        value="john@email.com"
       >
       <small
         v-if="errors.email"

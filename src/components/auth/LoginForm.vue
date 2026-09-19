@@ -19,7 +19,7 @@ const form = reactive({
 </script>
 
 <template>
-  <form @submit.prevent="login">
+  <form @submit.prevent="() => emit('submit', form)">
     <h2>Welcome Back</h2>
 
     <p class="subtitle">
@@ -71,7 +71,6 @@ const form = reactive({
       text="Login"
       button-type="submit"
       :disabled="disabled"
-      @click="emit('submit', form)"
     />
     <p class="bottom">
       Don't have an account?

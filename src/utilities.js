@@ -43,6 +43,7 @@ async function requestBackend(
   const { origin, path, csrf, contentType, method, credentials, promiseFunction } = options
   const response = await fetch(origin + path, {
     method: method,
+    body: JSON.stringify(body),
     credentials: credentials,
     headers: {
       'X-CSRF-TOKEN': csrf,
