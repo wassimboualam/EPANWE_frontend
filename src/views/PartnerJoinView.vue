@@ -1,71 +1,70 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import Button from '@/components/ui/Button.vue'
 import { useToastStore } from '@/stores/toast'
 import Hero from '@/components/pages/partner_join/Hero.vue'
 import Benefits from '@/components/pages/partner_join/Benefits.vue'
 import Form from '@/components/pages/partner_join/Form.vue'
+import { getCsrf } from '@/utilities'
 
 const router = useRouter()
 const toastStore = useToastStore()
 
 const loading = ref(false)
+let csrf
 
-const form = reactive({
-  firstName: '',
-  lastName: '',
-  email: '',
-  age: '',
-  gender: '',
-})
-
-const submitRequest = async () => {
-  loading.value = true
+async function submitForm(form) {
+  loading.value = true;
 
   try {
-    const response = await fetch('http://localhost:8000/register', {
+    const response = await fetch('http://localhost:8000/partner/request', {
       method: 'POST',
+      body: JSON.stringify(form),
       headers: {
+        'X-CSRF-TOKEN': csrf,
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-      body: JSON.stringify(form),
-    })
-
-    const data = await response.json()
-
-    toastStore.show({
-      title: data.title,
-      message: data.message,
-      type: data.type,
-      duration: data.duration ?? 5000,
-    })
-
-    if (response.ok && data.type === 'success') {
-      router.push('/login')
-    }
+    });
+  
+    const data = await response.json();
+  
+    toastStore.success(data.message, data.title, 5000);
   } catch (error) {
-    toastStore.show({
-      title: 'Something went wrong',
-      message: 'We could not send your request. Please try again.',
-      type: 'error',
-    })
-  } finally {
-    loading.value = false
+    toastStore.error(error.message, error.title, 5000);
   }
+
+
+  loading.value = false;
+
 }
+
+
+onMounted(async () => {
+  csrf = await getCsrf()
+})
 </script>
 
-<template>
-  <main class="min-h-screen bg-[#F8F7F3]">
-    <Hero />
-    <section class="px-6 pb-20 md:px-10">
-      <div class="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-        <Benefits />
-        <Form />
-      </div>
+<template> 
+  
+  <main class="min-h-screen bg-white"> 
 
-    </section>
+    <Hero /> 
+
+    <section class="px-6 py-16 md:px-10 lg:px-16"> 
+
+      <div class="mx-auto max-w-5xl"> 
+
+        <Benefits class="mb-16" /> 
+
+        <div class="  bg-white p-6  md:p-10" > 
+          <Form :loading="loading" @submit-form="submitForm"/> 
+        </div> 
+
+      </div> 
+
+    </section> 
+
   </main>
+ 
 </template>

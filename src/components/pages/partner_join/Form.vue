@@ -9,8 +9,17 @@ import Textarea from '@/components/ui/Textarea.vue'
 
 import { useToastStore } from '@/stores/toast'
 
+defineProps({
+  loading: {
+    type: Boolean,
+    default: false
+  }
+})
+
 const router = useRouter()
 const toastStore = useToastStore()
+
+const emit = defineEmits(['submitForm'])
 
 const form = reactive({
   company_name: "",
@@ -163,48 +172,7 @@ const fields = [
     }
 ]
 
-const loading = ref(false)
 
-
-const submitRequest = async () => {
-  loading.value = true
-  console.log("form")
-  console.log(form)
-
-//   try {
-//     const response = await fetch(
-//       'http://localhost:8000/partner/register',
-//       {
-//         method: 'POST',
-
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-
-//         credentials: 'include',
-
-//         body: JSON.stringify(form),
-//       }
-//     )
-
-//     const data = await response.json()
-
-    toastStore.info("request submitted");
-
-//     if (response.ok && data.type === 'success') {
-//       router.push('/login')
-//     }
-//   } catch (error) {
-//     toastStore.show({
-//       title: 'Something went wrong',
-//       message:
-//         'Your request could not be sent. Please try again.',
-//       type: 'error',
-//     })
-//   } finally {
-//     loading.value = false
-//   }
-}
 </script>
 
 <template>
@@ -228,122 +196,39 @@ const submitRequest = async () => {
 
     <form
       class="space-y-6"
-      @submit.prevent="submitRequest"
+      @submit.prevent="emit('submitForm', form)"
     >
-
-      <!-- Organization -->
 
       <slot v-for="field in fields" :v-key="field">
         <Input v-if="field.fieldType === 'input'" 
-          :id="field.id" :label="field.label" :modelValue="field.modelValue" :type="field.type" 
-          :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label" :required="field.isRequired" :autocomplete="field.autocomplete" 
-          :min="field.min" :max="field.max" :disabled="field.disabled"/>
-        <Select v-else-if="field.fieldType === 'select'" :id="field.id"  :label="field.label"  :modelValue="field.modelValue"  
-          :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label"  :options="field.options"  
-          :required="field.isRequired"  :disabled="field.disabled" />
-        <Textarea v-else-if="field.fieldType === 'textarea'" :id="field.id"  :label="field.label"  :modelValue="field.modelValue"  
-          :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label"  :required="field.isRequired"  :disabled="field.disabled"  
-          :rows="field.rows"  :maxlength="field.maxlength"/>
+          :id="field.id" 
+          :label="field.label" 
+          :modelValue="field.modelValue" 
+          :type="field.type" 
+          :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label" 
+          :required="false" 
+          :autocomplete="field.autocomplete" 
+          :min="field.min" 
+          :max="field.max" 
+          :disabled="field.disabled"/>
+        <Select v-else-if="field.fieldType === 'select'" 
+          :id="field.id"  
+          :label="field.label"  
+          :modelValue="field.modelValue"  
+          :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label"  
+          :options="field.options"  
+          :required="false"  
+          :disabled="field.disabled" />
+        <Textarea v-else-if="field.fieldType === 'textarea'" 
+          :id="field.id"  
+          :label="field.label"  
+          :modelValue="field.modelValue"  
+          :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label"  
+          :required="false"  
+          :disabled="field.disabled"  
+          :rows="field.rows"  
+          :maxlength="field.maxlength"/>
       </slot>
-
-      <Input
-        id="organizationName"
-        v-model="form.organizationName"
-        label="Organization name"
-        type="text"
-        placeholder="Your organization's name"
-        required
-      />
-
-      <!-- Contact -->
-
-      <div>
-        <h3 class="mb-4 text-sm font-semibold text-[#263238]">
-          Request contact person
-        </h3>
-
-        <div class="grid gap-5 sm:grid-cols-2">
-
-          <Input
-            id="firstName"
-            v-model="form.firstName"
-            label="First name"
-            type="text"
-            placeholder="Your first name"
-            autocomplete="given-name"
-            required
-          />
-
-          <Input
-            id="lastName"
-            v-model="form.lastName"
-            label="Last name"
-            type="text"
-            placeholder="Your last name"
-            autocomplete="family-name"
-            required
-          />
-
-        </div>
-      </div>
-
-      <!-- Contact information -->
-
-      <div class="grid gap-5 sm:grid-cols-2">
-
-        <Input
-          id="email"
-          v-model="form.email"
-          label="Email address"
-          type="email"
-          placeholder="you@organization.com"
-          autocomplete="email"
-          required
-        />
-
-        <Input
-          id="phone"
-          v-model="form.phone"
-          label="Phone number"
-          type="tel"
-          placeholder="+212 6 XX XX XX XX"
-          autocomplete="tel"
-          required
-        />
-
-      </div>
-
-      <!-- Organization type -->
-
-      <Select
-        id="organizationType"
-        v-model="form.organizationType"
-        label="Organization type"
-        placeholder="Organization type"
-        required
-        :options="[
-          {
-            value: 'company',
-            label: 'Company',
-          },
-          {
-            value: 'institution',
-            label: 'Institution',
-          },
-          {
-            value: 'association',
-            label: 'Association',
-          },
-          {
-            value: 'educational',
-            label: 'Educational institution',
-          },
-          {
-            value: 'other',
-            label: 'Other',
-          },
-        ]"
-      />
 
       <!-- Submit -->
 
