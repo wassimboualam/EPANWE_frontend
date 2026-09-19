@@ -23,7 +23,6 @@ const benefits = [
 
 <template>
   <div class="flex flex-col justify-center">
-
     <h2 class="text-2xl font-bold text-[#263238] md:text-3xl">
       Why become a partner?
     </h2>
@@ -34,7 +33,6 @@ const benefits = [
     </p>
 
     <div class="mt-8 space-y-7">
-
       <div
         v-for="benefit in benefits"
         :key="benefit.number"
@@ -58,8 +56,6 @@ const benefits = [
           </p>
         </div>
       </div>
-
     </div>
-
   </div>
 </template>

@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import Button from '@/components/ui/Button.vue'
+<script setup>
+import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
@@ -16,7 +16,10 @@ import Button from '@/components/ui/Button.vue'
     </div>
 
     <a href="#requests">
-      <Button text="View Pending Requests" color="primary" />
+      <BaseButton
+        text="View Pending Requests"
+        color="primary"
+      />
     </a>
   </section>
 </template>

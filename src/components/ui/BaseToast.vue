@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -28,7 +28,10 @@ const icon = computed(() => {
 </script>
 
 <template>
-  <div class="toast" :class="toast.type">
+  <div
+    class="toast"
+    :class="toast.type"
+  >
     <div class="icon">
       <span class="material-symbols-outlined">
         {{ icon }}
@@ -49,10 +52,13 @@ const icon = computed(() => {
         :style="{
           animationDuration: toast.duration + 'ms',
         }"
-      ></div>
+      />
     </div>
 
-    <button class="close" @click="$emit('close')">
+    <button
+      class="close"
+      @click="emit('close')"
+    >
       <span class="material-symbols-outlined"> close </span>
     </button>
   </div>

@@ -46,7 +46,10 @@ defineProps({
       </div>
 
       <div class="image">
-        <img :src="program.image" :alt="program.title" />
+        <img
+          :src="program.image"
+          :alt="program.title"
+        >
       </div>
     </div>
   </section>

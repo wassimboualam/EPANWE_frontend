@@ -4,11 +4,16 @@
   <section class="story">
     <div class="container story-grid">
       <div class="image">
-        <img src="/images/hero2.jpg" alt="Our Story" />
+        <img
+          src="/images/hero2.jpg"
+          alt="Our Story"
+        >
       </div>
 
       <div class="content">
-        <p class="eyebrow">OUR STORY</p>
+        <p class="eyebrow">
+          OUR STORY
+        </p>
 
         <h2>Every great journey begins with a purpose.</h2>
 

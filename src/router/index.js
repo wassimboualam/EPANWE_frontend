@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 import WebLayout from '@/layout/web/WebLayout.vue'
 import TestView from '@/views/TestView.vue'
 
@@ -70,7 +70,7 @@ const router = createRouter({
     },
     {
       path: '/account',
-      component: () => import('@/layout/registration/Base.vue'),
+      component: () => import('@/layout/registration/RegistrationLoader.vue'),
       children: [
         {
           path: '/login',
@@ -84,7 +84,7 @@ const router = createRouter({
     },
     {
       path: '/dashboard',
-      component: () => import('../layout/dashboard/Base.vue'),
+      component: () => import('@/layout/dashboard/DashboardLoader.vue'),
       children: [
         // participant/user routes
         {

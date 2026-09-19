@@ -1,13 +1,12 @@
 <script setup>
-import Modal from '@/components/ui/Modal.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { onMounted, ref } from 'vue'
-import Button from '../../ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 import { useUserStore } from '@/stores/user.js'
 import { useToastStore } from '@/stores/toast.js'
 import { useRequestStore } from '@/stores/request.js'
 import { capitalise, getCsrf } from '@/utilities.js'
 import { useDashboardStore } from '@/stores/dashboard.js'
-import { useRouter } from 'vue-router'
 
 defineProps({
   hasApplied: {
@@ -25,7 +24,6 @@ const toastStore = useToastStore()
 const userStore = useUserStore()
 const requestStore = useRequestStore()
 const dashboardStore = useDashboardStore()
-const router = useRouter()
 
 const confirmRequest = async () => {
   disabled.value = true
@@ -71,18 +69,30 @@ onMounted(async () => {
       </p>
     </div>
 
-    <Button text="Request Access" @click="showModal = true" :disabled="hasApplied" />
+    <BaseButton
+      text="Request Access"
+      :disabled="hasApplied"
+      @click="showModal = true"
+    />
 
-    <!-- <Button v-else text="View Request" styleType="secondary" /> -->
+    <!-- <BaseButton v-else text="View Request" styleType="secondary" /> -->
 
-    <Modal v-if="showModal" title="Make joining request" @close="showModal = false">
+    <BaseModal
+      v-if="showModal"
+      title="Make joining request"
+      @close="showModal = false"
+    >
       <p>Are you sure you want to make that request?</p>
-      <div class="modal-lower">
-      </div>
+      <div class="modal-lower" />
       <template #footer>
-        <Button text="Confirm" color="primary" :disabled="disabled" @click="confirmRequest" />
+        <BaseButton
+          text="Confirm"
+          color="primary"
+          :disabled="disabled"
+          @click="confirmRequest"
+        />
       </template>
-    </Modal>
+    </BaseModal>
   </section>
 </template>
 

@@ -1,13 +1,11 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
 import { useToastStore } from '@/stores/toast'
-import Hero from '@/components/pages/partner_join/Hero.vue'
-import Benefits from '@/components/pages/partner_join/Benefits.vue'
-import Form from '@/components/pages/partner_join/Form.vue'
+import HeroSection from '@/components/pages/partner_join/HeroSection.vue'
+import BenefitsSection from '@/components/pages/partner_join/BenefitsSection.vue'
+import FormSection from '@/components/pages/partner_join/FormSection.vue'
 import { getCsrf } from '@/utilities'
 
-const router = useRouter()
 const toastStore = useToastStore()
 
 const loading = ref(false)
@@ -45,26 +43,21 @@ onMounted(async () => {
 })
 </script>
 
-<template> 
-  
-  <main class="min-h-screen bg-white"> 
+<template>
+  <main class="min-h-screen bg-white">
+    <HeroSection /> 
 
-    <Hero /> 
+    <section class="px-6 py-16 md:px-10 lg:px-16">
+      <div class="mx-auto max-w-5xl">
+        <BenefitsSection class="mb-16" /> 
 
-    <section class="px-6 py-16 md:px-10 lg:px-16"> 
-
-      <div class="mx-auto max-w-5xl"> 
-
-        <Benefits class="mb-16" /> 
-
-        <div class="  bg-white p-6  md:p-10" > 
-          <Form :loading="loading" @submit-form="submitForm"/> 
-        </div> 
-
-      </div> 
-
-    </section> 
-
+        <div class="  bg-white p-6  md:p-10"> 
+          <FormSection 
+            :loading="loading"
+            @submit-form="submitForm"
+          /> 
+        </div>
+      </div>
+    </section>
   </main>
- 
 </template>

@@ -1,6 +1,5 @@
 <script setup>
-import { reactive } from 'vue'
-import Button from '@/components/ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
@@ -14,7 +13,7 @@ import Button from '@/components/ui/Button.vue'
 
       <div style="display: flex; justify-content: center; align-items: end">
         <RouterLink to="/register">
-          <Button text="Sign up" />
+          <BaseButton text="Sign up" />
         </RouterLink>
       </div>
     </div>

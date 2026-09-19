@@ -57,11 +57,18 @@ const programs = [
           <p>Explore our most popular educational, creative and sports experiences.</p>
         </div>
 
-        <Button text="All Programs" styleType="secondary" />
+        <Button
+          text="All Programs"
+          style-type="secondary"
+        />
       </div>
 
       <div class="grid">
-        <ProgramCard v-for="program in programs" :key="program.title" :program="program" />
+        <ProgramCard
+          v-for="program in programs"
+          :key="program.title"
+          :program="program"
+        />
       </div>
     </div>
   </section>

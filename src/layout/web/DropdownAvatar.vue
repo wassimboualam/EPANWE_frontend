@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router'
-import Avatar from '@/components/ui/Avatar.vue'
-import Button from '@/components/ui/Button.vue'
+import BaseAvatar from '@/components/ui/BaseAvatar.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 import DropdownMenu from '@/components/ui/DropdownMenu.vue'
 import { useUserStore } from '@/stores/user.js'
 import LogoutButton from '@/components/ui/LogoutButton.vue'
@@ -20,17 +20,26 @@ async function logOut() {
 <template>
   <DropdownMenu :is-round="true">
     <template #button>
-      <Avatar />
+      <BaseAvatar />
     </template>
     <div class="user-menu">
-      <RouterLink v-for="page in dashboardStore.pages" :to="page.link">
-        <Button variant="outline" color="primary" size="sm" :full-width="true">
+      <RouterLink
+        v-for="page in dashboardStore.pages"
+        :key="page.name"
+        :to="page.link"
+      >
+        <BaseButton
+          variant="outline"
+          color="primary"
+          size="sm"
+          :full-width="true"
+        >
           <span class="material-symbols-outlined"> {{ page.icon }} </span>
           {{ page.name }}
-        </Button>
+        </BaseButton>
       </RouterLink>
-      <hr/>
-      <!-- <Button
+      <hr>
+      <!-- <BaseButton
         @click="logOut()"
         variant="outline"
         color="danger"
@@ -38,7 +47,11 @@ async function logOut() {
         size="sm"
         :full-width="true"
       /> -->
-      <LogoutButton size="sm" variant="outline" @click="logOut" />
+      <LogoutButton
+        size="sm"
+        variant="outline"
+        @click="logOut"
+      />
     </div>
   </DropdownMenu>
 </template>

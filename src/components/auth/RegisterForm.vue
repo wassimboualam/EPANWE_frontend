@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, reactive, ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
-import Button from '@/components/ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 import { useToastStore } from '@/stores/toast'
 import { getCsrf } from '@/utilities'
 import { useUserStore } from '@/stores/user'
@@ -96,14 +96,23 @@ onMounted(async () => {
   <form @submit.prevent="register">
     <h2>Create Account</h2>
 
-    <p class="subtitle">Join the EPANWE community.</p>
+    <p class="subtitle">
+      Join the EPANWE community.
+    </p>
 
     <div class="row">
       <div class="field">
         <label>First Name</label>
 
-        <input v-model="form.firstName" type="text" value="John" />
-        <small v-if="errors.firstName" class="error">
+        <input
+          v-model="form.firstName"
+          type="text"
+          value="John"
+        >
+        <small
+          v-if="errors.firstName"
+          class="error"
+        >
           {{ errors.firstName }}
         </small>
       </div>
@@ -111,8 +120,15 @@ onMounted(async () => {
       <div class="field">
         <label>Last Name</label>
 
-        <input v-model="form.lastName" type="text" value="Doe" />
-        <small v-if="errors.lastName" class="error">
+        <input
+          v-model="form.lastName"
+          type="text"
+          value="Doe"
+        >
+        <small
+          v-if="errors.lastName"
+          class="error"
+        >
           {{ errors.lastName }}
         </small>
       </div>
@@ -122,8 +138,15 @@ onMounted(async () => {
       <div class="field">
         <label>Age</label>
 
-        <input v-model="form.age" type="number" value="67" />
-        <small v-if="errors.age" class="error">
+        <input
+          v-model="form.age"
+          type="number"
+          value="67"
+        >
+        <small
+          v-if="errors.age"
+          class="error"
+        >
           {{ errors.age }}
         </small>
       </div>
@@ -132,10 +155,17 @@ onMounted(async () => {
         <label>Gender</label>
 
         <select v-model="form.gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="male">
+            Male
+          </option>
+          <option value="female">
+            Female
+          </option>
         </select>
-        <small v-if="errors.email" class="error">
+        <small
+          v-if="errors.email"
+          class="error"
+        >
           {{ errors.email }}
         </small>
       </div>
@@ -144,20 +174,36 @@ onMounted(async () => {
     <div class="field">
       <label>Email</label>
 
-      <input v-model="form.email" type="email" value="john@email.com" />
-      <small v-if="errors.email" class="error">
+      <input
+        v-model="form.email"
+        type="email"
+        value="john@email.com"
+      >
+      <small
+        v-if="errors.email"
+        class="error"
+      >
         {{ errors.email }}
       </small>
     </div>
 
-    <input type="hidden" name="_token" />
+    <input
+      type="hidden"
+      name="_token"
+    >
 
-    <Button text="Create Account" buttonType="submit" :disabled="disabled" />
+    <BaseButton
+      text="Create Account"
+      button-type="submit"
+      :disabled="disabled"
+    />
 
     <p class="bottom">
       Already have an account?
 
-      <RouterLink to="/login"> Sign In </RouterLink>
+      <RouterLink to="/login">
+        Sign In
+      </RouterLink>
     </p>
   </form>
 </template>

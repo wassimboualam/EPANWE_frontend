@@ -39,7 +39,7 @@ async function requestBackend(
       options[field] = defaultOptions[field]
     }
   }
-  console.log(options)
+
   const { origin, path, csrf, contentType, method, credentials, promiseFunction } = options
   const response = await fetch(origin + path, {
     method: method,
@@ -55,10 +55,8 @@ async function requestBackend(
   switch (contentType) {
     case 'application/json':
       return await response.json()
-      break
 
     default:
       return await response.text()
-      break
   }
 }

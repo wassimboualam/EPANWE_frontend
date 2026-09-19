@@ -27,18 +27,29 @@ const submit = () => {
         <h2>Tell Us About Yourself</h2>
       </div>
 
-      <form class="card form" @submit.prevent="submit">
+      <form
+        class="card form"
+        @submit.prevent="submit"
+      >
         <div class="row">
           <div class="field">
             <label>First Name</label>
 
-            <input v-model="form.firstName" type="text" placeholder="John" />
+            <input
+              v-model="form.firstName"
+              type="text"
+              placeholder="John"
+            >
           </div>
 
           <div class="field">
             <label>Last Name</label>
 
-            <input v-model="form.lastName" type="text" placeholder="Doe" />
+            <input
+              v-model="form.lastName"
+              type="text"
+              placeholder="Doe"
+            >
           </div>
         </div>
 
@@ -46,13 +57,21 @@ const submit = () => {
           <div class="field">
             <label>Email</label>
 
-            <input v-model="form.email" type="email" placeholder="john@email.com" />
+            <input
+              v-model="form.email"
+              type="email"
+              placeholder="john@email.com"
+            >
           </div>
 
           <div class="field">
             <label>Phone</label>
 
-            <input v-model="form.phone" type="tel" placeholder="+212 ..." />
+            <input
+              v-model="form.phone"
+              type="tel"
+              placeholder="+212 ..."
+            >
           </div>
         </div>
 
@@ -61,7 +80,9 @@ const submit = () => {
             <label>Age Group</label>
 
             <select v-model="form.ageGroup">
-              <option value="">Choose...</option>
+              <option value="">
+                Choose...
+              </option>
               <option>8-12</option>
               <option>13-17</option>
               <option>18-25</option>
@@ -73,7 +94,9 @@ const submit = () => {
             <label>I Want To...</label>
 
             <select v-model="form.interest">
-              <option value="">Choose...</option>
+              <option value="">
+                Choose...
+              </option>
               <option>Join a Program</option>
               <option>Volunteer</option>
               <option>Become a Partner</option>
@@ -86,19 +109,25 @@ const submit = () => {
           <label>Message</label>
 
           <textarea
-            rows="6"
             v-model="form.message"
+            rows="6"
             placeholder="Tell us a little about yourself..."
-          ></textarea>
+          />
         </div>
 
         <label class="checkbox">
-          <input type="checkbox" v-model="form.accepted" />
+          <input
+            v-model="form.accepted"
+            type="checkbox"
+          >
 
           <span> I agree to the processing of my information. </span>
         </label>
 
-        <Button text="Submit Application" buttonType="submit" />
+        <Button
+          text="Submit Application"
+          button-type="submit"
+        />
       </form>
     </div>
   </section>

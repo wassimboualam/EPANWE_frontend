@@ -25,7 +25,9 @@ const partners = [
 <template>
   <section class="partners">
     <div class="container">
-      <p class="subtitle">OUR PARTNERS</p>
+      <p class="subtitle">
+        OUR PARTNERS
+      </p>
 
       <h2>Trusted by organizations that believe in youth.</h2>
 
@@ -35,8 +37,15 @@ const partners = [
       </p>
 
       <div class="logos">
-        <div class="logo-card" v-for="partner in partners" :key="partner">
-          <img :src="partner" alt="Partner" />
+        <div
+          v-for="partner in partners"
+          :key="partner"
+          class="logo-card"
+        >
+          <img
+            :src="partner"
+            alt="Partner"
+          >
         </div>
       </div>
     </div>

@@ -5,12 +5,10 @@ import WaitPage from '@/components/ui/WaitPage.vue'
 import { computed, onMounted } from 'vue'
 import { useToastStore } from '@/stores/toast.js'
 import { useRouter } from 'vue-router'
-import { useRequestStore } from '@/stores/request.js'
 import AdminDashboardLayout from './AdminDashboardLayout.vue'
 
 const userStore = useUserStore()
 const toastStore = useToastStore()
-const requestStore = useRequestStore()
 const router = useRouter()
 
 const userExists = computed(
@@ -31,7 +29,7 @@ onMounted(async () => {
   <WaitPage
     v-if="
       !userExists // checks if user doesn't exist
-      // (userStore.userInfo.role === 'admin' && requestStore.requests.length === 0)
+    // (userStore.userInfo.role === 'admin' && requestStore.requests.length === 0)
     "
   />
   <div v-else>

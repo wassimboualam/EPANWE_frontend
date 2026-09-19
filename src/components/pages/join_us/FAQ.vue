@@ -37,7 +37,11 @@ const faqs = [
         <h2>Frequently Asked Questions</h2>
       </div>
 
-      <div class="faq" v-for="(faq, index) in faqs" :key="faq.question">
+      <div
+        v-for="(faq, index) in faqs"
+        :key="faq.question"
+        class="faq"
+      >
         <button @click="open = open === index ? null : index">
           <span>{{ faq.question }}</span>
 
@@ -46,7 +50,10 @@ const faqs = [
           </span>
         </button>
 
-        <div v-if="open === index" class="answer">
+        <div
+          v-if="open === index"
+          class="answer"
+        >
           {{ faq.answer }}
         </div>
       </div>

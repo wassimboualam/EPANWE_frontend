@@ -1,10 +1,10 @@
 <script setup>
-import DropdownMenu from '@/components/ui/DropdownMenu.vue'
 import { useUserStore } from '@/stores/user'
 
-const props = defineProps({
+defineProps({
   initials: {
     type: String,
+    default: "",
   },
   makeDimmer: {
     type: Boolean,

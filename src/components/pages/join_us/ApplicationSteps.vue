@@ -27,7 +27,10 @@ const steps = [
 </script>
 
 <template>
-  <section id="steps" class="steps">
+  <section
+    id="steps"
+    class="steps"
+  >
     <div class="container">
       <div class="heading">
         <p>APPLICATION PROCESS</p>
@@ -36,7 +39,11 @@ const steps = [
       </div>
 
       <div class="timeline">
-        <div class="step" v-for="step in steps" :key="step.number">
+        <div
+          v-for="step in steps"
+          :key="step.number"
+          class="step"
+        >
           <div class="number">
             {{ step.number }}
           </div>

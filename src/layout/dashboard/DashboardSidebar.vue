@@ -1,6 +1,4 @@
 <script setup>
-import Button from '@/components/ui/Button.vue'
-import LogoutButton from '@/components/ui/LogoutButton.vue'
 import { useDashboardStore } from '@/stores/dashboard'
 import { useUserStore } from '@/stores/user'
 import { RouterLink, useRouter } from 'vue-router'
@@ -20,13 +18,16 @@ async function logOut() {
   <aside class="sidebar">
     <div class="brand">
       <h2>
-        <RouterLink to="/">EPANWE</RouterLink>
+        <RouterLink to="/">
+          EPANWE
+        </RouterLink>
       </h2>
     </div>
 
     <nav ref="nav">
       <RouterLink
         v-for="page in pages"
+        :key="page.name"
         :to="page.link"
         class="item flex items-center gap-3.5 font-medium py-3.5 px-4"
         :class="page.isActive ? 'active' : ''"
@@ -37,7 +38,10 @@ async function logOut() {
     </nav>
 
     <div class="bottom">
-      <button class="logout flex items-center gap-3 w-full px-4 py-3.5" @click="logOut()">
+      <button
+        class="logout flex items-center gap-3 w-full px-4 py-3.5"
+        @click="logOut()"
+      >
         <span class="material-symbols-outlined">logout</span>
         Logout
       </button>

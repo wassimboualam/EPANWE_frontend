@@ -1,13 +1,9 @@
 <script setup>
-import Button from '@/components/ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 import { useRequestStore } from '@/stores/request'
 
-const props = defineProps({
-  requests: Array,
-})
-
 const requestStore = useRequestStore()
-const emit = defineEmits(['review'])
+const emit = defineEmits(["setApproval"])
 
 function badge(status) {
   switch (status) {
@@ -24,7 +20,10 @@ function badge(status) {
 </script>
 
 <template>
-  <section id="requests" class="table-card w-auto px-10 flex justify-center items-center flex-col">
+  <section
+    id="requests"
+    class="table-card w-auto px-10 flex justify-center items-center flex-col"
+  >
     <div class="header w-full">
       <h2>Access Requests</h2>
 
@@ -42,12 +41,15 @@ function badge(status) {
 
           <th>Status</th>
 
-          <th></th>
+          <th />
         </tr>
       </thead>
 
       <tbody>
-        <tr v-for="request in requests">
+        <tr 
+          v-for="request in requests"
+          :key="request.user.id"
+        >
           <td>{{ request.user.first_name }} {{ request.user.last_name }}</td>
           <td>
             {{ request.user.email }}
@@ -58,25 +60,28 @@ function badge(status) {
           </td>
 
           <td>
-            <span class="badge" :class="badge(request.status)">
+            <span
+              class="badge"
+              :class="badge(request.status)"
+            >
               {{ request.status }}
             </span>
           </td>
 
           <td class="actions flex gap-2 justify-end">
-            <Button
+            <BaseButton
               :text="'Approve'"
               variant="outline"
               color="success"
               size="sm"
-              @click="$emit('setApproval', 'approved', request.user_id)"
+              @click="emit('setApproval', 'approved', request.user_id)"
             />
-            <Button
+            <BaseButton
               :text="'Reject'"
               variant="outline"
               color="danger"
               size="sm"
-              @click="$emit('setApproval', 'rejected', request.user_id)"
+              @click="emit('setApproval', 'rejected', request.user_id)"
             />
           </td>
         </tr>

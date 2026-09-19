@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const props = defineProps({
   title: {
     type: String,
@@ -26,14 +26,24 @@ function close() {
 <template>
   <Teleport to="body">
     <Transition name="modal">
-      <div class="overlay" @click="close">
-        <div class="modal" :style="{ maxWidth: width }" @click.stop>
+      <div
+        class="overlay"
+        @click="close"
+      >
+        <div
+          class="modal"
+          :style="{ maxWidth: width }"
+          @click.stop
+        >
           <div class="header">
             <h2>
               {{ title }}
             </h2>
 
-            <button class="close" @click="$emit('close')">
+            <button
+              class="close"
+              @click="$emit('close')"
+            >
               <span class="material-symbols-outlined"> close </span>
             </button>
           </div>

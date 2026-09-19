@@ -1,7 +1,7 @@
 <script setup>
 import { useToastStore } from '@/stores/toast'
 
-import Toast from './Toast.vue'
+import BaseToast from './BaseToast.vue'
 
 const toastStore = useToastStore()
 </script>
@@ -9,7 +9,7 @@ const toastStore = useToastStore()
 <template>
   <div class="container">
     <TransitionGroup name="toast">
-      <Toast
+      <BaseToast
         v-for="toast in toastStore.toasts"
         :key="toast.id"
         :toast="toast"

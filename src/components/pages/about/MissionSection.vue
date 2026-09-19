@@ -20,58 +20,40 @@ bg:"blue"
 </script>
 
 <template>
+  <section>
+    <div class="container">
+      <div class="header">
+        <p>MISSION & VISION</p>
 
-<section>
+        <h2>
+          Why We Exist
+        </h2>
+      </div>
 
-<div class="container">
+      <div class="grid">
+        <div
+          v-for="card in cards"
+          :key="card.title"
+          class="card mission-card"
+          :class="card.bg"
+        >
+          <span class="material-symbols-outlined icon">
 
-<div class="header">
+            {{ card.icon }}
 
-<p>MISSION & VISION</p>
+          </span>
 
-<h2>
+          <h3>
+            {{ card.title }}
+          </h3>
 
-Why We Exist
-
-</h2>
-
-</div>
-
-<div class="grid">
-
-<div
-v-for="card in cards"
-:key="card.title"
-class="card mission-card"
-:class="card.bg"
->
-
-<span class="material-symbols-outlined icon">
-
-{{ card.icon }}
-
-</span>
-
-<h3>
-
-{{ card.title }}
-
-</h3>
-
-<p>
-
-{{ card.text }}
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+          <p>
+            {{ card.text }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>

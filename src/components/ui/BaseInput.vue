@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   id: {
     type: String,
     required: true,
@@ -79,6 +79,6 @@ const emit = defineEmits(['update:modelValue'])
              focus:ring-2 focus:ring-[#B08A2F]/20
              disabled:cursor-not-allowed disabled:opacity-60"
       @input="emit('update:modelValue', $event.target.value)"
-    />
+    >
   </div>
 </template>

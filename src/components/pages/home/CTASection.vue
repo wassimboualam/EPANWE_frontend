@@ -1,5 +1,5 @@
 <script setup>
-import Button from '../../ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
@@ -18,12 +18,18 @@ import Button from '../../ui/Button.vue'
 
           <div class="buttons">
             <a href="/howtojoin">
-              <Button text="Join EPANWE" color="white" />
+              <BaseButton
+                text="Join EPANWE"
+                color="white"
+              />
             </a>
             <a href="/partner">
-              <Button text="Join as partner" color="secondary" />
+              <BaseButton
+                text="Join as partner"
+                color="secondary"
+              />
             </a>
-            <!-- <Button text="Explore Programs" color="secondary" /> -->
+            <!-- <BaseButton text="Explore Programs" color="secondary" /> -->
           </div>
         </div>
       </div>

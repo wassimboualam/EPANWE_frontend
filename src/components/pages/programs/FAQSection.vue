@@ -31,64 +31,47 @@ answer:"Programs are available in different Moroccan cities and online."
 </script>
 
 <template>
+  <section>
+    <div class="container">
+      <div class="header">
+        <p>FAQ</p>
 
-<section>
+        <h2>
+          Frequently Asked Questions
+        </h2>
+      </div>
 
-<div class="container">
+      <div
+        v-for="(faq,index) in faqs"
+        :key="faq.question"
+        class="faq"
+      >
+        <button
 
-<div class="header">
+          @click="open = open === index ? null : index"
+        >
+          <span>
 
-<p>FAQ</p>
+            {{ faq.question }}
 
-<h2>
+          </span>
 
-Frequently Asked Questions
+          <span>
 
-</h2>
+            {{ open===index ? "−" : "+" }}
 
-</div>
+          </span>
+        </button>
 
-<div
-class="faq"
-v-for="(faq,index) in faqs"
-:key="faq.question"
->
-
-<button
-
-@click="open = open === index ? null : index"
-
->
-
-<span>
-
-{{ faq.question }}
-
-</span>
-
-<span>
-
-{{ open===index ? "−" : "+" }}
-
-</span>
-
-</button>
-
-<div
-v-if="open===index"
-class="answer"
->
-
-{{ faq.answer }}
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+        <div
+          v-if="open===index"
+          class="answer"
+        >
+          {{ faq.answer }}
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>

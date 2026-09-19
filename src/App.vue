@@ -1,15 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Toast from './components/ui/Toast.vue'
+import { RouterView } from 'vue-router'
 import ToastContainer from './components/ui/ToastContainer.vue'
 import { useUserStore } from './stores/user.js'
 import { onMounted } from 'vue'
-import { useRequestStore } from './stores/request.js'
-import { useEventStore } from './stores/event.js'
 import { useDashboardStore } from './stores/dashboard.js'
 
 const userStore = useUserStore()
-const requestStore = useRequestStore()
 const dashboardStore = useDashboardStore()
 
 onMounted(async () => {

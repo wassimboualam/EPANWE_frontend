@@ -20,7 +20,10 @@ import Button from '@/components/ui/Button.vue'
 
         <div class="buttons">
           <Button text="Browse Programs" />
-          <Button text="Contact Us" styleType="secondary" />
+          <Button
+            text="Contact Us"
+            style-type="secondary"
+          />
         </div>
       </div>
 

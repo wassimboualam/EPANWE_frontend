@@ -24,7 +24,11 @@ const options = [
       </div>
 
       <div class="grid">
-        <div class="card option-card" v-for="option in options" :key="option.title">
+        <div
+          v-for="option in options"
+          :key="option.title"
+          class="card option-card"
+        >
           <span class="material-symbols-outlined">
             {{ option.icon }}
           </span>

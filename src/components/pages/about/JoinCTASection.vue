@@ -1,5 +1,5 @@
 <script setup>
-import Button from '../../ui/Button.vue'
+import BaseButton from '@/components/ui//BaseButton.vue'
 </script>
 
 <template>
@@ -17,11 +17,14 @@ import Button from '../../ui/Button.vue'
 
         <div class="buttons">
           <a href="/howtojoin">
-            <Button text="Join Us" />
+            <BaseButton text="Join Us" />
           </a>
 
           <a href="/contact">
-            <Button text="Contact Us" color="secondary" />
+            <BaseButton
+              text="Contact Us"
+              color="secondary"
+            />
           </a>
         </div>
       </div>

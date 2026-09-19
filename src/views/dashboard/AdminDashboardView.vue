@@ -43,13 +43,6 @@ const stats = computed( () => [
 
 let csrf
 
-function handleFilters(filters) {
-  console.log(filters)
-}
-
-function reviewRequest(request) {
-  console.log(request)
-}
 
 async function setApproval(type, user_id) {
   try {
@@ -73,7 +66,11 @@ onMounted(async () => {
     <WelcomeBanner />
 
     <section class="stats">
-      <StatCard v-for="card in stats" :key="card.title" v-bind="card" />
+      <StatCard
+        v-for="card in stats"
+        :key="card.title"
+        v-bind="card"
+      />
     </section>
 
     <!-- FilterBar -->
@@ -82,7 +79,6 @@ onMounted(async () => {
     <!-- RequestsTable -->
     <RequestsTable
       :requests="requestStore.requests"
-      @review="reviewRequest"
       @set-approval="setApproval"
     />
   </div>

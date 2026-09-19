@@ -76,7 +76,7 @@ export const useRequestStore = defineStore('request', {
       receiver.message = source.message
     },
     formatDate(date = '') {
-      date = date.split(/[A-z\.]/)
+      date = date.split(/[A-z.]/)
       return date[0] + ' ' + date[1]
     },
 

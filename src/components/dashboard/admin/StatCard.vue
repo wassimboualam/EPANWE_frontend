@@ -1,20 +1,38 @@
-<script setup lang="ts">
-const props = defineProps({
-  title: String,
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    default: "",
+  },
 
-  value: Number,
+  value: {
+    type: Number,
+    default: 0,
+  },
 
-  subtitle: String,
+  subtitle: {
+    type: String,
+    default: "",
+  },
 
-  icon: String,
+  icon: {
+    type: String,
+    default: "",
+  },
 
-  color: String,
+  color: {
+    type: String,
+    default: "",
+  },
 })
 </script>
 
 <template>
   <div class="card">
-    <div class="icon" :style="{ background: color + '20', color }">
+    <div
+      class="icon"
+      :style="{ background: color + '20', color }"
+    >
       <span class="material-symbols-outlined">
         {{ icon }}
       </span>

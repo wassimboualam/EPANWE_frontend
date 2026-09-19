@@ -103,11 +103,9 @@ const sections = [
 
 <template>
   <main class="bg-[#f8f8f6] min-h-screen">
-
     <!-- Hero -->
     <section class="bg-(--slate) text-white">
       <div class="max-w-5xl mx-auto px-6 py-20 md:py-24">
-
         <p
           class="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-(--gold)"
         >
@@ -122,15 +120,12 @@ const sections = [
           Please read these terms carefully before using the EPANWE platform
           and its services.
         </p>
-
       </div>
     </section>
 
     <!-- Content -->
     <section class="px-6 py-12 md:py-16">
-
       <div class="mx-auto max-w-5xl">
-
         <!-- Intro card -->
         <div
           class="mb-10 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8"
@@ -144,16 +139,13 @@ const sections = [
 
         <!-- Sections -->
         <div class="space-y-6">
-
           <article
             v-for="section in sections"
-            :key="section.id"
             :id="section.id"
+            :key="section.id"
             class="scroll-mt-24 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm md:p-8"
           >
-
             <div class="mb-6 flex items-start gap-4">
-
               <span
                 class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--gold) text-sm font-bold text-white"
               >
@@ -163,11 +155,9 @@ const sections = [
               <h2 class="text-2xl font-bold text-(--slate)">
                 {{ section.title }}
               </h2>
-
             </div>
 
             <div class="space-y-4">
-
               <p
                 v-for="paragraph in section.content"
                 :key="paragraph"
@@ -185,13 +175,11 @@ const sections = [
                   :key="item"
                   class="flex gap-3 leading-7 text-gray-600"
                 >
-                  <span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-(--gold)"></span>
+                  <span class="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-(--gold)" />
                   <span>{{ item }}</span>
                 </li>
               </ul>
-
             </div>
-
           </article>
 
           <!-- Contact -->
@@ -199,9 +187,7 @@ const sections = [
             id="contact"
             class="scroll-mt-24 rounded-2xl bg-(--slate) p-6 text-white md:p-8"
           >
-
             <div class="mb-6 flex items-start gap-4">
-
               <span
                 class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-(--gold) text-sm font-bold"
               >
@@ -211,7 +197,6 @@ const sections = [
               <h2 class="text-2xl font-bold text-white">
                 Contact
               </h2>
-
             </div>
 
             <p class="mb-6 leading-8 text-gray-300">
@@ -220,7 +205,6 @@ const sections = [
             </p>
 
             <div class="space-y-3 text-gray-300">
-
               <p>
                 <span class="font-semibold text-white">Address:</span>
                 119, Boulevard Abdelmoumen, Appt 18, Casablanca, Morocco
@@ -230,21 +214,15 @@ const sections = [
                 <span class="font-semibold text-white">Email:</span>
                 contact@epanwe.ma
               </p>
-
             </div>
-
           </article>
-
         </div>
 
         <!-- Last update -->
         <p class="mt-8 text-center text-sm text-gray-500">
           These Terms of Service may be updated from time to time.
         </p>
-
       </div>
-
     </section>
-
   </main>
 </template>

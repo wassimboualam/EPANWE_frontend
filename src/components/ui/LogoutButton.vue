@@ -1,17 +1,20 @@
-<script setup lang="ts">
-import { useUserStore } from '@/stores/user.js'
-import Button from './Button.vue'
-import { useRouter } from 'vue-router'
-const props = defineProps({
-  logOut: Function,
+<script setup>
+import Button from './BaseButton.vue'
+
+defineProps({
+  logOut: {
+    type: Function,
+    default: () => alert("Something's amiss"),
+  },
 })
 
-const userStore = useUserStore()
-const router = useRouter()
 </script>
 
 <template>
-  <Button color="danger" @click="logOut">
+  <Button
+    color="danger"
+    @click="logOut"
+  >
     <span class="material-symbols-outlined">logout</span>
     Log out
   </Button>

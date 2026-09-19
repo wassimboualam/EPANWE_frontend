@@ -16,18 +16,35 @@ const ageGroups = store.age_groups
   <section class="filters">
     <div class="container">
       <div class="wrapper">
-        <input v-model="search" placeholder="Search programs..." />
+        <input
+          v-model="search"
+          placeholder="Search programs..."
+        >
 
         <select v-model="category">
-          <option value="">All Categories</option>
+          <option value="">
+            All Categories
+          </option>
 
-          <option v-for="category of categories">{{ category }}</option>
+          <option 
+            v-for="cat of categories" 
+            :key="cat"
+          >
+            {{ category }}
+          </option>
         </select>
 
         <select v-model="ageGroup">
-          <option value="">All Ages</option>
+          <option value="">
+            All Ages
+          </option>
 
-          <option v-for="ageGroup of ageGroups">{{ ageGroup }}</option>
+          <option 
+            v-for="age of ageGroups" 
+            :key="age"
+          >
+            {{ ageGroup }}
+          </option>
         </select>
 
         <button>Reset</button>

@@ -1,7 +1,13 @@
 <script setup>
 defineProps({
-  title: String,
-  subtitle: String,
+  title: {
+    type: String,
+    default: "Welcome Back",
+  },
+  subtitle: {
+    type: String,
+    default: "Continue your journey with EPANWE by signing into your account."
+  },
   image: {
     type: String,
     default: '/images/auth.jpg',
@@ -31,7 +37,10 @@ defineProps({
         </p>
       </div>
 
-      <img :src="image" alt="" />
+      <img
+        :src="image"
+        alt=""
+      >
     </div>
 
     <div class="right">

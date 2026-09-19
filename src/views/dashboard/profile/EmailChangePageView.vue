@@ -1,6 +1,6 @@
 <script setup>
-import Button from '@/components/ui/Button.vue'
-import Modal from '@/components/ui/Modal.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
 import { useToastStore } from '@/stores/toast'
 import { useUserStore } from '@/stores/user'
 import { getCsrf } from '@/utilities'
@@ -34,10 +34,13 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Modal title="Want to change email?">
+  <BaseModal title="Want to change email?">
     Are you really sure you want to change your email?
     <template #footer>
-      <Button text="Update email" @click="updateEmail" />
+      <BaseButton
+        text="Update email"
+        @click="updateEmail"
+      />
     </template>
-  </Modal>
+  </BaseModal>
 </template>

@@ -21,67 +21,47 @@ const services = [
 </script>
 
 <template>
+  <section class="services">
+    <div class="container">
+      <div class="section-title">
+        <p>WHAT WE DO</p>
 
-<section class="services">
+        <h2>
+          Helping young people flourish in every aspect of life.
+        </h2>
+      </div>
 
-<div class="container">
+      <div class="cards">
+        <div
+          v-for="service in services"
+          :key="service.title"
+          class="service-card"
+        >
+          <div class="icon">
+            <span class="material-symbols-outlined">
 
-<div class="section-title">
+              {{ service.icon }}
 
-<p>WHAT WE DO</p>
+            </span>
+          </div>
 
-<h2>
+          <h3>
+            {{ service.title }}
+          </h3>
 
-Helping young people flourish in every aspect of life.
+          <p>
+            {{ service.text }}
+          </p>
 
-</h2>
-
-</div>
-
-<div class="cards">
-
-<div
-class="service-card"
-v-for="service in services"
-:key="service.title"
->
-
-<div class="icon">
-
-<span class="material-symbols-outlined">
-
-{{ service.icon }}
-
-</span>
-
-</div>
-
-<h3>
-
-{{ service.title }}
-
-</h3>
-
-<p>
-
-{{ service.text }}
-
-</p>
-
-<!-- <a href="#">
+          <!-- <a href="#">
 
 Learn More →
 
 </a> -->
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 

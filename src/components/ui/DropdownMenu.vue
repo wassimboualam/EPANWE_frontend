@@ -38,17 +38,26 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div ref="container" class="dropdown">
+  <div
+    ref="container"
+    class="dropdown"
+  >
     <button
       class="trigger"
       :style="`border-radius:${props.isRound ? '50%' : '0%'};`"
       @click.stop="toggle"
     >
-      <slot name="button"> Options </slot>
+      <slot name="button">
+        Options
+      </slot>
     </button>
 
     <Transition name="dropdown">
-      <div v-if="open" :style="props.menuStyle" class="menu">
+      <div
+        v-if="open"
+        :style="props.menuStyle"
+        class="menu"
+      >
         <slot />
       </div>
     </Transition>

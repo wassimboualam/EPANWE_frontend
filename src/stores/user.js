@@ -2,7 +2,6 @@ import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { useToastStore } from './toast'
 import { requestBackend } from '@/utilities'
-import { useRoute } from 'vue-router'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -123,7 +122,7 @@ export const useUserStore = defineStore('user', {
           credentials: 'include',
         })
 
-        const { type, message } = await response.json()
+        const { message } = await response.json()
 
         this.userExists = false
         this.userInfo = undefined

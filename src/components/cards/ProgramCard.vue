@@ -1,6 +1,9 @@
 <script setup>
 defineProps({
-  program: Object,
+  program: {
+    type: Object,
+    default: () => ({}),
+  },
 })
 </script>
 

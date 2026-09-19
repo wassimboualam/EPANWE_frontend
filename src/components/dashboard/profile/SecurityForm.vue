@@ -1,7 +1,7 @@
 <script setup>
-import { reactive, ref } from 'vue'
-import Button from '@/components/ui/Button.vue'
-import Modal from '@/components/ui/Modal.vue'
+import { ref } from 'vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseModal from '@/components/ui/BaseModal.vue'
 
 const emit = defineEmits(['submitEmail', 'refreshPassword'])
 
@@ -25,30 +25,51 @@ function submitEmail(email) {
   <section class="card">
     <h2>Security</h2>
 
-    <p class="subtitle">Update your email.</p>
+    <p class="subtitle">
+      Update your email.
+    </p>
 
     <div class="field">
       <label> Email </label>
 
       <div class="relative email">
-        <input class="w-full p-3.5 rounded-xl" v-model="email" type="email" />
+        <input
+          v-model="email"
+          class="w-full p-3.5 rounded-xl"
+          type="email"
+        >
       </div>
     </div>
 
     <div class="actions">
-      <Button text="Update E-mail" @click="showModal = true" />
-      <Modal v-if="showModal" title="Changing e-mail" @close="showModal = false">
+      <BaseButton
+        text="Update E-mail"
+        @click="showModal = true"
+      />
+      <BaseModal
+        v-if="showModal"
+        title="Changing e-mail"
+        @close="showModal = false"
+      >
         Are you sure you want to change your e-mail?
         <template #footer>
-          <Button text="Update E-mail" @click="submitEmail(email)" />
+          <BaseButton
+            text="Update E-mail"
+            @click="submitEmail(email)"
+          />
         </template>
-      </Modal>
+      </BaseModal>
     </div>
 
-    <p class="subtitle">Refresh your password.</p>
+    <p class="subtitle">
+      Refresh your password.
+    </p>
 
     <div class="actions">
-      <Button text="Refresh password" @click="emit('refreshPassword')" />
+      <BaseButton
+        text="Refresh password"
+        @click="emit('refreshPassword')"
+      />
     </div>
   </section>
 </template>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { reactive, watch } from 'vue'
 
 const filters = reactive({
@@ -17,23 +17,38 @@ watch(filters, () => emit('change', { ...filters }), { deep: true })
     <div class="search">
       <span class="material-symbols-outlined"> search </span>
 
-      <input v-model="filters.search" placeholder="Search by name or email..." />
+      <input
+        v-model="filters.search"
+        placeholder="Search by name or email..."
+      >
     </div>
 
     <select v-model="filters.status">
-      <option value="all">All Statuses</option>
+      <option value="all">
+        All Statuses
+      </option>
 
-      <option value="pending">Pending</option>
+      <option value="pending">
+        Pending
+      </option>
 
-      <option value="approved">Approved</option>
+      <option value="approved">
+        Approved
+      </option>
 
-      <option value="rejected">Rejected</option>
+      <option value="rejected">
+        Rejected
+      </option>
     </select>
 
     <select v-model="filters.sort">
-      <option value="newest">Newest First</option>
+      <option value="newest">
+        Newest First
+      </option>
 
-      <option value="oldest">Oldest First</option>
+      <option value="oldest">
+        Oldest First
+      </option>
     </select>
   </section>
 </template>

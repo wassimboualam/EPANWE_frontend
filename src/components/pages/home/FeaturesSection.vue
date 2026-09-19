@@ -21,55 +21,40 @@ const features = [
 </script>
 
 <template>
+  <section id="whyus">
+    <div class="container">
+      <div class="heading">
+        <h2>Why Choose EPANWE?</h2>
 
-<section id="whyus">
+        <p>
+          Everything we do is centered around helping young people
+          learn, grow and become confident members of society.
+        </p>
+      </div>
 
-<div class="container">
+      <div class="grid">
+        <div
+          v-for="feature in features"
+          :key="feature.title"
+          class="card feature"
+        >
+          <span class="material-symbols-outlined icon">
 
-<div class="heading">
+            {{ feature.icon }}
 
-<h2>Why Choose EPANWE?</h2>
+          </span>
 
-<p>
-Everything we do is centered around helping young people
-learn, grow and become confident members of society.
-</p>
+          <h3>
+            {{ feature.title }}
+          </h3>
 
-</div>
-
-<div class="grid">
-
-<div
-v-for="feature in features"
-:key="feature.title"
-class="card feature">
-
-<span class="material-symbols-outlined icon">
-
-{{ feature.icon }}
-
-</span>
-
-<h3>
-
-{{ feature.title }}
-
-</h3>
-
-<p>
-
-{{ feature.text }}
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+          <p>
+            {{ feature.text }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>

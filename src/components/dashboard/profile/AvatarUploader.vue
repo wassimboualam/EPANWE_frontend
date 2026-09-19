@@ -1,6 +1,5 @@
-<script setup lang="ts">
+<script setup>
 import { computed } from 'vue'
-import Button from '@/components/ui/Button.vue'
 
 const props = defineProps({
   user: {
@@ -13,18 +12,30 @@ const initials = computed(() => {
   return (props.user.first_name.charAt(0) + props.user.last_name.charAt(0)).toUpperCase()
 })
 
+// TODO
+/*
 function changePhoto() {
-  // TODO
+
 }
+*/
 </script>
 
 <template>
   <section class="card">
-    <div v-if="user.avatar" class="avatar image">
-      <img :src="user.avatar" alt="Profile picture" />
+    <div
+      v-if="user.avatar"
+      class="avatar image"
+    >
+      <img
+        :src="user.avatar"
+        alt="Profile picture"
+      >
     </div>
 
-    <div v-else class="avatar">
+    <div
+      v-else
+      class="avatar"
+    >
       {{ initials }}
     </div>
 

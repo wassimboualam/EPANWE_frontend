@@ -1,5 +1,5 @@
-<script setup lang="ts">
-import { computed, onMounted } from 'vue'
+<script setup>
+import { computed } from 'vue'
 
 const props = defineProps({
   request: {
@@ -36,7 +36,10 @@ const status = computed(() => {
     <div class="header">
       <h2>Access Request</h2>
 
-      <span class="badge" :class="status.class">
+      <span
+        class="badge"
+        :class="status.class"
+      >
         {{ status.label }}
       </span>
     </div>

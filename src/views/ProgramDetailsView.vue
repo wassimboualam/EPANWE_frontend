@@ -1,7 +1,7 @@
-<script setup lang="ts">
-import Hero from '@/components/pages/program_details/Hero.vue'
+<script setup>
+import HeroSection from '@/components/pages/program_details/HeroSection.vue'
 import { useProgramsStore } from '@/stores/programs'
-import { onMounted, reactive, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const programStore = useProgramsStore()
@@ -18,5 +18,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <Hero :program="currentProgram" />
+  <HeroSection :program="currentProgram" />
 </template>

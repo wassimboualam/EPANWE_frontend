@@ -1,16 +1,10 @@
 <script setup>
-import Navbar from '@/layout/dashboard/Navbar.vue'
-import { useRequestStore } from '@/stores/request'
-import { useToastStore } from '@/stores/toast'
+import Navbar from '@/layout/dashboard/DashboardNavbar.vue'
 import { useUserStore } from '@/stores/user'
 import { onMounted } from 'vue'
-import { RouterView, useRouter } from 'vue-router'
+import { RouterView } from 'vue-router'
 
 const userStore = useUserStore()
-const toastStore = useToastStore()
-const requestStore = useRequestStore()
-
-const router = useRouter()
 
 onMounted(async () => {})
 </script>

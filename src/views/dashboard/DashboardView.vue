@@ -24,7 +24,10 @@ onMounted(async () => {
 
   <BackOfficeApplicationCard :has-applied="dashboardStore.hasApplied" />
 
-  <ApplicationStatusCard v-if="dashboardStore.hasApplied" :request="request" />
+  <ApplicationStatusCard
+    v-if="dashboardStore.hasApplied"
+    :request="request"
+  />
 </template>
 
 <style scoped></style>

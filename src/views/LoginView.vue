@@ -17,7 +17,7 @@ let disabled = ref(false)
 const login = async (form) => {
   disabled.value = true
 
-  const { type, message, title } = await userStore.login(form, csrf)
+  const { type, message } = await userStore.login(form, csrf)
   disabled.value = false
 
   if (type === 'error') {
@@ -39,6 +39,9 @@ onMounted(async () => {
     subtitle="Continue your journey with EPANWE by signing into your account."
     image="/images/login.jpg"
   >
-    <LoginForm @submit="login" :disabled="disabled" />
+    <LoginForm
+      :disabled="disabled"
+      @submit="login"
+    />
   </AuthLayout>
 </template>

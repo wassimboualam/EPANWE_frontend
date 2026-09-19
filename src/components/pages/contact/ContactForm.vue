@@ -103,12 +103,18 @@ async function send() {
         <p>Complete the form below and our team will reply as soon as possible.</p>
       </div>
 
-      <form class="card" @submit.prevent="send">
+      <form
+        class="card"
+        @submit.prevent="send"
+      >
         <div class="grid">
           <div class="field">
             <label> Full Name </label>
 
-            <input v-model="form.name" :class="{ invalid: errors.name }" />
+            <input
+              v-model="form.name"
+              :class="{ invalid: errors.name }"
+            >
 
             <small v-if="errors.name">
               {{ errors.name }}
@@ -118,7 +124,11 @@ async function send() {
           <div class="field">
             <label> Email Address </label>
 
-            <input v-model="form.email" type="email" :class="{ invalid: errors.email }" />
+            <input
+              v-model="form.email"
+              type="email"
+              :class="{ invalid: errors.email }"
+            >
 
             <small v-if="errors.email">
               {{ errors.email }}
@@ -128,7 +138,10 @@ async function send() {
           <div class="field full">
             <label> Subject </label>
 
-            <input v-model="form.subject" :class="{ invalid: errors.subject }" />
+            <input
+              v-model="form.subject"
+              :class="{ invalid: errors.subject }"
+            >
 
             <small v-if="errors.subject">
               {{ errors.subject }}
@@ -139,10 +152,10 @@ async function send() {
             <label> Message </label>
 
             <textarea
-              rows="8"
               v-model="form.message"
+              rows="8"
               :class="{ invalid: errors.message }"
-            ></textarea>
+            />
 
             <small v-if="errors.message">
               {{ errors.message }}
@@ -151,7 +164,11 @@ async function send() {
         </div>
 
         <div class="actions">
-          <Button text="Send Message" :loading="loading" buttonType="submit" />
+          <Button
+            text="Send Message"
+            :loading="loading"
+            button-type="submit"
+          />
         </div>
       </form>
     </div>

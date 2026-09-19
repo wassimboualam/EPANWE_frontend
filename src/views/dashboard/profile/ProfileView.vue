@@ -52,11 +52,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="profile-grid" :class="userStore.userInfo.role === 'admin' ? 'mx-20' : ''">
+  <div
+    class="profile-grid"
+    :class="userStore.userInfo.role === 'admin' ? 'mx-20' : ''"
+  >
     <AvatarUploader :user="userStore.userInfo" />
 
     <div class="forms">
-      <PersonalInfoForm :user="userStore.userInfo" @submit="editInfo" />
+      <PersonalInfoForm
+        :user="userStore.userInfo"
+        @submit="editInfo"
+      />
 
       <SecurityForm
         :email="userStore.userInfo.email"

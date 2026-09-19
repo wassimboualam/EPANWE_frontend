@@ -17,7 +17,11 @@ programs = JSON.parse(programs)
   <section>
     <div class="container">
       <div class="grid">
-        <ProgramCard v-for="program in programs" :key="program.title" :program="program" />
+        <ProgramCard
+          v-for="program in programs"
+          :key="program.title"
+          :program="program"
+        />
       </div>
     </div>
   </section>

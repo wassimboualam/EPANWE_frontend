@@ -7,15 +7,22 @@ import links from '@/links';
   <section>
     <div class="container founder">
       <div>
-        <img src="/images/fondateur_2.jpg" alt="Founder" />
+        <img
+          src="/images/fondateur_2.jpg"
+          alt="Founder"
+        >
       </div>
 
       <div>
-        <p class="eyebrow">FOUNDER</p>
+        <p class="eyebrow">
+          FOUNDER
+        </p>
 
         <h2>Younes El Jaouhari</h2>
 
-        <p class="role">Founder & Director</p>
+        <p class="role">
+          Founder & Director
+        </p>
 
         <blockquote>
           "Every young person deserves the opportunity to discover what they are capable of."
@@ -26,7 +33,7 @@ import links from '@/links';
           opportunity to discover their strengths, build confidence, and grow into their full
           potential. What began as a simple vision has grown into a mission dedicated to empowering
           individuals through meaningful experiences, practical learning, and a supportive
-          community.<br />
+          community.<br>
           Guided by the values of inclusion, creativity, and lifelong development, our founder
           envisioned an organization where education goes beyond the classroom and every participant
           is encouraged to explore, collaborate, and lead. Today, that vision continues to shape
@@ -34,10 +41,18 @@ import links from '@/links';
         </p>
 
         <div class="socials">
-          <a :href="links.founder.facebook" target="_blank">Facebook</a>
-          <a :href="links.founder.instagram" target="_blank">Instagram</a>
-          <a :href="links.founder.linkedin" target="_blank">LinkedIn</a>
-
+          <a
+            :href="links.founder.facebook"
+            target="_blank"
+          >Facebook</a>
+          <a
+            :href="links.founder.instagram"
+            target="_blank"
+          >Instagram</a>
+          <a
+            :href="links.founder.linkedin"
+            target="_blank"
+          >LinkedIn</a>
         </div>
       </div>
     </div>

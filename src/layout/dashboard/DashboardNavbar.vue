@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import { computed, onMounted } from 'vue'
-import Avatar from '@/components/ui/Avatar.vue'
+<script setup>
 import DropdownAvatar from '../web/DropdownAvatar.vue'
 
 const props = defineProps({
@@ -19,9 +17,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <header class="navbar" :class="props.class" style="margin-bottom: 3rem">
+  <header
+    class="navbar"
+    :class="props.class"
+    style="margin-bottom: 3rem"
+  >
     <div>
-      <p class="breadcrumb">Dashboard</p>
+      <p class="breadcrumb">
+        Dashboard
+      </p>
 
       <h2>
         Welcome back,

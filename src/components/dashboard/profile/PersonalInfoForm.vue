@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
-import Button from '@/components/ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 
 const props = defineProps({
   user: {
@@ -27,34 +27,55 @@ const form = reactive({
       <div class="field">
         <label> First Name </label>
 
-        <input v-model="form.first_name" type="text" />
+        <input
+          v-model="form.first_name"
+          type="text"
+        >
       </div>
 
       <div class="field">
         <label> Last Name </label>
 
-        <input v-model="form.last_name" type="text" />
+        <input
+          v-model="form.last_name"
+          type="text"
+        >
       </div>
 
       <div class="field">
         <label> Age </label>
 
-        <input v-model="form.age" type="number" />
+        <input
+          v-model="form.age"
+          type="number"
+        >
       </div>
 
       <div class="field">
         <label> Gender </label>
 
         <select v-model="form.gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option v-if="user.role === 'admin'" value="clank">Clank</option>
+          <option value="male">
+            Male
+          </option>
+          <option value="female">
+            Female
+          </option>
+          <option
+            v-if="user.role === 'admin'"
+            value="clank"
+          >
+            Clank
+          </option>
         </select>
       </div>
     </div>
 
     <div class="actions">
-      <Button text="Save Changes" @click="emit('submit', form)" />
+      <BaseButton
+        text="Save Changes"
+        @click="emit('submit', form)"
+      />
     </div>
   </section>
 </template>

@@ -1,13 +1,11 @@
 <script setup>
-import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { reactive } from 'vue'
 
-import Button from '@/components/ui/Button.vue'
-import Input from '@/components/ui/Input.vue'
-import Select from '@/components/ui/Select.vue'
-import Textarea from '@/components/ui/Textarea.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
+import BaseInput from '@/components/ui/BaseInput.vue'
+import BaseSelect from '@/components/ui/BaseSelect.vue'
+import BaseTextarea from '@/components/ui/BaseTextarea.vue'
 
-import { useToastStore } from '@/stores/toast'
 
 defineProps({
   loading: {
@@ -16,8 +14,6 @@ defineProps({
   }
 })
 
-const router = useRouter()
-const toastStore = useToastStore()
 
 const emit = defineEmits(['submitForm'])
 
@@ -180,7 +176,6 @@ const fields = [
     class="rounded-3xl bg-white p-6 shadow-sm
            ring-1 ring-slate-200 md:p-10"
   >
-
     <!-- Header -->
 
     <div class="mb-8">
@@ -198,42 +193,50 @@ const fields = [
       class="space-y-6"
       @submit.prevent="emit('submitForm', form)"
     >
-
-      <slot v-for="field in fields" :v-key="field">
-        <Input v-if="field.fieldType === 'input'" 
+      <slot
+        v-for="field in fields"
+        :v-key="field"
+      >
+        <BaseInput
+          v-if="field.fieldType === 'input'" 
           :id="field.id" 
           :label="field.label" 
-          :modelValue="field.modelValue" 
+          :model-value="field.modelValue" 
           :type="field.type" 
           :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label" 
           :required="false" 
           :autocomplete="field.autocomplete" 
           :min="field.min" 
           :max="field.max" 
-          :disabled="field.disabled"/>
-        <Select v-else-if="field.fieldType === 'select'" 
+          :disabled="field.disabled"
+        />
+        <BaseSelect
+          v-else-if="field.fieldType === 'select'" 
           :id="field.id"  
           :label="field.label"  
-          :modelValue="field.modelValue"  
+          :model-value="field.modelValue"  
           :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label"  
           :options="field.options"  
           :required="false"  
-          :disabled="field.disabled" />
-        <Textarea v-else-if="field.fieldType === 'textarea'" 
+          :disabled="field.disabled"
+        />
+        <BaseTextarea
+          v-else-if="field.fieldType === 'textarea'" 
           :id="field.id"  
           :label="field.label"  
-          :modelValue="field.modelValue"  
+          :model-value="field.modelValue"  
           :placeholder="field.placeholder != false || field.placeholder === '' ? field.placeholder:field.label"  
           :required="false"  
           :disabled="field.disabled"  
           :rows="field.rows"  
-          :maxlength="field.maxlength"/>
+          :maxlength="field.maxlength"
+        />
       </slot>
 
       <!-- Submit -->
 
       <div class="pt-2">
-        <Button
+        <BaseButton
           :text="
             loading
               ? 'Sending...'
@@ -248,9 +251,11 @@ const fields = [
 
       <p class="text-center text-xs leading-5 text-slate-500">
         By submitting this request, you agree to the platform's
-        <a href="/terms" class=" underline hover:font-medium">terms of use</a>.
+        <a
+          href="/terms"
+          class=" underline hover:font-medium"
+        >terms of use</a>.
       </p>
-
     </form>
   </div>
 </template>

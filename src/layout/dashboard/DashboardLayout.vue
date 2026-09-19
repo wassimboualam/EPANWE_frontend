@@ -1,15 +1,10 @@
 <script setup>
-import { RouterView, useRouter } from 'vue-router'
-import Navbar from './Navbar.vue'
-import Sidebar from './Sidebar.vue'
+import { RouterView } from 'vue-router'
+import Navbar from './DashboardNavbar.vue'
+import Sidebar from './DashboardSidebar.vue'
 import { useUserStore } from '@/stores/user.js'
-import { onMounted } from 'vue'
-import { useToastStore } from '@/stores/toast.js'
-import { useRequestStore } from '@/stores/request.js'
 
 const userStore = useUserStore()
-const toastStore = useToastStore()
-const router = useRouter()
 
 // onMounted(async () => {
 //   const userStore = useUserStore()
@@ -32,7 +27,10 @@ const router = useRouter()
   <div class="dashboard">
     <Sidebar />
     <div class="content">
-      <Navbar v-if="userStore.userInfo" :user="userStore.userInfo" />
+      <Navbar
+        v-if="userStore.userInfo"
+        :user="userStore.userInfo"
+      />
       <div class="page-content">
         <RouterView />
       </div>

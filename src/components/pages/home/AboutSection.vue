@@ -1,16 +1,21 @@
 <script setup>
-import Button from '../../ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
   <section class="about">
     <div class="container wrapper">
       <div class="image">
-        <img src="/images/mission.jpg" alt="EPANWE" />
+        <img
+          src="/images/mission.jpg"
+          alt="EPANWE"
+        >
       </div>
 
       <div class="content">
-        <p class="small">ABOUT EPANWE</p>
+        <p class="small">
+          ABOUT EPANWE
+        </p>
 
         <h2>Helping every young person discover their potential.</h2>
 
@@ -21,7 +26,7 @@ import Button from '../../ui/Button.vue'
         </p>
 
         <a href="about">
-          <Button text="Learn More" />
+          <BaseButton text="Learn More" />
         </a>
       </div>
     </div>

@@ -5,7 +5,6 @@
   <section class="px-6 pb-12 pt-20 md:px-10 md:pt-28">
     <div class="mx-auto max-w-6xl">
       <div class="max-w-3xl">
-
         <span
           class="mb-5 inline-block rounded-full bg-[#B08A2F]/10 px-4 py-2
                  text-sm font-semibold text-[#B08A2F]"
@@ -28,7 +27,6 @@
           dedicated to developing the skills and personal growth of
           your communities.
         </p>
-
       </div>
     </div>
   </section>

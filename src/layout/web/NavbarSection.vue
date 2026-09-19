@@ -1,6 +1,6 @@
 <script setup>
 import { useUserStore } from '@/stores/user.js'
-import Button from '@/components/ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 import { RouterLink } from 'vue-router'
 import DropdownAvatar from '@/layout/web/DropdownAvatar.vue'
 
@@ -10,7 +10,9 @@ const userStore = useUserStore()
 <template>
   <nav>
     <div class="container nav">
-      <div class="logo">EPANWE</div>
+      <div class="logo">
+        EPANWE
+      </div>
 
       <ul>
         <li><a href="/">Home</a></li>
@@ -19,19 +21,29 @@ const userStore = useUserStore()
         <li><a href="/howtojoin">How to join</a></li>
       </ul>
 
-      <div v-if="userStore.userInfo?.id" class="actions">
-        <DropdownAvatar/>
+      <div
+        v-if="userStore.userInfo?.id"
+        class="actions"
+      >
+        <DropdownAvatar />
       </div>
-      <div v-else class="actions">
+      <div
+        v-else
+        class="actions"
+      >
         <RouterLink to="/login">
-          <Button text="Log In" color="secondary" variant="outline"/>
+          <BaseButton
+            text="Log In"
+            color="secondary"
+            variant="outline"
+          />
         </RouterLink>
         <RouterLink to="/register">
-          <Button text="Join Us"/>
+          <BaseButton text="Join Us" />
         </RouterLink>
       </div>
-     </div>
-   </nav>
+    </div>
+  </nav>
 </template>
 
 <style scoped>

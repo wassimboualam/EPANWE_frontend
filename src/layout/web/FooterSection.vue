@@ -53,14 +53,23 @@ const resources = [
           </p>
 
           <div class="socials">
-            <a :href="links.founder.facebook" target="_blank">
-              <i class="fab fa-facebook-f"></i>
+            <a
+              :href="links.founder.facebook"
+              target="_blank"
+            >
+              <i class="fab fa-facebook-f" />
             </a>
-            <a :href="links.founder.instagram" target="_blank">
-              <i class="fab fa-instagram"></i>
+            <a
+              :href="links.founder.instagram"
+              target="_blank"
+            >
+              <i class="fab fa-instagram" />
             </a>
-            <a :href="links.founder.linkedin" target="_blank">
-              <i class="fab fa-linkedin-in"></i>
+            <a
+              :href="links.founder.linkedin"
+              target="_blank"
+            >
+              <i class="fab fa-linkedin-in" />
             </a>
           </div>
         </div>
@@ -71,7 +80,10 @@ const resources = [
           <h3>Explore</h3>
 
           <ul>
-            <li v-for="item in explore" :key="item.path">
+            <li
+              v-for="item in explore"
+              :key="item.path"
+            >
               <a :href="item.path">
                 {{ item.name }}
               </a>
@@ -99,7 +111,10 @@ const resources = [
           <h3>Resources</h3>
 
           <ul>
-            <li v-for="item in resources" :key="item.path">
+            <li
+              v-for="item in resources"
+              :key="item.path"
+            >
               <a :href="item.path">
                 {{ item.name }}
               </a>
@@ -122,7 +137,7 @@ const resources = [
         </div>
       </div>
 
-      <hr />
+      <hr>
 
       <div class="bottom">
         <p>

@@ -19,51 +19,35 @@ const steps = [
 </script>
 
 <template>
+  <section class="method">
+    <div class="container">
+      <div class="header">
+        <p id="section_name">
+          OUR METHOD
+        </p>
 
-<section class="method">
+        <h2>
+          The EPANWE Methodology
+        </h2>
 
-<div class="container">
+        <p>Our EPANWE method is there to nurture in our youth the following skills:</p>
+      </div>
 
-<div class="header">
+      <div class="timeline">
+        <div
+          v-for="step in steps"
+          :key="step"
+          class="step"
+        >
+          <div class="circle" />
 
-<p id="section_name">OUR METHOD</p>
-
-<h2>
-
-The EPANWE Methodology
-
-</h2>
-
-<p>Our EPANWE method is there to nurture in our youth the following skills:</p>
-
-</div>
-
-<div class="timeline">
-
-<div
-class="step"
-v-for="step in steps"
-:key="step"
->
-
-<div class="circle">
-
-</div>
-
-<h4>
-
-{{ step }}
-
-</h4>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
+          <h4>
+            {{ step }}
+          </h4>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>

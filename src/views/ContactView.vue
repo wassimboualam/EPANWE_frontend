@@ -1,11 +1,10 @@
-<script setup lang="ts">
-import ContactForm from '@/components/pages/contact/ContactForm.vue'
+<script setup>
 import ContactInfo from '@/components/pages/contact/ContactInfo.vue'
-import Hero from '@/components/pages/contact/Hero.vue'
+import HeroSection from '@/components/pages/contact/HeroSection.vue'
 </script>
 
 <template>
-  <Hero />
+  <HeroSection />
   <ContactInfo />
   <!-- <ContactForm /> -->
 </template>

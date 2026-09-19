@@ -37,7 +37,11 @@ const categories = [
       </div>
 
       <div class="grid">
-        <div v-for="category in categories" :key="category.title" class="card category-card">
+        <div
+          v-for="category in categories"
+          :key="category.title"
+          class="card category-card"
+        >
           <span class="material-symbols-outlined">
             {{ category.icon }}
           </span>

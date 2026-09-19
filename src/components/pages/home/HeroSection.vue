@@ -1,12 +1,14 @@
 <script setup>
-import Button from '../../ui/Button.vue'
+import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
   <section>
     <div class="container hero">
       <div>
-        <p class="badge">Empowering The Next Generation</p>
+        <p class="badge">
+          Empowering The Next Generation
+        </p>
         <h1>
           Helping Every Young Person Discover Their
           <span>Full Potential</span>
@@ -17,15 +19,22 @@ import Button from '../../ui/Button.vue'
 
         <div class="buttons">
           <a href="howtojoin">
-            <Button text="Join Us" />
+            <BaseButton text="Join Us" />
           </a>
           <a href="#whyus">
-            <Button text="Learn More" color="secondary" variant="outline" />
+            <BaseButton
+              text="Learn More"
+              color="secondary"
+              variant="outline"
+            />
           </a>
         </div>
       </div>
       <div>
-        <img src="/images/hero.jpg" alt="" />
+        <img
+          src="/images/hero.jpg"
+          alt=""
+        >
       </div>
     </div>
   </section>

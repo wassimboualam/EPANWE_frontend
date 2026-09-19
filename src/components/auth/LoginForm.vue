@@ -1,19 +1,14 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
-import Button from '@/components/ui/Button.vue'
-import { useToastStore } from '@/stores/toast'
-import { useUserStore } from '@/stores/user'
+import { reactive, ref } from 'vue'
+import { RouterLink} from 'vue-router'
+import BaseButton from '@/components/ui/BaseButton.vue'
+
 
 defineProps({
   disabled: Boolean,
 })
 
 const showPassword = ref(false)
-
-const toastStore = useToastStore()
-const userStore = useUserStore()
-const router = useRouter()
 
 const emit = defineEmits(['submit'])
 
@@ -27,12 +22,18 @@ const form = reactive({
   <form @submit.prevent="login">
     <h2>Welcome Back</h2>
 
-    <p class="subtitle">Sign in to continue.</p>
+    <p class="subtitle">
+      Sign in to continue.
+    </p>
 
     <div class="field">
       <label>Email</label>
 
-      <input v-model="form.email" type="email" placeholder="john@email.com" />
+      <input
+        v-model="form.email"
+        type="email"
+        placeholder="john@email.com"
+      >
     </div>
 
     <div class="field">
@@ -43,9 +44,12 @@ const form = reactive({
           v-model="form.password"
           :type="showPassword ? 'text' : 'password'"
           placeholder="••••••••"
-        />
+        >
 
-        <button type="button" @click="showPassword = !showPassword">
+        <button
+          type="button"
+          @click="showPassword = !showPassword"
+        >
           <span class="material-symbols-outlined">
             {{ showPassword ? 'visibility_off' : 'visibility' }}
           </span>
@@ -63,11 +67,18 @@ const form = reactive({
       <RouterLink to="/forgot-password"> Forgot Password? </RouterLink>
     </div> -->
 
-    <Button text="Login" buttonType="submit" @click="emit('submit', form)" :disabled="disabled" />
+    <BaseButton
+      text="Login"
+      button-type="submit"
+      :disabled="disabled"
+      @click="emit('submit', form)"
+    />
     <p class="bottom">
       Don't have an account?
 
-      <RouterLink to="/register"> Create one </RouterLink>
+      <RouterLink to="/register">
+        Create one
+      </RouterLink>
     </p>
   </form>
 </template>

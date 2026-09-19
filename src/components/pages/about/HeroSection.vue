@@ -18,7 +18,10 @@
       </div>
 
       <div>
-        <img src="/images/vision.jpg" alt="About EPANWE" />
+        <img
+          src="/images/vision.jpg"
+          alt="About EPANWE"
+        >
       </div>
     </div>
   </section>

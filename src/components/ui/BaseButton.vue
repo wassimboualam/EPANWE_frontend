@@ -48,7 +48,7 @@ const props = defineProps({
   },
   class: {
     type: Array,
-    default: [],
+    default: () => [],
   },
   justifyContent: {
     type: String,
@@ -75,8 +75,15 @@ const classes = computed(() => [
     :style="{ justifyContent: justifyContent }"
     :disabled="disabled || loading"
   >
-    <span v-if="loading" class="material-symbols-outlined spinner"> progress_activity </span>
-    <span v-else class="material-symbols-outlined" :class="icon == '' || !icon ? 'd-none' : ''">
+    <span
+      v-if="loading"
+      class="material-symbols-outlined spinner"
+    > progress_activity </span>
+    <span
+      v-else
+      class="material-symbols-outlined"
+      :class="icon == '' || !icon ? 'd-none' : ''"
+    >
       {{ icon }}
     </span>
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 const cards = [
   {
     icon: 'call',
@@ -35,7 +35,11 @@ const cards = [
 <template>
   <section class="section">
     <div class="container">
-      <div class="card" v-for="card in cards" :key="card.title">
+      <div
+        v-for="card in cards"
+        :key="card.title"
+        class="card"
+      >
         <div class="icon">
           <span class="material-symbols-outlined">
             {{ card.icon }}
