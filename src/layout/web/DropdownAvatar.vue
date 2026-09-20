@@ -22,7 +22,8 @@ async function logOut() {
     <template #button>
       <BaseAvatar />
     </template>
-    <div class="user-menu">
+
+    <div class="flex flex-col justify-center gap-4 p-4 min-w-[220px]">
       <RouterLink
         v-for="page in dashboardStore.pages"
         :key="page.name"
@@ -34,19 +35,13 @@ async function logOut() {
           size="sm"
           :full-width="true"
         >
-          <span class="material-symbols-outlined"> {{ page.icon }} </span>
+          <span class="material-symbols-outlined">{{ page.icon }}</span>
           {{ page.name }}
         </BaseButton>
       </RouterLink>
-      <hr>
-      <!-- <BaseButton
-        @click="logOut()"
-        variant="outline"
-        color="danger"
-        text="Logout"
-        size="sm"
-        :full-width="true"
-      /> -->
+
+      <hr class="border-none h-px bg-gray-200/40 my-1">
+
       <LogoutButton
         size="sm"
         variant="outline"
@@ -55,13 +50,3 @@ async function logOut() {
     </div>
   </DropdownMenu>
 </template>
-
-<style scoped>
-.user-menu {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 1rem;
-}
-</style>

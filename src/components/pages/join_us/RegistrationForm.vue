@@ -19,67 +19,73 @@ const submit = () => {
 </script>
 
 <template>
-  <section class="registration">
+  <section class="registration bg-white py-16 md:py-24">
     <div class="container">
-      <div class="heading">
-        <p>APPLICATION FORM</p>
+      <div class="text-center mb-12 md:mb-[60px]">
+        <p class="text-[var(--gold)] font-bold tracking-[2px] mb-3 text-sm md:text-base">
+          APPLICATION FORM
+        </p>
 
-        <h2>Tell Us About Yourself</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)]">
+          Tell Us About Yourself
+        </h2>
       </div>
 
       <form
-        class="card form"
+        class="card form max-w-[900px] mx-auto p-6 sm:p-8 md:p-10 lg:p-12"
         @submit.prevent="submit"
       >
-        <div class="row">
-          <div class="field">
-            <label>First Name</label>
-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">First Name</label>
             <input
               v-model="form.firstName"
               type="text"
               placeholder="John"
+              class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
             >
           </div>
 
-          <div class="field">
-            <label>Last Name</label>
-
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">Last Name</label>
             <input
               v-model="form.lastName"
               type="text"
               placeholder="Doe"
+              class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
             >
           </div>
         </div>
 
-        <div class="row">
-          <div class="field">
-            <label>Email</label>
-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">Email</label>
             <input
               v-model="form.email"
               type="email"
               placeholder="john@email.com"
+              class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
             >
           </div>
 
-          <div class="field">
-            <label>Phone</label>
-
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">Phone</label>
             <input
               v-model="form.phone"
               type="tel"
               placeholder="+212 ..."
+              class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
             >
           </div>
         </div>
 
-        <div class="row">
-          <div class="field">
-            <label>Age Group</label>
-
-            <select v-model="form.ageGroup">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">Age Group</label>
+            <select
+              v-model="form.ageGroup"
+              class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] bg-white focus:outline-none focus:border-[var(--gold)] transition-colors"
+            >
               <option value="">
                 Choose...
               </option>
@@ -90,10 +96,12 @@ const submit = () => {
             </select>
           </div>
 
-          <div class="field">
-            <label>I Want To...</label>
-
-            <select v-model="form.interest">
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">I Want To...</label>
+            <select
+              v-model="form.interest"
+              class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] bg-white focus:outline-none focus:border-[var(--gold)] transition-colors"
+            >
               <option value="">
                 Choose...
               </option>
@@ -105,23 +113,23 @@ const submit = () => {
           </div>
         </div>
 
-        <div class="field">
-          <label>Message</label>
-
+        <div class="flex flex-col gap-2 mb-5 md:mb-6">
+          <label class="font-semibold text-[var(--slate)]">Message</label>
           <textarea
             v-model="form.message"
             rows="6"
             placeholder="Tell us a little about yourself..."
+            class="px-4 py-4 rounded-[14px] border border-gray-300 text-base font-[inherit] resize-y focus:outline-none focus:border-[var(--gold)] transition-colors"
           />
         </div>
 
-        <label class="checkbox">
+        <label class="flex items-center gap-3 my-7 font-normal text-[var(--slate)] cursor-pointer">
           <input
             v-model="form.accepted"
             type="checkbox"
+            class="w-4 h-4 accent-[var(--gold)]"
           >
-
-          <span> I agree to the processing of my information. </span>
+          <span>I agree to the processing of my information.</span>
         </label>
 
         <Button
@@ -132,93 +140,3 @@ const submit = () => {
     </div>
   </section>
 </template>
-
-<style scoped>
-.registration {
-  background: #fff;
-}
-
-.heading {
-  text-align: center;
-
-  margin-bottom: 60px;
-}
-
-.heading p {
-  color: var(--gold);
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
-.form {
-  padding: 50px;
-
-  max-width: 900px;
-
-  margin: auto;
-}
-
-.row {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 25px;
-
-  margin-bottom: 25px;
-}
-
-.field {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 10px;
-}
-
-label {
-  font-weight: 600;
-}
-
-input,
-select,
-textarea {
-  padding: 16px;
-
-  border-radius: 14px;
-
-  border: 1px solid #ddd;
-
-  font-size: 1rem;
-
-  font-family: inherit;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.checkbox {
-  display: flex;
-
-  gap: 12px;
-
-  align-items: center;
-
-  margin: 30px 0;
-
-  font-weight: 400;
-}
-
-@media (max-width: 700px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
-
-  .form {
-    padding: 30px;
-  }
-}
-</style>

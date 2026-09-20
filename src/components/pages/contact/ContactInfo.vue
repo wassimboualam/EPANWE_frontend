@@ -2,158 +2,55 @@
 const cards = [
   {
     icon: 'call',
-
     title: 'Phone',
-
     main: '+212 669 951 116',
-
     text: 'Monday - Friday\n09:00 - 17:00',
   },
-
   {
     icon: 'mail',
-
     title: 'Email',
-
     main: 'contact@epanwe.ma',
-
     text: 'Average reply time:\n24 hours',
   },
-
   {
     icon: 'location_on',
-
     title: 'Address',
-
     main: '119, Boulevard Abdelmoumen, Appt 18, Casablanca',
-
     text: 'Visits by appointment',
   },
 ]
 </script>
 
 <template>
-  <section class="section">
+  <section class="py-16 md:py-[70px]">
     <div class="container">
-      <div
-        v-for="card in cards"
-        :key="card.title"
-        class="card"
-      >
-        <div class="icon">
-          <span class="material-symbols-outlined">
-            {{ card.icon }}
-          </span>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[30px]">
+        <div
+          v-for="card in cards"
+          :key="card.title"
+          class="card bg-white p-7 md:p-8 lg:p-[35px] rounded-[22px] shadow-[var(--shadow)] text-center transition-transform duration-300 hover:-translate-y-2"
+        >
+          <div
+            class="w-[70px] h-[70px] mx-auto mb-5 flex justify-center items-center rounded-[18px] bg-[var(--gold-soft)] text-[var(--gold)]"
+          >
+            <span class="material-symbols-outlined text-[2rem]">
+              {{ card.icon }}
+            </span>
+          </div>
+
+          <h3 class="text-lg md:text-xl font-semibold text-[var(--slate)] mb-3">
+            {{ card.title }}
+          </h3>
+
+          <h4 class="text-base font-semibold text-[var(--gold)] mb-4">
+            {{ card.main }}
+          </h4>
+
+          <p class="text-gray-500 leading-[1.8] whitespace-pre-line">
+            {{ card.text }}
+          </p>
         </div>
-
-        <h3>
-          {{ card.title }}
-        </h3>
-
-        <h4>
-          {{ card.main }}
-        </h4>
-
-        <p>
-          {{ card.text }}
-        </p>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.section {
-  padding: 70px 0;
-}
-
-.container {
-  width: min(1200px, 90%);
-
-  margin: auto;
-
-  display: flex;
-
-  justify-content: center;
-
-  gap: 30px;
-}
-
-.card {
-  background: white;
-
-  padding: 35px;
-
-  border-radius: 22px;
-
-  box-shadow: var(--shadow);
-
-  text-align: center;
-
-  transition: 0.3s;
-
-  width: 400px;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.icon {
-  width: 70px;
-
-  height: 70px;
-
-  margin: auto;
-
-  margin-bottom: 20px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  border-radius: 18px;
-
-  background: var(--gold-soft);
-
-  color: var(--gold);
-}
-
-.icon span {
-  font-size: 2rem;
-}
-
-h3 {
-  margin-bottom: 14px;
-}
-
-h4 {
-  font-size: 1rem;
-
-  margin-bottom: 16px;
-
-  color: var(--gold);
-}
-
-p {
-  color: #666;
-
-  line-height: 1.8;
-
-  white-space: pre-line;
-}
-
-@media (max-width: 1000px) {
-  .container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 650px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

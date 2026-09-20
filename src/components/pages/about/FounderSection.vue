@@ -1,34 +1,38 @@
 <script setup>
 import links from '@/links';
-
 </script>
 
 <template>
-  <section>
-    <div class="container founder">
+  <section class="py-16 md:py-24">
+    <div class="container grid grid-cols-1 lg:grid-cols-[450px_1fr] gap-10 md:gap-16 lg:gap-20 items-center">
       <div>
         <img
           src="/images/fondateur_2.jpg"
           alt="Founder"
+          class="w-full rounded-3xl shadow-[var(--shadow)]"
         >
       </div>
 
       <div>
-        <p class="eyebrow">
+        <p class="text-[var(--gold)] font-bold tracking-[2px] mb-4 text-sm md:text-base">
           FOUNDER
         </p>
 
-        <h2>Younes El Jaouhari</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)] mb-4">
+          Younes El Jaouhari
+        </h2>
 
-        <p class="role">
-          Founder & Director
+        <p class="font-semibold text-[var(--slate)] mb-6">
+          Founder &amp; Director
         </p>
 
-        <blockquote>
+        <blockquote
+          class="text-lg md:text-xl lg:text-[1.4rem] italic mb-8 pl-5 border-l-4 border-[var(--gold)] text-[var(--slate)] leading-relaxed"
+        >
           "Every young person deserves the opportunity to discover what they are capable of."
         </blockquote>
 
-        <p>
+        <p class="text-gray-600 leading-relaxed">
           EPANWE was founded with the belief that every child and young adult deserves the
           opportunity to discover their strengths, build confidence, and grow into their full
           potential. What began as a simple vision has grown into a mission dedicated to empowering
@@ -40,89 +44,24 @@ import links from '@/links';
           every program, partnership, and initiative we undertake.
         </p>
 
-        <div class="socials">
+        <div class="flex flex-wrap gap-5 mt-6">
           <a
             :href="links.founder.facebook"
             target="_blank"
+            class="text-[var(--gold)] font-semibold transition-opacity duration-300 hover:opacity-75"
           >Facebook</a>
           <a
             :href="links.founder.instagram"
             target="_blank"
+            class="text-[var(--gold)] font-semibold transition-opacity duration-300 hover:opacity-75"
           >Instagram</a>
           <a
             :href="links.founder.linkedin"
             target="_blank"
+            class="text-[var(--gold)] font-semibold transition-opacity duration-300 hover:opacity-75"
           >LinkedIn</a>
         </div>
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.founder {
-  display: grid;
-
-  grid-template-columns: 450px 1fr;
-
-  gap: 80px;
-
-  align-items: center;
-}
-
-img {
-  width: 100%;
-
-  border-radius: 24px;
-
-  box-shadow: var(--shadow);
-}
-
-.eyebrow {
-  color: var(--gold);
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-
-  margin-bottom: 15px;
-}
-
-.role {
-  font-weight: 600;
-
-  margin-bottom: 25px;
-}
-
-blockquote {
-  font-size: 1.4rem;
-
-  font-style: italic;
-
-  margin-bottom: 30px;
-
-  padding-left: 20px;
-
-  border-left: 4px solid var(--gold);
-}
-
-.socials {
-  display: flex;
-
-  gap: 20px;
-
-  margin-top: 25px;
-}
-
-.socials a {
-  color: var(--gold);
-
-  font-weight: 600;
-}
-
-@media (max-width: 900px) {
-  .founder {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

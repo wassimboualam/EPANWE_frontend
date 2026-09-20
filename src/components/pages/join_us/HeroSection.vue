@@ -3,122 +3,49 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="content">
-        <span class="badge"> JOIN EPANWE </span>
+  <section class="bg-white py-16 md:py-20 lg:py-[90px]">
+    <div class="container grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 lg:gap-[70px] items-center">
+      <div class="content order-2 lg:order-1">
+        <span
+          class="inline-block px-[18px] py-[10px] bg-[var(--gold-soft)] text-[var(--gold)] font-semibold rounded-full mb-6 text-xs md:text-sm"
+        >
+          JOIN EPANWE
+        </span>
 
-        <h1>Become Part of a Community That Inspires Change</h1>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.6rem] font-bold text-[var(--slate)] leading-[1.1] mb-6">
+          Become Part of a Community That Inspires Change
+        </h1>
 
-        <p>
+        <p class="text-gray-600 text-base md:text-lg leading-[1.8] mb-10">
           Whether you're looking to participate in a program, volunteer your time, or partner with
           us, we'd love to welcome you into the EPANWE family.
         </p>
 
-        <div class="buttons">
-          <!-- <BaseButton text="Apply Now" /> -->
+        <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
           <a href="#steps">
-            <BaseButton text="Learn how to join" />
+            <BaseButton
+              text="Learn how to join"
+              :full-width="true"
+            />
           </a>
-
 
           <a href="/contact">
             <BaseButton
               text="Contact Us"
               style-type="secondary"
+              :full-width="true"
             />
           </a>
         </div>
       </div>
 
-      <div class="image">
+      <div class="order-1 lg:order-2">
         <img
           src="/images/hero3.jpg"
           alt="Join EPANWE"
+          class="w-full aspect-[4/3] object-cover rounded-lg shadow-[var(--shadow)]"
         >
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero {
-  padding: 90px 0;
-
-  background: white;
-}
-
-.hero-grid {
-  display: grid;
-
-  grid-template-columns: 1fr 1fr;
-
-  gap: 70px;
-
-  align-items: center;
-}
-
-.badge {
-  display: inline-block;
-
-  padding: 10px 18px;
-
-  background: var(--gold-soft);
-
-  color: var(--gold);
-
-  font-weight: 600;
-
-  border-radius: 999px;
-
-  margin-bottom: 25px;
-}
-
-h1 {
-  font-size: 3.6rem;
-
-  line-height: 1.1;
-
-  margin-bottom: 25px;
-}
-
-p {
-  font-size: 1.1rem;
-
-  line-height: 1.8;
-
-  margin-bottom: 40px;
-}
-
-.buttons {
-  display: flex;
-
-  gap: 20px;
-}
-
-.image img {
-  width: 100%;
-
-  height: 540px;
-
-  object-fit: cover;
-
-  border-radius: 28px;
-
-  box-shadow: var(--shadow);
-}
-
-@media (max-width: 900px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .image {
-    order: -1;
-  }
-
-  .image img {
-    height: 420px;
-  }
-}
-</style>

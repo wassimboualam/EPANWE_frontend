@@ -1,5 +1,4 @@
 <script setup>
-
 const features = [
   {
     title: "Holistic Development",
@@ -17,38 +16,40 @@ const features = [
     icon: "public"
   }
 ]
-
 </script>
 
 <template>
-  <section id="whyus">
+  <section
+    id="whyus"
+    class="py-16 md:py-24"
+  >
     <div class="container">
-      <div class="heading">
-        <h2>Why Choose EPANWE?</h2>
+      <div class="text-center max-w-[700px] mx-auto mb-10 md:mb-[60px]">
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)] mb-4">
+          Why Choose EPANWE?
+        </h2>
 
-        <p>
+        <p class="text-gray-600 leading-relaxed">
           Everything we do is centered around helping young people
           learn, grow and become confident members of society.
         </p>
       </div>
 
-      <div class="grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[30px]">
         <div
           v-for="feature in features"
           :key="feature.title"
-          class="card feature"
+          class="card feature p-6 md:p-8 lg:p-10 transition-transform duration-300 hover:-translate-y-2"
         >
-          <span class="material-symbols-outlined icon">
-
+          <span class="material-symbols-outlined block text-[40px] md:text-[52px] text-[var(--gold)] mb-5">
             {{ feature.icon }}
-
           </span>
 
-          <h3>
+          <h3 class="text-lg md:text-xl font-semibold text-[var(--slate)] mb-4">
             {{ feature.title }}
           </h3>
 
-          <p>
+          <p class="text-gray-600 leading-relaxed">
             {{ feature.text }}
           </p>
         </div>
@@ -56,67 +57,3 @@ const features = [
     </div>
   </section>
 </template>
-
-<style scoped>
-
-.heading{
-
-text-align:center;
-
-max-width:700px;
-
-margin:auto auto 60px;
-
-}
-
-.grid{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:30px;
-
-}
-
-.feature{
-
-padding:40px;
-
-transition:.3s;
-
-}
-
-.feature:hover{
-
-transform:translateY(-8px);
-
-}
-
-.icon{
-
-font-size:52px;
-
-color:var(--gold);
-
-margin-bottom:20px;
-
-}
-
-h3{
-
-margin-bottom:15px;
-
-}
-
-@media(max-width:900px){
-
-.grid{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-</style>

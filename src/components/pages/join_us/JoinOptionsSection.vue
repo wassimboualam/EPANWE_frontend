@@ -5,7 +5,6 @@ const options = [
     title: 'Join as a participant',
     text: 'Take part in educational, cultural and personal development programs for all age groups.',
   },
-
   {
     icon: 'handshake',
     title: 'Become a Partner',
@@ -15,29 +14,33 @@ const options = [
 </script>
 
 <template>
-  <section>
+  <section class="py-16 md:py-24">
     <div class="container">
-      <div class="heading">
-        <p>WAYS TO JOIN</p>
+      <div class="text-center mb-12 md:mb-[70px]">
+        <p class="text-[var(--gold)] font-bold tracking-[2px] mb-3 text-sm md:text-base">
+          WAYS TO JOIN
+        </p>
 
-        <h2>How Would You Like to Get Involved?</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)]">
+          How Would You Like to Get Involved?
+        </h2>
       </div>
 
-      <div class="grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 lg:gap-[30px]">
         <div
           v-for="option in options"
           :key="option.title"
-          class="card option-card"
+          class="card option-card p-8 md:p-10 text-center transition-transform duration-300 hover:-translate-y-2 cursor-pointer"
         >
-          <span class="material-symbols-outlined">
+          <span class="material-symbols-outlined block text-[40px] md:text-[52px] text-[var(--gold)] mb-5">
             {{ option.icon }}
           </span>
 
-          <h3>
+          <h3 class="text-lg md:text-xl font-semibold text-[var(--slate)] mb-4">
             {{ option.title }}
           </h3>
 
-          <p>
+          <p class="text-gray-600 leading-relaxed">
             {{ option.text }}
           </p>
         </div>
@@ -45,69 +48,3 @@ const options = [
     </div>
   </section>
 </template>
-
-<style scoped>
-.heading {
-  text-align: center;
-
-  margin-bottom: 70px;
-}
-
-.heading p {
-  color: var(--gold);
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-
-  margin-bottom: 12px;
-}
-
-.grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 30px;
-}
-
-.option-card {
-  padding: 40px;
-
-  text-align: center;
-
-  transition: 0.3s;
-
-  cursor: pointer;
-}
-
-.option-card:hover {
-  transform: translateY(-8px);
-}
-
-.option-card span {
-  font-size: 52px;
-
-  color: var(--gold);
-
-  display: block;
-
-  margin-bottom: 20px;
-}
-
-.option-card h3 {
-  margin-bottom: 15px;
-}
-
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

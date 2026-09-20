@@ -3,30 +3,48 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
-  <section class="cta">
+  <section class="py-16 md:py-24 lg:py-[120px]">
     <div class="container">
-      <div class="cta-box">
-        <div class="content">
-          <span class="badge"> JOIN OUR COMMUNITY </span>
+      <div
+        class="relative overflow-hidden rounded-3xl md:rounded-[32px] bg-gradient-to-br from-[#d4af37] to-[#e2c45b] px-6 py-12 sm:px-10 sm:py-16 lg:px-20 lg:py-[90px] shadow-[0_25px_60px_rgba(0,0,0,0.12)]"
+      >
+        <!-- Decorative circles -->
+        <span
+          class="pointer-events-none absolute w-[320px] h-[320px] rounded-full bg-white/[0.08] -right-[100px] -top-[120px]"
+        />
+        <span
+          class="pointer-events-none absolute w-[180px] h-[180px] rounded-full bg-white/[0.12] -bottom-[70px] right-[180px]"
+        />
 
-          <h2>Ready to Help Shape the Future?</h2>
+        <div class="relative z-[2] max-w-[700px]">
+          <span
+            class="inline-block px-[18px] py-2 rounded-full bg-white/[0.18] text-white font-semibold mb-6 tracking-[1px] text-xs md:text-sm"
+          >
+            JOIN OUR COMMUNITY
+          </span>
 
-          <p>
+          <h2 class="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+            Ready to Help Shape the Future?
+          </h2>
+
+          <p class="text-white text-base md:text-lg leading-[1.8] mb-8 md:mb-10 opacity-95">
             Whether you're a parent, educator, volunteer, or future participant, EPANWE welcomes
             everyone who believes in helping young people discover their full potential.
           </p>
 
-          <div class="buttons">
+          <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
             <a href="/howtojoin">
               <BaseButton
                 text="Join EPANWE"
                 color="white"
+                :full-width="true"
               />
             </a>
             <a href="/partner">
               <BaseButton
                 text="Join as partner"
                 color="secondary"
+                :full-width="true"
               />
             </a>
             <!-- <BaseButton text="Explore Programs" color="secondary" /> -->
@@ -36,127 +54,3 @@ import BaseButton from '@/components/ui/BaseButton.vue'
     </div>
   </section>
 </template>
-
-<style scoped>
-.cta {
-  padding: 120px 0;
-}
-
-.cta-box {
-  position: relative;
-
-  overflow: hidden;
-
-  background: linear-gradient(135deg, #d4af37, #e2c45b);
-
-  border-radius: 32px;
-
-  padding: 90px 80px;
-
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
-}
-
-.content {
-  max-width: 700px;
-
-  position: relative;
-
-  z-index: 2;
-}
-
-.badge {
-  display: inline-block;
-
-  padding: 8px 18px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.18);
-
-  color: white;
-
-  font-weight: 600;
-
-  margin-bottom: 25px;
-
-  letter-spacing: 1px;
-}
-
-h2 {
-  color: white;
-
-  font-size: 3rem;
-
-  margin-bottom: 25px;
-}
-
-p {
-  color: white;
-
-  font-size: 1.1rem;
-
-  line-height: 1.8;
-
-  margin-bottom: 40px;
-
-  opacity: 0.95;
-}
-
-.buttons {
-  display: flex;
-
-  gap: 20px;
-}
-
-/* decorative circles */
-
-.cta-box::before {
-  content: '';
-
-  position: absolute;
-
-  width: 320px;
-
-  height: 320px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  right: -100px;
-
-  top: -120px;
-}
-
-.cta-box::after {
-  content: '';
-
-  position: absolute;
-
-  width: 180px;
-
-  height: 180px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.12);
-
-  bottom: -70px;
-
-  right: 180px;
-}
-
-@media (max-width: 900px) {
-  .cta-box {
-    padding: 60px 40px;
-  }
-
-  .buttons {
-    flex-direction: column;
-  }
-
-  h2 {
-    font-size: 2.2rem;
-  }
-}
-</style>

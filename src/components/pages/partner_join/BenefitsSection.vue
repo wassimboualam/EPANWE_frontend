@@ -23,7 +23,7 @@ const benefits = [
 
 <template>
   <div class="flex flex-col justify-center">
-    <h2 class="text-2xl font-bold text-[#263238] md:text-3xl">
+    <h2 class="text-2xl md:text-3xl font-bold text-[#263238]">
       Why become a partner?
     </h2>
 
@@ -39,9 +39,7 @@ const benefits = [
         class="flex gap-4"
       >
         <div
-          class="flex h-10 w-10 shrink-0 items-center justify-center
-                 rounded-full bg-[#B08A2F]/10 font-semibold
-                 text-[#B08A2F]"
+          class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#B08A2F]/10 font-semibold text-[#B08A2F]"
         >
           {{ benefit.number }}
         </div>

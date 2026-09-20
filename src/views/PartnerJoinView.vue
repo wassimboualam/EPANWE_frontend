@@ -12,7 +12,7 @@ const loading = ref(false)
 let csrf
 
 async function submitForm(form) {
-  loading.value = true;
+  loading.value = true
 
   try {
     const response = await fetch('http://localhost:8000/partner/request', {
@@ -23,20 +23,17 @@ async function submitForm(form) {
         'Content-Type': 'application/json',
       },
       credentials: 'include',
-    });
-  
-    const data = await response.json();
-  
-    toastStore.success(data.message, data.title, 5000);
+    })
+
+    const data = await response.json()
+
+    toastStore.success(data.message, data.title, 5000)
   } catch (error) {
-    toastStore.error(error.message, error.title, 5000);
+    toastStore.error(error.message, error.title, 5000)
   }
 
-
-  loading.value = false;
-
+  loading.value = false
 }
-
 
 onMounted(async () => {
   csrf = await getCsrf()
@@ -45,18 +42,16 @@ onMounted(async () => {
 
 <template>
   <main class="min-h-screen bg-white">
-    <HeroSection /> 
+    <HeroSection />
 
-    <section class="px-6 py-16 md:px-10 lg:px-16">
-      <div class="mx-auto max-w-5xl">
-        <BenefitsSection class="mb-16" /> 
+    <section class="px-4 sm:px-6 md:px-10 lg:px-16 pb-16 md:pb-24">
+      <div class="mx-auto w-full max-w-screen-xl">
+        <BenefitsSection class="mb-10 md:mb-16" />
 
-        <div class="  bg-white p-6  md:p-10"> 
-          <FormSection 
-            :loading="loading"
-            @submit-form="submitForm"
-          /> 
-        </div>
+        <FormSection
+          :loading="loading"
+          @submit-form="submitForm"
+        />
       </div>
     </section>
   </main>

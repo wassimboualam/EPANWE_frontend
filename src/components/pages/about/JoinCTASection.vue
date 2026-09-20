@@ -3,27 +3,37 @@ import BaseButton from '@/components/ui//BaseButton.vue'
 </script>
 
 <template>
-  <section>
+  <section class="py-16 md:py-24">
     <div class="container">
-      <div class="join-box">
-        <p>JOIN OUR MISSION</p>
+      <div
+        class="bg-gradient-to-br from-[#d4af37] to-[#e2c45b] px-6 py-12 sm:px-10 sm:py-16 lg:p-20 rounded-3xl md:rounded-[32px] text-center text-white"
+      >
+        <p class="font-bold tracking-[2px] mb-4 text-sm md:text-base">
+          JOIN OUR MISSION
+        </p>
 
-        <h2>Become Part of the Story</h2>
+        <h2 class="text-white text-2xl sm:text-3xl md:text-4xl font-bold mb-5">
+          Become Part of the Story
+        </h2>
 
-        <p class="text">
+        <p class="max-w-[700px] mx-auto mb-8 md:mb-9 opacity-95 leading-relaxed">
           Whether you're a parent, educator, institution or volunteer, your support helps create
           opportunities for young people to flourish.
         </p>
 
-        <div class="buttons">
+        <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-5">
           <a href="/howtojoin">
-            <BaseButton text="Join Us" />
+            <BaseButton
+              text="Join Us"
+              :full-width="true"
+            />
           </a>
 
           <a href="/contact">
             <BaseButton
               text="Contact Us"
               color="secondary"
+              :full-width="true"
             />
           </a>
         </div>
@@ -31,53 +41,3 @@ import BaseButton from '@/components/ui//BaseButton.vue'
     </div>
   </section>
 </template>
-
-<style scoped>
-.join-box {
-  background: linear-gradient(135deg, #d4af37, #e2c45b);
-
-  padding: 80px;
-
-  border-radius: 32px;
-
-  text-align: center;
-
-  color: white;
-}
-
-.join-box p:first-child {
-  font-weight: 700;
-
-  letter-spacing: 2px;
-
-  margin-bottom: 15px;
-}
-
-.join-box h2 {
-  color: white;
-
-  margin-bottom: 20px;
-}
-
-.text {
-  max-width: 700px;
-
-  margin: auto;
-
-  margin-bottom: 35px;
-}
-
-.buttons {
-  display: flex;
-
-  justify-content: center;
-
-  gap: 20px;
-}
-
-@media (max-width: 700px) {
-  .buttons {
-    flex-direction: column;
-  }
-}
-</style>

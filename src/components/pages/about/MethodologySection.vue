@@ -1,47 +1,61 @@
 <script setup>
-
 const steps = [
-
-"Openness",
-
-"Acceptance",
-
-"Autonomy",
-
-"Confidence",
-
-"Joy",
-
-"Social Engagement"
-
+  "Openness",
+  "Acceptance",
+  "Autonomy",
+  "Confidence",
+  "Joy",
+  "Social Engagement"
 ]
-
 </script>
 
 <template>
-  <section class="method">
+  <section class="method bg-white py-16 md:py-24">
     <div class="container">
-      <div class="header">
-        <p id="section_name">
+      <div class="text-center mb-12 md:mb-20">
+        <p class="text-[var(--gold)] font-bold tracking-[2px] mb-3 text-sm md:text-base">
           OUR METHOD
         </p>
 
-        <h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)] mb-4">
           The EPANWE Methodology
         </h2>
 
-        <p>Our EPANWE method is there to nurture in our youth the following skills:</p>
+        <p class="text-gray-600 leading-relaxed">
+          Our EPANWE method is there to nurture in our youth the following skills:
+        </p>
       </div>
 
-      <div class="timeline">
+      <!-- Desktop timeline -->
+      <div class="hidden md:flex justify-between relative">
+        <div
+          class="absolute left-0 right-0 top-[15px] h-[3px] bg-[var(--gold)] z-[1]"
+          aria-hidden="true"
+        />
+
         <div
           v-for="step in steps"
           :key="step"
-          class="step"
+          class="relative z-[2] text-center w-[150px]"
         >
-          <div class="circle" />
+          <div class="w-[30px] h-[30px] rounded-full bg-[var(--gold)] mx-auto mb-5" />
 
-          <h4>
+          <h4 class="text-base font-semibold text-[var(--slate)]">
+            {{ step }}
+          </h4>
+        </div>
+      </div>
+
+      <!-- Mobile vertical list -->
+      <div class="md:hidden flex flex-col gap-8">
+        <div
+          v-for="step in steps"
+          :key="step"
+          class="flex items-center gap-4"
+        >
+          <div class="w-[24px] h-[24px] rounded-full bg-[var(--gold)] shrink-0" />
+
+          <h4 class="text-base font-semibold text-[var(--slate)]">
             {{ step }}
           </h4>
         </div>
@@ -49,121 +63,3 @@ const steps = [
     </div>
   </section>
 </template>
-
-<style scoped>
-
-.method{
-
-background:white;
-
-}
-
-.header{
-
-text-align:center;
-
-margin-bottom:80px;
-
-}
-
-#section_name{
-
-color:var(--gold);
-
-font-weight:700;
-
-letter-spacing:2px;
-
-margin-bottom:10px;
-
-}
-
-.timeline{
-
-display:flex;
-
-justify-content:space-between;
-
-position:relative;
-
-}
-
-.timeline::before{
-
-content:"";
-
-position:absolute;
-
-left:0;
-
-right:0;
-
-top:15px;
-
-height:3px;
-
-background:var(--gold);
-
-z-index:1;
-
-}
-
-.step{
-
-position:relative;
-
-z-index:2;
-
-text-align:center;
-
-width:150px;
-
-}
-
-.circle{
-
-width:30px;
-
-height:30px;
-
-border-radius:50%;
-
-background:var(--gold);
-
-margin:auto;
-
-margin-bottom:20px;
-
-}
-
-h4{
-
-font-size:1rem;
-
-}
-
-@media(max-width:900px){
-
-.timeline{
-
-flex-direction:column;
-
-gap:40px;
-
-}
-
-.timeline::before{
-
-display:none;
-
-}
-
-.step{
-
-width:100%;
-
-}
-
-}
-
-</style>

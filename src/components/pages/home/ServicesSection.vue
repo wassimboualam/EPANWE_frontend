@@ -1,188 +1,59 @@
 <script setup>
-
 const services = [
-{
-    icon:"volunteer_activism",
-    title:"Help",
-    text:"Supporting children and young people through programs that encourage personal growth, confidence and well-being."
-},
-{
-    icon:"school",
-    title:"Teach",
-    text:"Delivering educational experiences that inspire curiosity, creativity and lifelong learning."
-},
-{
-    icon:"emoji_people",
-    title:"Empower",
-    text:"Helping every participant develop leadership, responsibility and the confidence to create positive change."
-}
+  {
+    icon: "volunteer_activism",
+    title: "Help",
+    text: "Supporting children and young people through programs that encourage personal growth, confidence and well-being."
+  },
+  {
+    icon: "school",
+    title: "Teach",
+    text: "Delivering educational experiences that inspire curiosity, creativity and lifelong learning."
+  },
+  {
+    icon: "emoji_people",
+    title: "Empower",
+    text: "Helping every participant develop leadership, responsibility and the confidence to create positive change."
+  }
 ]
-
 </script>
 
 <template>
-  <section class="services">
+  <section class="services bg-[#F9FAFB] py-16 md:py-24">
     <div class="container">
-      <div class="section-title">
-        <p>WHAT WE DO</p>
+      <div class="text-center max-w-[700px] mx-auto mb-10 md:mb-[70px]">
+        <p class="font-bold text-[var(--gold)] tracking-[2px] mb-4 text-sm md:text-base">
+          WHAT WE DO
+        </p>
 
-        <h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)] leading-tight">
           Helping young people flourish in every aspect of life.
         </h2>
       </div>
 
-      <div class="cards">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-[35px]">
         <div
           v-for="service in services"
           :key="service.title"
-          class="service-card"
+          class="service-card p-6 md:p-8 lg:p-10 bg-white rounded-3xl shadow-[var(--shadow)] transition-transform duration-300 hover:-translate-y-2"
         >
-          <div class="icon">
-            <span class="material-symbols-outlined">
-
+          <div class="w-[70px] h-[70px] rounded-[18px] flex justify-center items-center bg-[var(--gold-soft)] mb-6">
+            <span class="material-symbols-outlined text-[38px] text-[var(--gold)]">
               {{ service.icon }}
-
             </span>
           </div>
 
-          <h3>
+          <h3 class="text-xl md:text-2xl font-semibold text-[var(--slate)] mb-4">
             {{ service.title }}
           </h3>
 
-          <p>
+          <p class="text-gray-600 leading-relaxed">
             {{ service.text }}
           </p>
 
-          <!-- <a href="#">
-
-Learn More →
-
-</a> -->
+          <!-- <a href="#" class="font-semibold text-[var(--gold)]">Learn More →</a> -->
         </div>
       </div>
     </div>
   </section>
 </template>
-
-
-<style scoped>
-
-.services{
-
-background:#F9FAFB;
-
-}
-
-.section-title{
-
-text-align:center;
-
-max-width:700px;
-
-margin:auto auto 70px;
-
-}
-
-.section-title p{
-
-font-weight:700;
-
-color:var(--gold);
-
-letter-spacing:2px;
-
-margin-bottom:15px;
-
-}
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:35px;
-
-}
-
-.service-card{
-
-padding:40px;
-
-background:white;
-
-border-radius:24px;
-
-box-shadow:var(--shadow);
-
-transition:.35s;
-
-}
-
-.service-card:hover{
-
-transform:translateY(-10px);
-
-}
-
-.icon{
-
-width:70px;
-
-height:70px;
-
-border-radius:18px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:var(--gold-soft);
-
-margin-bottom:25px;
-
-}
-
-.icon span{
-
-font-size:38px;
-
-color:var(--gold);
-
-}
-
-h3{
-
-margin-bottom:18px;
-
-font-size:1.4rem;
-
-}
-
-p{
-
-margin-bottom:25px;
-
-}
-
-a{
-
-font-weight:600;
-
-color:var(--gold);
-
-}
-
-@media(max-width:900px){
-
-.cards{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-</style>

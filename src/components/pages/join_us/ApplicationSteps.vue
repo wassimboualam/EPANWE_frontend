@@ -5,19 +5,16 @@ const steps = [
     title: 'Sign up to the service',
     text: "Sign up and make an account on this website. You'll receive a e-mail indicating your password",
   },
-
   {
     number: '02',
     title: 'Login here and access the dashboard',
     text: 'After acquiring the password from the e-mail, you must login here to get to the dashboard.',
   },
-
   {
     number: '03',
     title: 'Make a joining request',
     text: 'From there, after seeing the dashboard, make a request to join our back-office.',
   },
-
   {
     number: '04',
     title: "We'll Contact you",
@@ -29,30 +26,36 @@ const steps = [
 <template>
   <section
     id="steps"
-    class="steps"
+    class="steps bg-white py-16 md:py-24"
   >
     <div class="container">
-      <div class="heading">
-        <p>APPLICATION PROCESS</p>
+      <div class="text-center mb-12 md:mb-[70px]">
+        <p class="text-[var(--gold)] font-bold tracking-[2px] mb-3 text-sm md:text-base">
+          APPLICATION PROCESS
+        </p>
 
-        <h2>Joining is Simple</h2>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-[var(--slate)]">
+          Joining is Simple
+        </h2>
       </div>
 
-      <div class="timeline">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-[30px]">
         <div
           v-for="step in steps"
           :key="step.number"
-          class="step"
+          class="step p-8 md:p-9 text-center"
         >
-          <div class="number">
+          <div
+            class="w-[70px] h-[70px] rounded-full bg-[var(--gold)] text-white flex justify-center items-center text-[1.3rem] font-bold mx-auto mb-6"
+          >
             {{ step.number }}
           </div>
 
-          <h3>
+          <h3 class="text-lg md:text-xl font-semibold text-[var(--slate)] mb-4">
             {{ step.title }}
           </h3>
 
-          <p>
+          <p class="text-gray-600 leading-relaxed">
             {{ step.text }}
           </p>
         </div>
@@ -60,80 +63,3 @@ const steps = [
     </div>
   </section>
 </template>
-
-<style scoped>
-.steps {
-  background: white;
-  border-radius: 2%;
-  /* box-shadow: 0px 2px 5px rgb(216, 216, 216); */
-  /* margin-bottom: 10px; */
-}
-
-.heading {
-  text-align: center;
-
-  margin-bottom: 70px;
-}
-
-.heading p {
-  color: var(--gold);
-
-  font-weight: 700;
-
-  letter-spacing: 2px;
-}
-
-.timeline {
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 30px;
-}
-
-.step {
-  padding: 35px;
-
-  text-align: center;
-}
-
-.number {
-  width: 70px;
-
-  height: 70px;
-
-  border-radius: 50%;
-
-  background: var(--gold);
-
-  color: white;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  font-size: 1.3rem;
-
-  font-weight: 700;
-
-  margin: 0 auto 25px;
-}
-
-.step h3 {
-  margin-bottom: 15px;
-}
-
-@media (max-width: 900px) {
-  .timeline {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .timeline {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

@@ -10,21 +10,15 @@ const loading = ref(false)
 
 const form = reactive({
   name: '',
-
   email: '',
-
   subject: '',
-
   message: '',
 })
 
 const errors = reactive({
   name: '',
-
   email: '',
-
   subject: '',
-
   message: '',
 })
 
@@ -37,29 +31,24 @@ function validate() {
 
   if (!form.name.trim()) {
     errors.name = 'Please enter your name.'
-
     valid = false
   }
 
   if (!form.email.trim()) {
     errors.email = 'Please enter your email.'
-
     valid = false
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
     errors.email = 'Please enter a valid email.'
-
     valid = false
   }
 
   if (!form.subject.trim()) {
     errors.subject = 'Please enter a subject.'
-
     valid = false
   }
 
   if (form.message.trim().length < 20) {
     errors.message = 'Your message must contain at least 20 characters.'
-
     valid = false
   }
 
@@ -93,77 +82,91 @@ async function send() {
 </script>
 
 <template>
-  <section class="section">
-    <div class="container">
+  <section class="py-16 md:py-20 lg:py-[80px]">
+    <div class="container grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-10 md:gap-12 lg:gap-[50px] items-start">
       <div class="intro">
-        <span> GET IN TOUCH </span>
+        <span class="text-[var(--gold)] font-semibold tracking-[2px] text-sm md:text-[0.9rem]">
+          GET IN TOUCH
+        </span>
 
-        <h2>Send us a Message</h2>
+        <h2 class="my-5 text-2xl md:text-3xl lg:text-[2.4rem] font-bold text-[var(--slate)] leading-tight">
+          Send us a Message
+        </h2>
 
-        <p>Complete the form below and our team will reply as soon as possible.</p>
+        <p class="text-gray-500 leading-[1.8]">
+          Complete the form below and our team will reply as soon as possible.
+        </p>
       </div>
 
       <form
-        class="card"
+        class="card bg-white p-6 sm:p-8 md:p-10 rounded-3xl shadow-[var(--shadow)]"
         @submit.prevent="send"
       >
-        <div class="grid">
-          <div class="field">
-            <label> Full Name </label>
-
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-[22px]">
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">Full Name</label>
             <input
               v-model="form.name"
-              :class="{ invalid: errors.name }"
+              class="px-4 py-[15px] border rounded-[14px] font-[inherit] text-base transition-colors duration-200 focus:outline-none focus:border-[var(--gold)]"
+              :class="errors.name ? 'border-red-600' : 'border-gray-300'"
             >
-
-            <small v-if="errors.name">
+            <small
+              v-if="errors.name"
+              class="text-red-600 text-sm"
+            >
               {{ errors.name }}
             </small>
           </div>
 
-          <div class="field">
-            <label> Email Address </label>
-
+          <div class="flex flex-col gap-2">
+            <label class="font-semibold text-[var(--slate)]">Email Address</label>
             <input
               v-model="form.email"
               type="email"
-              :class="{ invalid: errors.email }"
+              class="px-4 py-[15px] border rounded-[14px] font-[inherit] text-base transition-colors duration-200 focus:outline-none focus:border-[var(--gold)]"
+              :class="errors.email ? 'border-red-600' : 'border-gray-300'"
             >
-
-            <small v-if="errors.email">
+            <small
+              v-if="errors.email"
+              class="text-red-600 text-sm"
+            >
               {{ errors.email }}
             </small>
           </div>
 
-          <div class="field full">
-            <label> Subject </label>
-
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <label class="font-semibold text-[var(--slate)]">Subject</label>
             <input
               v-model="form.subject"
-              :class="{ invalid: errors.subject }"
+              class="px-4 py-[15px] border rounded-[14px] font-[inherit] text-base transition-colors duration-200 focus:outline-none focus:border-[var(--gold)]"
+              :class="errors.subject ? 'border-red-600' : 'border-gray-300'"
             >
-
-            <small v-if="errors.subject">
+            <small
+              v-if="errors.subject"
+              class="text-red-600 text-sm"
+            >
               {{ errors.subject }}
             </small>
           </div>
 
-          <div class="field full">
-            <label> Message </label>
-
+          <div class="flex flex-col gap-2 md:col-span-2">
+            <label class="font-semibold text-[var(--slate)]">Message</label>
             <textarea
               v-model="form.message"
               rows="8"
-              :class="{ invalid: errors.message }"
+              class="px-4 py-[15px] border rounded-[14px] font-[inherit] text-base resize-y transition-colors duration-200 focus:outline-none focus:border-[var(--gold)]"
+              :class="errors.message ? 'border-red-600' : 'border-gray-300'"
             />
-
-            <small v-if="errors.message">
+            <small
+              v-if="errors.message"
+              class="text-red-600 text-sm"
+            >
               {{ errors.message }}
             </small>
           </div>
         </div>
 
-        <div class="actions">
+        <div class="mt-8 flex justify-end">
           <Button
             text="Send Message"
             :loading="loading"
@@ -174,139 +177,3 @@ async function send() {
     </div>
   </section>
 </template>
-
-<style scoped>
-.section {
-  padding: 80px 0;
-}
-
-.container {
-  width: min(1100px, 90%);
-
-  margin: auto;
-
-  display: grid;
-
-  grid-template-columns: 350px 1fr;
-
-  gap: 50px;
-
-  align-items: start;
-}
-
-.intro span {
-  color: var(--gold);
-
-  font-weight: 600;
-
-  letter-spacing: 2px;
-
-  font-size: 0.9rem;
-}
-
-.intro h2 {
-  margin: 20px 0;
-
-  font-size: 2.4rem;
-}
-
-.intro p {
-  line-height: 1.8;
-
-  color: #666;
-}
-
-.card {
-  background: white;
-
-  padding: 40px;
-
-  border-radius: 24px;
-
-  box-shadow: var(--shadow);
-}
-
-.grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 22px;
-}
-
-.full {
-  grid-column: 1/-1;
-}
-
-.field {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 8px;
-}
-
-label {
-  font-weight: 600;
-}
-
-input,
-textarea {
-  padding: 15px;
-
-  border: 1px solid #ddd;
-
-  border-radius: 14px;
-
-  font-family: inherit;
-
-  font-size: 1rem;
-
-  transition: 0.25s;
-
-  resize: vertical;
-}
-
-input:focus,
-textarea:focus {
-  outline: none;
-
-  border-color: var(--gold);
-}
-
-.invalid {
-  border-color: #dc2626;
-}
-
-small {
-  color: #dc2626;
-}
-
-.actions {
-  margin-top: 30px;
-
-  display: flex;
-
-  justify-content: flex-end;
-}
-
-@media (max-width: 900px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .full {
-    grid-column: auto;
-  }
-
-  .card {
-    padding: 30px;
-  }
-}
-</style>
