@@ -59,11 +59,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section class="card flex justify-between items-center">
+  <section
+    class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-6
+           p-6 md:p-8 lg:p-[30px_35px]
+           bg-white rounded-3xl shadow-[var(--shadow)]"
+  >
     <div>
-      <h2>Back-Office Access</h2>
+      <h2 class="text-lg md:text-xl font-bold text-[var(--slate)] mb-3">
+        Back-Office Access
+      </h2>
 
-      <p>
+      <p class="max-w-[500px] text-gray-500 leading-relaxed">
         Request access to the EPANWE Back-Office Platform to benefit from our full extended support
         and have access to all the services we provide.
       </p>
@@ -72,10 +78,9 @@ onMounted(async () => {
     <BaseButton
       text="Request Access"
       :disabled="hasApplied"
+      class="self-start sm:self-auto shrink-0"
       @click="showModal = true"
     />
-
-    <!-- <BaseButton v-else text="View Request" styleType="secondary" /> -->
 
     <BaseModal
       v-if="showModal"
@@ -83,7 +88,7 @@ onMounted(async () => {
       @close="showModal = false"
     >
       <p>Are you sure you want to make that request?</p>
-      <div class="modal-lower" />
+      <div class="w-full flex justify-end mt-8" />
       <template #footer>
         <BaseButton
           text="Confirm"
@@ -95,50 +100,3 @@ onMounted(async () => {
     </BaseModal>
   </section>
 </template>
-
-<style scoped>
-.card {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  padding: 30px 35px;
-
-  background: white;
-
-  border-radius: 20px;
-
-  box-shadow: var(--shadow);
-}
-
-h2 {
-  margin-bottom: 10px;
-}
-
-p {
-  max-width: 500px;
-
-  color: #666;
-
-  line-height: 1.6;
-}
-
-.modal-lower {
-  width: 100%;
-  display: flex;
-  justify-content: end;
-  margin-top: 2rem;
-}
-
-@media (max-width: 700px) {
-  .card {
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 25px;
-  }
-}
-</style>

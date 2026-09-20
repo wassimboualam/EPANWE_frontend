@@ -20,47 +20,51 @@ const form = reactive({
 </script>
 
 <template>
-  <section class="card">
-    <h2>Personal Information</h2>
+  <section class="bg-white p-6 md:p-8 lg:p-[35px] rounded-3xl shadow-[var(--shadow)]">
+    <h2 class="text-xl md:text-2xl font-bold text-[var(--slate)] mb-6 md:mb-8">
+      Personal Information
+    </h2>
 
-    <div class="grid">
-      <div class="field">
-        <label> First Name </label>
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div class="flex flex-col gap-2">
+        <label class="font-semibold text-[var(--slate)]">First Name</label>
         <input
           v-model="form.first_name"
           type="text"
+          class="px-4 py-3.5 rounded-xl border border-gray-300 text-base font-[inherit]
+                 focus:outline-none focus:border-[var(--gold)] transition-colors"
         >
       </div>
 
-      <div class="field">
-        <label> Last Name </label>
-
+      <div class="flex flex-col gap-2">
+        <label class="font-semibold text-[var(--slate)]">Last Name</label>
         <input
           v-model="form.last_name"
           type="text"
+          class="px-4 py-3.5 rounded-xl border border-gray-300 text-base font-[inherit]
+                 focus:outline-none focus:border-[var(--gold)] transition-colors"
         >
       </div>
 
-      <div class="field">
-        <label> Age </label>
-
+      <div class="flex flex-col gap-2">
+        <label class="font-semibold text-[var(--slate)]">Age</label>
         <input
           v-model="form.age"
           type="number"
+          class="px-4 py-3.5 rounded-xl border border-gray-300 text-base font-[inherit]
+                 focus:outline-none focus:border-[var(--gold)] transition-colors"
         >
       </div>
 
-      <div class="field">
-        <label> Gender </label>
-
-        <select v-model="form.gender">
-          <option value="male">
-            Male
-          </option>
-          <option value="female">
-            Female
-          </option>
+      <div class="flex flex-col gap-2">
+        <label class="font-semibold text-[var(--slate)]">Gender</label>
+        <select
+          v-model="form.gender"
+          class="px-4 py-3.5 rounded-xl border border-gray-300 text-base font-[inherit] bg-white
+                 focus:outline-none focus:border-[var(--gold)] transition-colors"
+        >
+          <option value="male">Male</option>
+          <option value="female">Female</option>
           <option
             v-if="user.role === 'admin'"
             value="clank"
@@ -71,7 +75,7 @@ const form = reactive({
       </div>
     </div>
 
-    <div class="actions">
+    <div class="mt-8 flex justify-end">
       <BaseButton
         text="Save Changes"
         @click="emit('submit', form)"
@@ -79,72 +83,3 @@ const form = reactive({
     </div>
   </section>
 </template>
-
-<style scoped>
-.card {
-  background: white;
-
-  padding: 35px;
-
-  border-radius: 20px;
-
-  box-shadow: var(--shadow);
-}
-
-h2 {
-  margin-bottom: 30px;
-}
-
-.grid {
-  display: grid;
-
-  grid-template-columns: repeat(2, 1fr);
-
-  gap: 20px;
-}
-
-.full {
-  grid-column: 1/-1;
-}
-
-.field {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 8px;
-}
-
-label {
-  font-weight: 600;
-}
-
-input,
-select {
-  padding: 14px;
-
-  border-radius: 12px;
-
-  border: 1px solid #ddd;
-
-  font-size: 1rem;
-}
-
-.actions {
-  margin-top: 30px;
-
-  display: flex;
-
-  justify-content: flex-end;
-}
-
-@media (max-width: 700px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .full {
-    grid-column: auto;
-  }
-}
-</style>

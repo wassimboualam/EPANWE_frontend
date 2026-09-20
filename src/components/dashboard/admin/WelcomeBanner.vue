@@ -3,19 +3,30 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
-  <section class="banner">
-    <div class="content">
-      <span class="eyebrow"> ADMIN DASHBOARD </span>
+  <section
+    class="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-6 lg:gap-[30px]
+           p-6 md:p-8 lg:p-10
+           bg-white rounded-3xl shadow-[var(--shadow)]"
+  >
+    <div class="max-w-[700px]">
+      <span
+        class="inline-block px-3.5 py-1.5 rounded-full bg-[var(--gold-soft)] text-[var(--gold)]
+               font-semibold text-xs md:text-[0.85rem] mb-4"
+      >
+        ADMIN DASHBOARD
+      </span>
 
-      <h1>Welcome back!</h1>
+      <h1 class="text-2xl md:text-[2rem] font-bold text-[var(--slate)] mb-4">
+        Welcome back!
+      </h1>
 
-      <p>
+      <p class="text-gray-500 leading-[1.8]">
         Review and manage applications submitted through the EPANWE website. New requests requiring
         your attention will appear below.
       </p>
     </div>
 
-    <a href="#requests">
+    <a href="#requests" class="self-start lg:self-auto">
       <BaseButton
         text="View Pending Requests"
         color="primary"
@@ -23,65 +34,3 @@ import BaseButton from '@/components/ui/BaseButton.vue'
     </a>
   </section>
 </template>
-
-<style scoped>
-.banner {
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  gap: 30px;
-
-  padding: 40px;
-
-  background: white;
-
-  border-radius: 24px;
-
-  box-shadow: var(--shadow);
-}
-
-.content {
-  max-width: 700px;
-}
-
-.eyebrow {
-  display: inline-block;
-
-  padding: 6px 14px;
-
-  border-radius: 999px;
-
-  background: var(--gold-soft);
-
-  color: var(--gold);
-
-  font-weight: 600;
-
-  font-size: 0.85rem;
-
-  margin-bottom: 18px;
-}
-
-h1 {
-  font-size: 2rem;
-
-  margin-bottom: 16px;
-}
-
-p {
-  color: #666;
-
-  line-height: 1.8;
-}
-
-@media (max-width: 900px) {
-  .banner {
-    flex-direction: column;
-
-    align-items: flex-start;
-  }
-}
-</style>

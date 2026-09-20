@@ -22,30 +22,31 @@ function submitEmail(email) {
 </script>
 
 <template>
-  <section class="card">
-    <h2>Security</h2>
+  <section class="bg-white p-6 md:p-8 lg:p-[35px] rounded-3xl shadow-[var(--shadow)]">
+    <h2 class="text-xl md:text-2xl font-bold text-[var(--slate)] mb-2">
+      Security
+    </h2>
 
-    <p class="subtitle">
+    <p class="text-gray-500 mt-2 mb-8">
       Update your email.
     </p>
 
-    <div class="field">
-      <label> Email </label>
-
-      <div class="relative email">
-        <input
-          v-model="email"
-          class="w-full p-3.5 rounded-xl"
-          type="email"
-        >
-      </div>
+    <div class="flex flex-col gap-2 mb-6">
+      <label class="font-semibold text-[var(--slate)]">Email</label>
+      <input
+        v-model="email"
+        type="email"
+        class="w-full px-4 py-3.5 rounded-xl border border-gray-300 text-base font-[inherit]
+               focus:outline-none focus:border-[var(--gold)] transition-colors"
+      >
     </div>
 
-    <div class="actions">
+    <div class="flex justify-end">
       <BaseButton
         text="Update E-mail"
         @click="showModal = true"
       />
+
       <BaseModal
         v-if="showModal"
         title="Changing e-mail"
@@ -61,11 +62,11 @@ function submitEmail(email) {
       </BaseModal>
     </div>
 
-    <p class="subtitle">
+    <p class="text-gray-500 mt-8 mb-6">
       Refresh your password.
     </p>
 
-    <div class="actions">
+    <div class="flex justify-end">
       <BaseButton
         text="Refresh password"
         @click="emit('refreshPassword')"
@@ -73,73 +74,3 @@ function submitEmail(email) {
     </div>
   </section>
 </template>
-
-<style scoped>
-.card {
-  background: white;
-
-  padding: 35px;
-
-  border-radius: 20px;
-
-  box-shadow: var(--shadow);
-}
-
-.subtitle {
-  margin: 10px 0 30px;
-
-  color: #777;
-}
-
-.field {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 8px;
-
-  margin-bottom: 22px;
-}
-
-.password {
-  position: relative;
-}
-
-.email input {
-  width: 100%;
-
-  padding: 14px;
-
-  border-radius: 12px;
-
-  border: 1px solid #ddd;
-
-  font-size: 1rem;
-}
-
-.password button {
-  position: absolute;
-
-  top: 50%;
-
-  right: 14px;
-
-  transform: translateY(-50%);
-
-  background: none;
-
-  border: none;
-
-  cursor: pointer;
-
-  color: #777;
-}
-
-.actions {
-  display: flex;
-
-  justify-content: flex-end;
-
-  margin-top: 30px;
-}
-</style>

@@ -1,70 +1,26 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
-  <section class="banner">
+  <section
+    class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-5
+           p-6 md:p-8 lg:p-[30px_35px]
+           bg-white rounded-3xl shadow-[var(--shadow)]"
+  >
     <div>
-      <span class="badge"> ACCOUNT </span>
+      <span
+        class="inline-block px-3.5 py-1.5 bg-[var(--gold-soft)] text-[var(--gold)]
+               rounded-full text-xs md:text-[0.85rem] font-semibold mb-3"
+      >
+        ACCOUNT
+      </span>
 
-      <h1>Welcome Back 👋</h1>
+      <h1 class="text-2xl md:text-[2rem] font-bold text-[var(--slate)] mb-3">
+        Welcome Back 👋
+      </h1>
 
-      <p>Manage your account and request access to the EPANWE Back-Office Platform.</p>
+      <p class="text-gray-500 max-w-[500px] leading-relaxed">
+        Manage your account and request access to the EPANWE Back-Office Platform.
+      </p>
     </div>
-
-    <!-- <Button text="Edit Profile" styleType="secondary" /> -->
   </section>
 </template>
-
-<style scoped>
-.banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  padding: 30px 35px;
-
-  background: white;
-
-  border-radius: 20px;
-
-  box-shadow: var(--shadow);
-}
-
-.badge {
-  display: inline-block;
-
-  padding: 6px 14px;
-
-  background: var(--gold-soft);
-
-  color: var(--gold);
-
-  border-radius: 999px;
-
-  font-size: 0.85rem;
-
-  font-weight: 600;
-
-  margin-bottom: 12px;
-}
-
-h1 {
-  font-size: 2rem;
-
-  margin-bottom: 10px;
-}
-
-p {
-  color: #666;
-
-  max-width: 500px;
-}
-
-@media (max-width: 700px) {
-  .banner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-  }
-}
-</style>

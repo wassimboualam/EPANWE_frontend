@@ -11,106 +11,39 @@ const props = defineProps({
 const initials = computed(() => {
   return (props.user.first_name.charAt(0) + props.user.last_name.charAt(0)).toUpperCase()
 })
-
-// TODO
-/*
-function changePhoto() {
-
-}
-*/
 </script>
 
 <template>
-  <section class="card">
+  <section
+    class="bg-white rounded-3xl p-6 md:p-8 lg:p-[35px] shadow-[var(--shadow)]
+           flex flex-col items-center gap-5"
+  >
     <div
       v-if="user.avatar"
-      class="avatar image"
+      class="w-[120px] h-[120px] rounded-full overflow-hidden flex justify-center items-center
+             bg-[var(--gold)] text-white"
     >
       <img
         :src="user.avatar"
         alt="Profile picture"
+        class="w-full h-full object-cover"
       >
     </div>
 
     <div
       v-else
-      class="avatar"
+      class="w-[120px] h-[120px] rounded-full flex justify-center items-center
+             bg-[var(--gold)] text-white text-[2rem] font-bold overflow-hidden"
     >
       {{ initials }}
     </div>
 
-    <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+    <h3 class="text-lg md:text-[1.25rem] font-semibold text-[var(--slate)] text-center">
+      {{ user.first_name }} {{ user.last_name }}
+    </h3>
 
-    <p>
+    <p class="text-gray-500 text-center break-words">
       {{ user.email }}
     </p>
-
-    <!-- <Button text="Change Photo" type="secondary" @click="changePhoto" /> -->
   </section>
 </template>
-
-<style scoped>
-.card {
-  background: white;
-
-  border-radius: 20px;
-
-  padding: 35px;
-
-  box-shadow: var(--shadow);
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  gap: 18px;
-}
-
-.avatar {
-  width: 120px;
-
-  height: 120px;
-
-  border-radius: 50%;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  background: var(--gold);
-
-  color: white;
-
-  font-size: 2rem;
-
-  font-weight: 700;
-
-  overflow: hidden;
-}
-
-.avatar img {
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-}
-
-h3 {
-  font-size: 1.25rem;
-
-  text-align: center;
-}
-
-p {
-  color: #777;
-
-  text-align: center;
-
-  word-break: break-word;
-}
-</style>

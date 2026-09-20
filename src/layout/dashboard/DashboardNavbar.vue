@@ -5,134 +5,47 @@ const props = defineProps({
   user: {
     type: Object,
     default: () => ({
-      firstName: 'f_name',
-      lastName: 'l_name',
+      first_name: 'f_name',
+      last_name: 'l_name',
     }),
   },
   class: {
     type: String,
-    default: () => '',
+    default: '',
   },
 })
 </script>
 
 <template>
   <header
-    class="navbar"
+    class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 sm:gap-0
+           bg-white border-b border-gray-200
+           px-5 py-4  sm:px-[30px] sm:py-0"
     :class="props.class"
-    style="margin-bottom: 3rem"
   >
     <div>
-      <p class="breadcrumb">
+      <p class="text-[0.8rem] uppercase tracking-[1px] text-gray-400 mt-2 sm:mt-3">
         Dashboard
       </p>
 
-      <h2>
+      <h2 class="text-xl sm:text-[1.35rem] font-bold mb-2 sm:mb-3 text-[var(--slate)]">
         Welcome back,
         {{ user.first_name }}
       </h2>
     </div>
 
-    <div class="actions">
-      <!-- <button class="icon-btn">
-        <span class="material-symbols-outlined"> notifications </span>
+    <div class="flex items-center gap-3 self-end sm:self-auto">
+      <!--
+      <button class="w-[42px] h-[42px] flex justify-center items-center bg-[#f7f7f7] rounded-xl transition-colors duration-200 hover:bg-[var(--gold-soft)] hover:text-[var(--gold)] cursor-pointer">
+        <span class="material-symbols-outlined">notifications</span>
       </button>
 
-      <button class="icon-btn">
-        <span class="material-symbols-outlined"> settings </span>
-      </button> -->
+      <button class="w-[42px] h-[42px] flex justify-center items-center bg-[#f7f7f7] rounded-xl transition-colors duration-200 hover:bg-[var(--gold-soft)] hover:text-[var(--gold)] cursor-pointer">
+        <span class="material-symbols-outlined">settings</span>
+      </button>
+      -->
 
       <DropdownAvatar />
     </div>
   </header>
 </template>
-
-<style scoped>
-.navbar {
-  height: 72px;
-
-  padding: 0 30px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background: white;
-
-  border-bottom: 1px solid #eee;
-}
-
-.breadcrumb {
-  font-size: 0.8rem;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-  color: #999;
-
-  margin-top: 12px;
-}
-
-h2 {
-  font-size: 1.35rem;
-
-  font-weight: 700;
-}
-
-.actions {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-}
-
-.icon-btn {
-  width: 42px;
-
-  height: 42px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  background: #f7f7f7;
-
-  border: none;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.icon-btn:hover {
-  background: var(--gold-soft);
-
-  color: var(--gold);
-}
-
-@media (max-width: 700px) {
-  .navbar {
-    height: auto;
-
-    padding: 20px;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 18px;
-  }
-
-  .actions {
-    width: 100%;
-
-    justify-content: flex-end;
-  }
-}
-</style>

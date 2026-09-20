@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive, ref } from 'vue'
 import { useRequestStore } from './request'
-import { useUserStore } from './user'
 
 export const useDashboardStore = defineStore('dashboard', {
   state: () => ({
@@ -28,14 +27,6 @@ export const useDashboardStore = defineStore('dashboard', {
         name === page.name ? (page.isActive = true) : (page.isActive = false),
       )
       this.currentPage = name
-    },
-    async setPages() {
-      const userStore = useUserStore()
-      if (userStore.userInfo.role === 'admin') {
-        this.pages[0].link = '/admin'
-      } else {
-        this.pages[0].link = '/dashboard'
-      }
     },
     apply() {
       this.hasApplied = true

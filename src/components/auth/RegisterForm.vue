@@ -66,7 +66,6 @@ let csrf
 const disabled = ref(false)
 
 const register = async () => {
-  // If form not valid
   if (!validate()) {
     return
   }
@@ -94,64 +93,70 @@ onMounted(async () => {
 
 <template>
   <form @submit.prevent="register">
-    <h2>Create Account</h2>
+    <h2 class="text-2xl md:text-[2rem] font-bold text-[var(--slate)] mb-3">
+      Create Account
+    </h2>
 
-    <p class="subtitle">
+    <p class="text-gray-500 mb-8 md:mb-9">
       Join the EPANWE community.
     </p>
 
-    <div class="row">
-      <div class="field">
-        <label>First Name</label>
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+      <div class="flex flex-col gap-2 mb-1">
+        <label class="font-semibold text-[var(--slate)]">First Name</label>
         <input
           v-model="form.firstName"
           type="text"
+          class="w-full px-4 py-[15px] border rounded-[14px] text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
+          :class="errors.firstName ? 'border-red-600' : 'border-gray-300'"
         >
         <small
           v-if="errors.firstName"
-          class="error"
+          class="text-red-600 text-sm mt-1"
         >
           {{ errors.firstName }}
         </small>
       </div>
 
-      <div class="field">
-        <label>Last Name</label>
-
+      <div class="flex flex-col gap-2 mb-1">
+        <label class="font-semibold text-[var(--slate)]">Last Name</label>
         <input
           v-model="form.lastName"
           type="text"
+          class="w-full px-4 py-[15px] border rounded-[14px] text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
+          :class="errors.lastName ? 'border-red-600' : 'border-gray-300'"
         >
         <small
           v-if="errors.lastName"
-          class="error"
+          class="text-red-600 text-sm mt-1"
         >
           {{ errors.lastName }}
         </small>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="field">
-        <label>Age</label>
-
+      <div class="flex flex-col gap-2 mb-1">
+        <label class="font-semibold text-[var(--slate)]">Age</label>
         <input
           v-model="form.age"
           type="number"
+          class="w-full px-4 py-[15px] border rounded-[14px] text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
+          :class="errors.age ? 'border-red-600' : 'border-gray-300'"
         >
         <small
           v-if="errors.age"
-          class="error"
+          class="text-red-600 text-sm mt-1"
         >
           {{ errors.age }}
         </small>
       </div>
 
-      <div class="field">
-        <label>Gender</label>
-
-        <select v-model="form.gender">
+      <div class="flex flex-col gap-2 mb-1">
+        <label class="font-semibold text-[var(--slate)]">Gender</label>
+        <select
+          v-model="form.gender"
+          class="w-full px-4 py-[15px] border rounded-[14px] text-base font-[inherit] bg-white focus:outline-none focus:border-[var(--gold)] transition-colors"
+          :class="errors.gender ? 'border-red-600' : 'border-gray-300'"
+        >
           <option value="male">
             Male
           </option>
@@ -161,23 +166,24 @@ onMounted(async () => {
         </select>
         <small
           v-if="errors.gender"
-          class="error"
+          class="text-red-600 text-sm mt-1"
         >
           {{ errors.gender }}
         </small>
       </div>
     </div>
 
-    <div class="field">
-      <label>Email</label>
-
+    <div class="flex flex-col gap-2 mt-1 mb-6">
+      <label class="font-semibold text-[var(--slate)]">Email</label>
       <input
         v-model="form.email"
         type="email"
+        class="w-full px-4 py-[15px] border rounded-[14px] text-base font-[inherit] focus:outline-none focus:border-[var(--gold)] transition-colors"
+        :class="errors.email ? 'border-red-600' : 'border-gray-300'"
       >
       <small
         v-if="errors.email"
-        class="error"
+        class="text-red-600 text-sm mt-1"
       >
         {{ errors.email }}
       </small>
@@ -194,93 +200,14 @@ onMounted(async () => {
       :disabled="disabled"
     />
 
-    <p class="bottom">
+    <p class="mt-8 text-center text-[var(--slate)]">
       Already have an account?
-
-      <RouterLink to="/login">
+      <RouterLink
+        to="/login"
+        class="text-[var(--gold)] font-semibold hover:underline ml-1"
+      >
         Sign In
       </RouterLink>
     </p>
   </form>
 </template>
-
-<style scoped>
-h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.subtitle {
-  color: #666;
-  margin-bottom: 35px;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-label {
-  font-weight: 600;
-}
-
-input,
-select {
-  width: 100%;
-  padding: 15px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-}
-
-.password {
-  position: relative;
-}
-
-.password button {
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-.checkbox {
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-  margin: 30px 0;
-}
-
-.checkbox input {
-  width: auto;
-  margin-top: 4px;
-}
-
-.bottom {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.error {
-  color: #d32f2f;
-  font-size: 0.875rem;
-  margin-top: 4px;
-}
-
-@media (max-width: 650px) {
-  .row {
-    grid-template-columns: 1fr;
-  }
-}
-</style>

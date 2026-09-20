@@ -17,18 +17,12 @@ let csrf
 
 async function updateEmail() {
   const o = await userStore.confirmEmailChange(csrf, route.params.id)
-  console.log(o)
   const { title, message, type } = o
-  toastStore.show({
-    title,
-    message,
-    type,
-  })
+  toastStore.show({ title, message, type })
   router.push('/dashboard')
 }
 
 onMounted(async () => {
-  console.log('EmailChangePageView called')
   csrf = await getCsrf()
 })
 </script>

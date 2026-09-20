@@ -17,7 +17,6 @@ const userExists = computed(
 
 onMounted(async () => {
   await userStore.refreshUser()
-  // in case the user session has been expired
   if (!userStore.userExists) {
     toastStore.warning('You have been logged out. Please log back in.')
     return router.push('/login')
@@ -26,12 +25,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <WaitPage
-    v-if="
-      !userExists // checks if user doesn't exist
-    // (userStore.userInfo.role === 'admin' && requestStore.requests.length === 0)
-    "
-  />
+  <WaitPage v-if="!userExists" />
   <div v-else>
     <AdminDashboardLayout v-if="userStore.userInfo.role == 'admin'" />
     <DashboardLayout v-else />

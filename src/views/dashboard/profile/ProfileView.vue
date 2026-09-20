@@ -17,9 +17,7 @@ let csrf
 
 async function editInfo(form) {
   const { type, message } = await userStore.editInfo(form, csrf)
-
   userStore.refreshUser()
-
   toastStore.show({
     title: capitalise(type),
     message,
@@ -53,12 +51,12 @@ onMounted(async () => {
 
 <template>
   <div
-    class="profile-grid"
-    :class="userStore.userInfo.role === 'admin' ? 'mx-20' : ''"
+    class="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-6 lg:gap-[30px] items-start"
+    :class="userStore.userInfo.role === 'admin' ? 'lg:mx-10 xl:mx-20' : ''"
   >
     <AvatarUploader :user="userStore.userInfo" />
 
-    <div class="forms">
+    <div class="flex flex-col gap-6 lg:gap-[30px] min-w-0">
       <PersonalInfoForm
         :user="userStore.userInfo"
         @submit="editInfo"
@@ -72,65 +70,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.dashboard {
-  display: grid;
-
-  grid-template-columns: 270px 1fr;
-
-  min-height: 100vh;
-
-  background: #f7f8fa;
-}
-
-.content {
-  display: flex;
-
-  flex-direction: column;
-
-  overflow: hidden;
-}
-
-.page-content {
-  padding: 30px;
-}
-
-.profile-grid {
-  display: grid;
-
-  grid-template-columns: 320px 1fr;
-
-  gap: 30px;
-
-  align-items: start;
-}
-
-.forms {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 30px;
-}
-
-@media (max-width: 1000px) {
-  .dashboard {
-    grid-template-columns: 90px 1fr;
-  }
-
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 700px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-
-  .page-content {
-    padding: 20px;
-  }
-}
-</style>

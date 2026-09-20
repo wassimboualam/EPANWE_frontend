@@ -46,25 +46,25 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-  class: {
-    type: Array,
-    default: () => [],
-  },
+
   justifyContent: {
     type: String,
     default: 'center',
   },
 })
 
+const SIZE_CLASSES = {
+  sm: 'px-[18px] py-2.5 text-[0.9rem]',
+  md: 'px-7 py-3.5 text-base',
+  lg: 'px-[34px] py-[18px] text-[1.05rem]',
+}
+
 const classes = computed(() => [
+  'btn',
   props.variant,
   props.color,
-  props.size,
-  {
-    full: props.fullWidth,
-    loading: props.loading,
-  },
-  props.class,
+  SIZE_CLASSES[props.size] ?? SIZE_CLASSES.md,
+  { 'w-full': props.fullWidth },
 ])
 </script>
 
@@ -72,17 +72,18 @@ const classes = computed(() => [
   <button
     :type="buttonType"
     :class="classes"
-    :style="{ justifyContent: justifyContent }"
+    :style="{ justifyContent }"
     :disabled="disabled || loading"
   >
     <span
       v-if="loading"
-      class="material-symbols-outlined spinner"
-    > progress_activity </span>
+      class="material-symbols-outlined text-[18px] animate-spin"
+    >
+      progress_activity
+    </span>
     <span
-      v-else
+      v-else-if="icon"
       class="material-symbols-outlined"
-      :class="icon == '' || !icon ? 'd-none' : ''"
     >
       {{ icon }}
     </span>
@@ -94,242 +95,93 @@ const classes = computed(() => [
 </template>
 
 <style scoped>
-button {
-  display: inline-flex;
+@reference "tailwindcss";
 
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 8px;
-
-  border-radius: 14px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.25s;
-
-  border: 2px solid transparent;
-
-  font-family: inherit;
+.btn {
+  @apply inline-flex items-center justify-center gap-2
+         rounded-[14px] font-semibold cursor-pointer
+         border-2 border-transparent font-[inherit]
+         transition duration-200;
 }
 
-.d-none {
-  display: none;
-}
-
-/* ---------------- Sizes ---------------- */
-
-.sm {
-  padding: 10px 18px;
-
-  font-size: 0.9rem;
-}
-
-.md {
-  padding: 14px 28px;
-
-  font-size: 1rem;
-}
-
-.lg {
-  padding: 18px 34px;
-
-  font-size: 1.05rem;
-}
-
-.full {
-  width: 100%;
-}
-
-/* ---------------- Colors ---------------- */
-
-.primary {
-  --btn-color: var(--gold);
-  --btn-dim-color: var(--gold-soft);
-}
-
-.secondary {
-  --btn-color: var(--slate);
-  --btn-dim-color: var(--slate-soft);
-}
-
-.success {
-  --btn-color: #16a34a;
-  --btn-dim-color: #ddfeea;
-}
-
-.danger {
-  --btn-color: #dc2626;
-  --btn-dim-color: #fff5f5;
-}
-
-.warning {
-  --btn-color: #f59e0b;
-  --btn-dim-color: #fcefda;
-}
-
-.info {
-  --btn-color: #2563eb;
-  --btn-dim-color: #e0eaff;
-}
-
-.white {
-  --btn-color: white;
-  --btn-dim-color: rgb(240, 240, 240);
-  --alt-color: rgb(20, 20, 20);
-}
+/* ---------------- Color tokens ---------------- */
+.primary   { --btn-color: var(--gold);   --btn-dim-color: var(--gold-soft); }
+.secondary { --btn-color: var(--slate);  --btn-dim-color: var(--slate-soft); }
+.success   { --btn-color: #16a34a;       --btn-dim-color: #ddfeea; }
+.danger    { --btn-color: #dc2626;       --btn-dim-color: #fff5f5; }
+.warning   { --btn-color: #f59e0b;       --btn-dim-color: #fcefda; }
+.info      { --btn-color: #2563eb;       --btn-dim-color: #e0eaff; }
+.white     { --btn-color: white;         --btn-dim-color: #f0f0f0; --alt-color: #141414; }
 
 /* ---------------- Filled ---------------- */
-
 .filled {
   background: var(--btn-color);
-
   border-color: var(--btn-color);
-
-  color: var(--white);
+  color: white;
 }
-
-.filled.white {
-  color: var(--gold);
-}
-
-.filled:hover {
+.filled.white { color: var(--gold); }
+.filled:not(:disabled):hover {
   filter: brightness(1.06);
-
   transform: translateY(-2px);
 }
 
 /* ---------------- Outline ---------------- */
-
 .outline {
   background: transparent;
-
   border-color: var(--btn-color);
-
   color: var(--btn-color);
 }
-
-.outline:hover {
+.outline:not(:disabled):hover {
   background: var(--btn-color);
-}
-
-.outline.primary:hover,
-.outline.secondary:hover,
-.outline.success:hover,
-.outline.danger:hover,
-.outline.warning:hover,
-.outline.info:hover {
   color: white;
 }
-
-.outline.white:hover {
+.outline.white:not(:disabled):hover {
   color: var(--gold);
 }
 
-/* --------------- Dimmed ---------------- */
-
+/* ---------------- Dimmed ---------------- */
 .dimmed {
   background: var(--btn-dim-color);
-
   border-color: var(--btn-dim-color);
-
   color: var(--btn-color);
 }
-
-.dimmed:hover {
+.dimmed:not(:disabled):hover {
   background: var(--btn-color);
-  color: var(--white);
+  color: white;
 }
-
-.dimmed.white {
-  color: var(--alt-color);
-}
-
-.dimmed.white:hover {
+.dimmed.white { color: var(--alt-color); }
+.dimmed.white:not(:disabled):hover {
   background: var(--alt-color);
   color: var(--btn-color);
 }
 
 /* ---------------- Ghost ---------------- */
-
 .ghost {
   background: transparent;
-
   border-color: transparent;
-
   color: var(--btn-color);
 }
-
-.ghost:hover {
-  background: rgba(0, 0, 0, 0.05);
-}
-
-.ghost.white:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
+.ghost:not(:disabled):hover { background: rgba(0, 0, 0, 0.05); }
+.ghost.white:not(:disabled):hover { background: rgba(255, 255, 255, 0.15); }
 
 /* ---------------- Text ---------------- */
-
 .text {
   padding: 0;
-
   background: none;
-
   border: none;
-
-  color: var(--btn-color);
-
   border-radius: 0;
+  color: var(--btn-color);
 }
-
-.text:hover {
-  text-decoration: underline;
-}
+.text:not(:disabled):hover { text-decoration: underline; }
 
 /* ---------------- Disabled ---------------- */
-
-button:disabled {
+.btn:disabled {
   background: #d1d5db !important;
-
   border-color: #d1d5db !important;
-
   color: #6b7280 !important;
-
   cursor: not-allowed;
-
   opacity: 0.75;
-
   transform: none;
-
   filter: none;
-}
-
-button:disabled:hover {
-  background: #d1d5db !important;
-
-  transform: none;
-
-  filter: none;
-}
-
-/* ---------------- Spinner ---------------- */
-
-.spinner {
-  font-size: 18px;
-
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }
 </style>

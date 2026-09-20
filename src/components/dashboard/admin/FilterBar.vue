@@ -13,108 +13,38 @@ watch(filters, () => emit('change', { ...filters }), { deep: true })
 </script>
 
 <template>
-  <section class="filter-bar">
-    <div class="search">
-      <span class="material-symbols-outlined"> search </span>
-
+  <section
+    class="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-5
+           bg-white p-5 md:p-6 rounded-3xl shadow-[var(--shadow)]"
+  >
+    <div
+      class="flex-1 flex items-center gap-3 px-4
+             border border-gray-300 rounded-[14px]"
+    >
+      <span class="material-symbols-outlined text-gray-400">search</span>
       <input
         v-model="filters.search"
         placeholder="Search by name or email..."
+        class="w-full py-3.5 border-none outline-none text-[0.95rem] bg-transparent"
       >
     </div>
 
-    <select v-model="filters.status">
-      <option value="all">
-        All Statuses
-      </option>
-
-      <option value="pending">
-        Pending
-      </option>
-
-      <option value="approved">
-        Approved
-      </option>
-
-      <option value="rejected">
-        Rejected
-      </option>
+    <select
+      v-model="filters.status"
+      class="px-4 py-3.5 rounded-[14px] border border-gray-300 bg-white cursor-pointer text-[var(--slate)]"
+    >
+      <option value="all">All Statuses</option>
+      <option value="pending">Pending</option>
+      <option value="approved">Approved</option>
+      <option value="rejected">Rejected</option>
     </select>
 
-    <select v-model="filters.sort">
-      <option value="newest">
-        Newest First
-      </option>
-
-      <option value="oldest">
-        Oldest First
-      </option>
+    <select
+      v-model="filters.sort"
+      class="px-4 py-3.5 rounded-[14px] border border-gray-300 bg-white cursor-pointer text-[var(--slate)]"
+    >
+      <option value="newest">Newest First</option>
+      <option value="oldest">Oldest First</option>
     </select>
   </section>
 </template>
-
-<style scoped>
-.filter-bar {
-  display: flex;
-
-  gap: 20px;
-
-  align-items: center;
-
-  background: white;
-
-  padding: 20px;
-
-  border-radius: 20px;
-
-  box-shadow: var(--shadow);
-}
-
-.search {
-  flex: 1;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  padding: 0 16px;
-
-  border: 1px solid #ddd;
-
-  border-radius: 14px;
-}
-
-.search input {
-  width: 100%;
-
-  padding: 14px 0;
-
-  border: none;
-
-  outline: none;
-
-  font-size: 0.95rem;
-}
-
-select {
-  padding: 14px 18px;
-
-  border-radius: 14px;
-
-  border: 1px solid #ddd;
-
-  background: white;
-
-  cursor: pointer;
-}
-
-@media (max-width: 900px) {
-  .filter-bar {
-    flex-direction: column;
-
-    align-items: stretch;
-  }
-}
-</style>

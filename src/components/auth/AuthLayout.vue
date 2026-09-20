@@ -6,7 +6,7 @@ defineProps({
   },
   subtitle: {
     type: String,
-    default: "Continue your journey with EPANWE by signing into your account."
+    default: "Continue your journey with EPANWE by signing into your account.",
   },
   image: {
     type: String,
@@ -16,23 +16,30 @@ defineProps({
 </script>
 
 <template>
-  <section class="auth">
-    <div class="left">
-      <div class="overlay">
+  <section class="grid grid-cols-1 lg:grid-cols-[1fr_520px] min-h-screen py-0 bg-white">
+    <!-- Left: image + overlay (hidden below lg) -->
+    <div class="hidden lg:block relative overflow-hidden">
+      <div
+        class="absolute inset-0 z-[2] flex flex-col justify-center px-10 xl:px-20 py-20 text-white bg-black/45"
+      >
         <a
           href="/"
-          style="color: var(--slate)"
-          class="mb-4 hover:bg-slate-500 w-fit px-4 py-2 rounded-full active:bg-slate-600"
+          class="mb-4 w-fit px-4 py-2 rounded-full text-[var(--slate)] bg-white/80 hover:bg-slate-500 hover:text-white active:bg-slate-600 transition-colors"
         >
-          <span> <- Go back to home page</span>
+          ← Go back to home page
         </a>
-        <span class="badge"> EPANWE </span>
 
-        <h1>
+        <span
+          class="inline-block w-fit px-[18px] py-2 rounded-full bg-white/15 backdrop-blur-md mb-8 text-sm font-semibold"
+        >
+          EPANWE
+        </span>
+
+        <h1 class="text-3xl xl:text-5xl font-bold mb-5 leading-tight">
           {{ title }}
         </h1>
 
-        <p>
+        <p class="text-base xl:text-lg leading-[1.8] max-w-[420px]">
           {{ subtitle }}
         </p>
       </div>
@@ -40,122 +47,26 @@ defineProps({
       <img
         :src="image"
         alt=""
+        class="w-full h-full object-cover"
       >
     </div>
 
-    <div class="right">
-      <div class="form-container">
+    <!-- Right: form area -->
+    <div class="flex flex-col items-center px-5 py-10 sm:px-8 md:px-10 md:py-14 lg:p-[60px]">
+      <!-- Top row: back link (mobile only) + logo -->
+      <div class="w-full max-w-[420px] flex items-center justify-between mb-16 md:mb-24">
+        <a
+          href="/"
+          class="text-2xl md:text-[1.75rem] font-bold font-[Poppins] text-[var(--slate)] tracking-wide transition-colors hover:text-[var(--gold)] lg:mx-auto"
+        >
+          EPANWE
+        </a>
+      </div>
+
+      <!-- Form centered vertically in remaining space -->
+      <div class="w-full max-w-[420px] flex-1 flex flex-col justify-center">
         <slot />
       </div>
     </div>
   </section>
 </template>
-
-<style scoped>
-.auth {
-  display: grid;
-
-  grid-template-columns: 1fr 520px;
-
-  min-height: 100vh;
-
-  padding-top: 0%;
-  padding-bottom: 0%;
-
-  background: #fff;
-}
-
-.left {
-  position: relative;
-
-  overflow: hidden;
-}
-
-.left img {
-  width: 100%;
-
-  height: 100%;
-
-  object-fit: cover;
-}
-
-.overlay {
-  position: absolute;
-
-  inset: 0;
-
-  background: rgba(0, 0, 0, 0.45);
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: center;
-
-  padding: 80px;
-
-  color: white;
-
-  z-index: 2;
-}
-
-.badge {
-  display: inline-block;
-
-  width: fit-content;
-
-  padding: 8px 18px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.15);
-
-  backdrop-filter: blur(10px);
-
-  margin-bottom: 30px;
-}
-
-.overlay h1 {
-  font-size: 3rem;
-
-  margin-bottom: 20px;
-}
-
-.overlay p {
-  font-size: 1.1rem;
-
-  line-height: 1.8;
-
-  max-width: 420px;
-}
-
-.right {
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-
-  padding: 60px;
-}
-
-.form-container {
-  width: 100%;
-
-  max-width: 420px;
-}
-
-@media (max-width: 950px) {
-  .auth {
-    grid-template-columns: 1fr;
-  }
-
-  .left {
-    display: none;
-  }
-
-  .right {
-    padding: 40px 20px;
-  }
-}
-</style>

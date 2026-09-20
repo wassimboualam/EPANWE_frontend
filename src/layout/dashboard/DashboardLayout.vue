@@ -5,76 +5,21 @@ import Sidebar from './DashboardSidebar.vue'
 import { useUserStore } from '@/stores/user.js'
 
 const userStore = useUserStore()
-
-// onMounted(async () => {
-//   const userStore = useUserStore()
-//   await userStore.refreshUser()
-
-//   const id = userStore.userInfo.id
-
-//   // in case the user session has been expired
-//   if (!id) {
-//     toastStore.warning('You have been logged out. Please log back in.')
-//     return router.push('/login')
-//   }
-
-//   // const requestStore = useRequestStore()
-//   // requestStore.getRequest(id)
-// })
 </script>
 
 <template>
-  <div class="dashboard">
+  <div class="grid grid-cols-1 lg:grid-cols-[270px_1fr] min-h-screen bg-[#f7f8fa]">
     <Sidebar />
-    <div class="content">
+
+    <div class="flex flex-col min-w-0">
       <Navbar
         v-if="userStore.userInfo"
         :user="userStore.userInfo"
       />
-      <div class="page-content">
+
+      <div class="p-5 md:p-6 lg:p-[30px] flex flex-col gap-6">
         <RouterView />
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.dashboard {
-  display: grid;
-  grid-template-columns: 270px 1fr;
-  min-height: 100vh;
-  background: #f7f8fa;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
-.page-content {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-@media (max-width: 1000px) {
-  .dashboard {
-    grid-template-columns: 90px 1fr;
-  }
-
-  .content {
-    padding: 25px;
-  }
-}
-
-@media (max-width: 700px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
-
-  .content {
-    padding: 20px;
-  }
-}
-</style>

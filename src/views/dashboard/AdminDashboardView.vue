@@ -10,7 +10,7 @@ import { getCsrf } from '@/utilities'
 const requestStore = useRequestStore()
 const toastStore = useToastStore()
 
-const stats = computed( () => [
+const stats = computed(() => [
   {
     title: 'Pending',
     value: requestStore.requests.filter((r) => r.status === 'pending').length,
@@ -39,10 +39,9 @@ const stats = computed( () => [
     icon: 'groups',
     color: 'var(--gold)',
   },
-]);
+])
 
 let csrf
-
 
 async function setApproval(type, user_id) {
   try {
@@ -55,17 +54,16 @@ async function setApproval(type, user_id) {
 
 onMounted(async () => {
   csrf = await getCsrf()
-
   await requestStore.refreshAllRequests()
   requestStore.sortRequests()
 })
 </script>
 
 <template>
-  <div class="dashboard px-4">
+  <div class="flex flex-col gap-6 md:gap-8 my-5 mx-10 sm:my-10 sm:mx-20">
     <WelcomeBanner />
 
-    <section class="stats">
+    <section class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 md:gap-6">
       <StatCard
         v-for="card in stats"
         :key="card.title"
@@ -73,35 +71,11 @@ onMounted(async () => {
       />
     </section>
 
-    <!-- FilterBar -->
     <!-- <FilterBar @change="handleFilters" /> -->
 
-    <!-- RequestsTable -->
     <RequestsTable
       :requests="requestStore.requests"
       @set-approval="setApproval"
     />
   </div>
 </template>
-
-<style scoped>
-.dashboard {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 32px;
-
-  padding-inline: 100px;
-
-  margin-bottom: 40px;
-}
-
-.stats {
-  display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-  gap: 24px;
-}
-</style>

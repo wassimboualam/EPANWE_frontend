@@ -14,6 +14,7 @@ const requestStore = useRequestStore()
 const request = computed(() => requestStore.request)
 
 dashboardStore.setCurrentPage('Dashboard')
+
 onMounted(async () => {
   await requestStore.getRequest(userStore.userInfo.id)
 })
@@ -29,5 +30,3 @@ onMounted(async () => {
     :request="request"
   />
 </template>
-
-<style scoped></style>
