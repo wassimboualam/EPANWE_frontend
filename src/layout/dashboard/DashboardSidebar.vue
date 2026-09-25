@@ -5,7 +5,7 @@ import { useUserStore } from '@/stores/user'
 import { RouterLink, useRouter } from 'vue-router'
 
 const store = useDashboardStore()
-const pages = store.pages
+const pages = store.getPages()
 const userStore = useUserStore()
 const router = useRouter()
 

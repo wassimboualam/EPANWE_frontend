@@ -54,13 +54,13 @@ const router = createRouter({
         {
           path: 'terms',
           name: 'terms of service',
-          component: () => import('@/views/TermsOfServiceView.vue')
+          component: () => import('@/views/TermsOfServiceView.vue'),
         },
-          {
-            path: '/partner',
-            name: 'partner form',
-            component: () => import('../views/PartnerJoinView.vue'),
-          },
+        {
+          path: '/partner',
+          name: 'partner form',
+          component: () => import('../views/PartnerJoinView.vue'),
+        },
         {
           path: '/:pathMatch(.*)*',
           name: 'not found',
@@ -98,9 +98,14 @@ const router = createRouter({
           component: () => import('../views/dashboard/profile/ProfileView.vue'),
         },
         {
+          path: 'partners',
+          name: 'partnershipRequests',
+          component: () => import('../views/dashboard/AdminPartnerView.vue'),
+        },
+        {
           path: 'emailchange/:id(.*)',
           name: 'emailChangePage',
-          component: () => import('../views/dashboard/profile/EmailChangePageView.vue'),
+          component: () => import('../views/dashboard/AdminPartnerView.vue'),
         },
       ],
     },

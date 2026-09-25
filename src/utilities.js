@@ -1,4 +1,4 @@
-export { capitalise, getCsrf, requestBackend }
+export { capitalise, getCsrf, requestBackend, formatDate }
 
 function capitalise(str = '') {
   return str[0].toUpperCase() + str.substring(1)
@@ -59,5 +59,18 @@ async function requestBackend(
 
     default:
       return await response.text()
+  }
+}
+
+function formatDate(date = '') {
+  if (!date) return '—'
+  try {
+    return new Date(date).toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+    })
+  } catch {
+    return date
   }
 }

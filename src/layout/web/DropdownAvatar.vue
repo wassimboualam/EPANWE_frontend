@@ -25,7 +25,7 @@ async function logOut() {
 
     <div class="flex flex-col justify-center gap-4 p-4 min-w-[220px]">
       <RouterLink
-        v-for="page in dashboardStore.pages"
+        v-for="page in dashboardStore.getPages()"
         :key="page.name"
         :to="page.link"
       >
