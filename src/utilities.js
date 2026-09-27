@@ -1,3 +1,5 @@
+import api from "./api"
+
 export { capitalise, getCsrf, requestBackend, formatDate }
 
 function capitalise(str = '') {
@@ -5,14 +7,14 @@ function capitalise(str = '') {
 }
 
 async function getCsrf() {
-  const response = await fetch('http://localhost:8000/csrf', {
+  const response = await fetch(api.csrf, {
     credentials: 'include',
   })
   return await response.text()
 }
 
 const defaultOptions = {
-  origin: 'http://localhost:8000',
+  origin: api.origin,
   path: '/',
   csrf: '',
   contentType: 'application/json',
@@ -22,9 +24,9 @@ const defaultOptions = {
 }
 
 async function requestBackend(
-  body,
+  body = null,
   options = {
-    origin: 'http://localhost:8000',
+    origin: api.origin,
     path: '/',
     csrf: '',
     contentType: 'application/json',
@@ -33,6 +35,7 @@ async function requestBackend(
     promiseFunction: '',
   },
 ) {
+  // check if field is there in defaultOptions, if not then populate it
   for (const field in defaultOptions) {
     const value = options[field]
     if (value === undefined) {
@@ -41,25 +44,29 @@ async function requestBackend(
   }
 
   const { origin, path, csrf, contentType, method, credentials, promiseFunction } = options
+
+  const headers = {}
+  if (csrf != '') headers['X-CSRF-TOKEN'] = csrf
+  if (contentType != '') headers['Content-Type'] = contentType
+
+  
   const response = await fetch(origin + path, {
     method: method,
-    body: JSON.stringify(body),
+    body: body?JSON.stringify(body):null,
     credentials: credentials,
-    headers: {
-      'X-CSRF-TOKEN': csrf,
-      'Content-Type': contentType,
-    },
+    headers,
   })
+
   if (promiseFunction != '') {
     return await response[promiseFunction]()
   }
-  switch (contentType) {
-    case 'application/json':
-      return await response.json()
-
-    default:
-      return await response.text()
+  
+  if (response.headers.get("content-type").includes("application/json")) {
+    return await response.json()
+  } else {
+    return await response.text()
   }
+
 }
 
 function formatDate(date = '') {

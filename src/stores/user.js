@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { computed } from 'vue'
 import { useToastStore } from './toast'
 import { requestBackend } from '@/utilities'
+import api from '@/api'
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -13,7 +14,7 @@ export const useUserStore = defineStore('user', {
     async refreshUser() {
       this.isLoading = true
 
-      const response = await fetch('http://localhost:8000/user/me', {
+      const response = await fetch(api.user.me, {
         credentials: 'include',
       })
 
@@ -29,7 +30,7 @@ export const useUserStore = defineStore('user', {
     async register(form, csrf) {
       const toastStore = useToastStore()
       try {
-        const response = await fetch('http://localhost:8000/user/register', {
+        const response = await fetch(api.user.register, {
           method: 'POST',
           body: JSON.stringify(form),
           headers: {
@@ -45,7 +46,7 @@ export const useUserStore = defineStore('user', {
       }
     },
     async login(form, csrf) {
-      const response = await fetch('http://localhost:8000/user/login', {
+      const response = await fetch(api.user.login, {
         method: 'POST',
         body: JSON.stringify(form),
         headers: {
@@ -78,7 +79,7 @@ export const useUserStore = defineStore('user', {
       })
     },
     async editInfo(form, csrf) {
-      const response = await fetch('http://localhost:8000/user/edit/', {
+      const response = await fetch(api.user.edit, {
         method: 'PUT',
         body: JSON.stringify(form),
         credentials: 'include',
@@ -91,7 +92,7 @@ export const useUserStore = defineStore('user', {
       return await response.json()
     },
     async requestEmailChange(email, csrf) {
-      const response = await fetch('http://localhost:8000/user/checkemailchange/', {
+      const response = await fetch(api.user.checkEmailChange, {
         method: 'POST',
         body: email,
         credentials: 'include',
@@ -105,21 +106,21 @@ export const useUserStore = defineStore('user', {
     },
     async confirmEmailChange(csrf, id) {
       return await requestBackend('', {
-        path: '/user/editemail/' + id,
+        path: api.user.paths.editEmail + id,
         csrf,
         method: 'PUT',
       })
     },
     async refreshPassword(csrf) {
       return await requestBackend(null, {
-        path: '/user/refreshpassword',
+        path: api.user.paths.refreshPassword,
         csrf: csrf,
       })
     },
     async logOut() {
       const toastStore = useToastStore()
       try {
-        const response = await fetch('http://localhost:8000/user/logout', {
+        const response = await fetch(api.user.logout, {
           credentials: 'include',
         })
 

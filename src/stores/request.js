@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { useDashboardStore } from './dashboard'
 import { useToastStore } from './toast'
 import { capitalise } from '@/utilities'
+import api from '@/api'
 
 export const useRequestStore = defineStore('request', {
   state: () => ({
@@ -17,7 +18,7 @@ export const useRequestStore = defineStore('request', {
     async refreshAllRequests() {
       const toastStore = useToastStore()
       try {
-        const response = await fetch('http://localhost:8000/request', {
+        const response = await fetch(api.request.index, {
           method: 'GET',
           credentials: 'include',
         })
@@ -34,7 +35,7 @@ export const useRequestStore = defineStore('request', {
       return requests
     },
     async makeRequest({ userId, csrf }) {
-      const response = await fetch('http://localhost:8000/request', {
+      const response = await fetch(api.request.make, {
         method: 'POST',
         body: JSON.stringify({
           userId,
@@ -53,7 +54,7 @@ export const useRequestStore = defineStore('request', {
       const dashboardStore = useDashboardStore()
 
       try {
-        const response = await fetch('http://localhost:8000/request/' + userId, {
+        const response = await fetch(api.request.show + userId, {
           credentials: 'include',
         })
         const data = await response.json()
@@ -92,7 +93,7 @@ export const useRequestStore = defineStore('request', {
       }
       const toastStore = useToastStore()
 
-      const response = await fetch('http://localhost:8000/request/setapproval/', {
+      const response = await fetch(api.request.setApproval, {
         method: 'POST',
         credentials: 'include',
         body: JSON.stringify({ type, user_id }),
