@@ -4,19 +4,19 @@ import PartnersTable from '@/components/dashboard/admin/PartnersTable.vue'
 import PartnerDetailsModal from '@/components/dashboard/admin/PartnerDetailsModal.vue'
 import BaseModal from '@/components/ui/BaseModal.vue'
 import BaseButton from '@/components/ui/BaseButton.vue'
-// import { usePartnerStore } from '@/stores/partner'
 import { useToastStore } from '@/stores/toast'
 import { getCsrf } from '@/utilities'
 import { useDashboardStore } from '@/stores/dashboard'
+import { usePartnerRequestStore } from '@/stores/partnerRequest'
 
-// const partnerStore = usePartnerStore()
+const partnerRequestStore = usePartnerRequestStore()
 const toastStore = useToastStore()
 const dashboardStore = useDashboardStore()
 
 dashboardStore.setCurrentPage("Partnership requests")
 
 let csrf
-csrf
+console.log(csrf)
 
 const selected = ref(null)
 const toDelete = ref(null)
@@ -35,8 +35,9 @@ async function confirmDelete() {
   if (!toDelete.value) return
   deleting.value = true
   try {
-    // await partnerStore.remove(toDelete.value.id, csrf)
+    const { type, title, message } = await partnerRequestStore.delete(toDelete.value.id, csrf)
     toDelete.value = null
+    toastStore.show({title, message, type, duration: 5000})
   } catch (error) {
     toastStore.error(`${error.name}: ${error.message}`)
   } finally {
@@ -46,7 +47,7 @@ async function confirmDelete() {
 
 onMounted(async () => {
   csrf = await getCsrf()
-//   await partnerStore.refreshAll()
+  await partnerRequestStore.refreshAll()
 })
 </script>
 
@@ -60,7 +61,7 @@ onMounted(async () => {
     </header>
 
     <PartnersTable
-      :partners="[]"
+      :partners="partnerRequestStore.requests"
       @view="openDetails"
       @delete="requestDelete"
     />

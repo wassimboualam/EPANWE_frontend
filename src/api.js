@@ -22,6 +22,7 @@ const user = {
     refreshPassword: `${userPathPrefix}/refreshpassword`,
   },
 }
+
 const requestPrefix = `${origin}/request`
 const request = {
   index: `${requestPrefix}`,
@@ -30,9 +31,24 @@ const request = {
   setApproval: `${requestPrefix}/setapproval`,
 }
 
+const partnerRequestPrefix = `${origin}/partner`
+const partnerRequestPathPrefix = `/partner`
+
+const partnerRequest = {
+  index: `${partnerRequestPrefix}`,
+  store: `${partnerRequestPrefix}`,
+  delete: `${partnerRequestPrefix}/delete/`,
+  paths: {
+    index: `${partnerRequestPathPrefix}`,
+    store: `${partnerRequestPathPrefix}`,
+    delete: `${partnerRequestPathPrefix}/delete/`,
+  },
+}
+
 export default {
   origin,
   csrf,
   user,
   request,
+  partnerRequest,
 }

@@ -39,7 +39,7 @@ export const useToastStore = defineStore('toast', {
   }),
 
   actions: {
-    show({ title, message, type = 'info', duration = 15000 }) {
+    show({ title, message, type = 'info', duration = 10000 }) {
       const toast = {
         id: id++,
 
