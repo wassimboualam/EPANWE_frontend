@@ -120,16 +120,21 @@ export const useUserStore = defineStore('user', {
     async logOut() {
       const toastStore = useToastStore()
       try {
-        const response = await fetch(api.user.logout, {
-          credentials: 'include',
+        // const response = await fetch(api.user.logout, {
+        //   credentials: 'include',
+        // })
+        
+        // const { message } = await response.json()
+
+        const { title, message, type } = await requestBackend(null, {
+          path: api.user.paths.logout,
+          contentType: '',
         })
-
-        const { message } = await response.json()
-
+          
         this.userExists = false
         this.userInfo = undefined
 
-        toastStore.info(message)
+        toastStore.show({ title, message, type, duration: 5000})
       } catch (error) {
         toastStore.error(error.name + ': ' + error.message)
       }
