@@ -52,7 +52,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-6 md:gap-8 my-5 mx-5 sm:my-10 sm:mx-10">
+  <div class="flex flex-col gap-6 md:gap-8 my-5 mx-5 sm:my-10 sm:mx-10 lg:mx-5">
     <header class="flex flex-col gap-2">
       <h1 class="text-2xl md:text-3xl font-bold text-[var(--slate)]">Partnership Requests</h1>
       <p class="text-gray-500">

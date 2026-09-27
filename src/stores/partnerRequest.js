@@ -19,6 +19,18 @@ export const usePartnerRequestStore = defineStore('partnerRequest', {
             toastStore.error(`${error.name} : ${error.message}`)
         }
     },
+    async store(form, csrf) {
+      const toastStore = useToastStore()
+      try {
+        return await requestBackend(JSON.stringify(form), {
+          path: api.partnerRequest.paths.store,
+          method: 'POST',
+          csrf: csrf,          
+        })
+      } catch (error) {
+        toastStore.error(`${error.name} : ${error.message}`)
+      }
+    },
     async delete(id, csrf) {
         const toastStore = useToastStore()
         try {
@@ -33,7 +45,7 @@ export const usePartnerRequestStore = defineStore('partnerRequest', {
         } catch (error) {
             toastStore.error(`${error.name} : ${error.message}`)
         }
-
+        
     },
   },
 })

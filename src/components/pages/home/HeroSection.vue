@@ -22,7 +22,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mt-8 md:mt-10">
-          <a href="howtojoin">
+          <a href="#cta">
             <BaseButton
               text="Join Us"
               :full-width="true"

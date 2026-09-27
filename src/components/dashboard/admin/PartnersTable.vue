@@ -36,10 +36,10 @@ const emit = defineEmits(['view', 'delete'])
       <table class="w-full border-collapse">
         <thead class="hidden lg:table-header-group">
           <tr>
-            <th class="text-left px-5 lg:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Company</th>
-            <th class="text-left px-5 lg:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Contact</th>
-            <th class="text-left px-5 lg:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Activity</th>
-            <th class="text-left px-5 lg:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Date</th>
+            <th class="text-left px-4 lg:px-5 xl:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Company</th>
+            <th class="text-left px-4 lg:px-5 xl:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Contact</th>
+            <th class="text-left px-4 lg:px-5 xl:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Activity</th>
+            <th class="text-left px-4 lg:px-5 xl:px-8 py-4 bg-gray-50 font-semibold text-sm text-[var(--slate)]">Date</th>
             <th class="bg-gray-50" />
           </tr>
         </thead>
@@ -51,25 +51,25 @@ const emit = defineEmits(['view', 'delete'])
             class="block lg:table-row border-b border-gray-200 lg:border-t lg:border-gray-100
                    p-5 lg:p-0 transition-colors duration-200 hover:bg-gray-50"
           >
-            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-8 text-sm font-semibold text-[var(--slate)]">
+            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-5 xl:px-8 text-sm font-semibold text-[var(--slate)]">
               {{ partner.company_name || '—' }}
             </td>
 
-            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-8 text-sm text-gray-600">
+            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-5 xl:px-8 text-sm text-gray-600">
               <div>{{ partner.contact_name || '—' }}</div>
               <div class="text-gray-400 break-all">{{ partner.contact_email || '' }}</div>
             </td>
 
-            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-8 text-sm text-gray-600">
+            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-5 xl:px-8 text-sm text-gray-600">
               {{ partner.activity_field || '—' }}
             </td>
 
-            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-8 text-sm text-gray-600">
+            <td class="block lg:table-cell py-1.5 lg:py-5 lg:px-5 xl:px-8 text-sm text-gray-600">
               {{ formatDate(partner.created_at) }}
             </td>
 
-            <td class="block lg:table-cell py-3 lg:py-5 lg:px-8 lg:text-right">
-              <div class="flex gap-2 lg:justify-end">
+            <td class="block lg:table-cell py-3 lg:py-5 lg:px-5 xl:px-8 lg:text-right">
+              <div class="flex gap-2 justify-end lg:flex-col xl:flex-row">
                 <BaseButton
                   text="See more"
                   variant="outline"

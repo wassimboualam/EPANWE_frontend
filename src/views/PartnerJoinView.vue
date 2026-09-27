@@ -5,8 +5,10 @@ import HeroSection from '@/components/pages/partner_join/HeroSection.vue'
 import BenefitsSection from '@/components/pages/partner_join/BenefitsSection.vue'
 import FormSection from '@/components/pages/partner_join/FormSection.vue'
 import { getCsrf } from '@/utilities'
+import { usePartnerRequestStore } from '@/stores/partnerRequest'
 
 const toastStore = useToastStore()
+const partnerRequestStore = usePartnerRequestStore()
 
 const loading = ref(false)
 let csrf
@@ -15,19 +17,13 @@ async function submitForm(form) {
   loading.value = true
 
   try {
-    const response = await fetch('http://localhost:8000/partner/request', {
-      method: 'POST',
-      body: JSON.stringify(form),
-      headers: {
-        'X-CSRF-TOKEN': csrf,
-        'Content-Type': 'application/json',
-      },
-      credentials: 'include',
+    const { title, message, type } = await partnerRequestStore.store(form, csrf)
+    toastStore.show({
+      title,
+      message,
+      type,
+      duration: 5000
     })
-
-    const data = await response.json()
-
-    toastStore.success(data.message, data.title, 5000)
   } catch (error) {
     toastStore.error(error.message, error.title, 5000)
   }

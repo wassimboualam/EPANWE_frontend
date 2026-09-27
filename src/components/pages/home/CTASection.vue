@@ -3,7 +3,10 @@ import BaseButton from '@/components/ui/BaseButton.vue'
 </script>
 
 <template>
-  <section class="py-16 md:py-24 lg:py-[120px]">
+  <section 
+    id="cta"
+    class="py-16 md:py-24 lg:py-[120px]" 
+  >
     <div class="container">
       <div
         class="relative overflow-hidden rounded-3xl md:rounded-[32px] bg-gradient-to-br from-[#d4af37] to-[#e2c45b] px-6 py-12 sm:px-10 sm:py-16 lg:px-20 lg:py-[90px] shadow-[0_25px_60px_rgba(0,0,0,0.12)]"
@@ -35,7 +38,7 @@ import BaseButton from '@/components/ui/BaseButton.vue'
           <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
             <a href="/howtojoin">
               <BaseButton
-                text="Join EPANWE"
+                text="Join as participant"
                 color="white"
                 :full-width="true"
               />
